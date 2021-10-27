@@ -178,22 +178,26 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
+
+        // Calculate Angle Between the collision point and the player
+        ContactPoint2D contactPoint = collision.GetContact(0);
+        Vector2 playerPosition = transform.position;
+        Vector2 dir = contactPoint.point - playerPosition;
+        //Debug.Log("dir: "+dir);
+
         if (collisionStats != null)
         { playerStats.Damage(collisionStats.DMG);
 
-            //Knockback player
-            // Calculate Angle Between the collision point and the player
-            ContactPoint2D contactPoint = collision.GetContact(0);
-            Vector2 playerPosition = transform.position;
-            Vector2 dir = contactPoint.point - playerPosition;
-            // We then get the opposite (-Vector3) and normalize it
+            //Knockback player (TODO)
+            //We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
             rigidBody2D.velocity = Vector2.zero;
             rigidBody2D.inertia = 0;
             rigidBody2D.AddForce(dir * collisionStats.knockBackStrength, ForceMode2D.Impulse);
 
         }
-        if (collision.gameObject.name == "Tilemap") //TO DO: CHECK IF IT WAS ON FEET
+        //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
+        if (collision.gameObject.name == "Tilemap" && dir.y < -0.89) 
         {
                 isGrounded = true;
                 jumpCount = 0;
