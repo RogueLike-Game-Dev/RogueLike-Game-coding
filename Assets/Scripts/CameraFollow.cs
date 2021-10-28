@@ -30,6 +30,9 @@ public class CameraFollow : MonoBehaviour
         mainCamera = GetComponent<Camera>();
         camOrthsize = mainCamera.orthographicSize;
         cameraRatio = (xMax + camOrthsize) / 2.0f;
+
+        //this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
+        
     }
 
     private void FixedUpdate()
