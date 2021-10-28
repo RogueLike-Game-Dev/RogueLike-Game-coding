@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 3)] public int maxDashes = 2;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
+    SpriteRenderer spriteRenderer; 
     #endregion
 
     #region auxVariables
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = playerStats.movementSpeed;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         attackArea.SetActive(false);
       
     }
@@ -131,12 +133,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Flip()
     {
+        
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
         // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        // Vector3 theScale = transform.localScale;
+        // theScale.x *= -1;
+        // transform.localScale = theScale;
+        spriteRenderer.flipX =! spriteRenderer.flipX;
     }
     private void Stomp()
     {
