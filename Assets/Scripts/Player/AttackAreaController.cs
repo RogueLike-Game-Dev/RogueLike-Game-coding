@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackAreaController : MonoBehaviour
 {
     [SerializeField] private EntityStats playerStats;
+    [SerializeField] private BossAgent agent;
     private void OnCollisionEnter2D(Collision2D collision)
     {
       
@@ -12,6 +13,8 @@ public class AttackAreaController : MonoBehaviour
         if (collisionStats != null)
         {
             collisionStats.Damage(playerStats.DMG);
+            if (agent != null)
+                agent.SetReward(0.1f);
             Debug.Log(collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
         }
         if (collision.rigidbody != null) //If enemy has rigidbody, push it back

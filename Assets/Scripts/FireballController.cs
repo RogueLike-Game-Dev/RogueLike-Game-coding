@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
-    private EntityStats playerStats;
     private EntityStats fireballStats;
     private bool facingRight;
     private bool flipped = false;
+    private string caster;
     private void Start()
     {
+        
         fireballStats = GetComponent<EntityStats>();
-        var player = GameObject.Find("Player");
-        playerStats = player.GetComponent<EntityStats>();
-        facingRight = player.GetComponent<PlayerMovement>().facingRight;
+    }
+    public void ResetValues(bool facingRight, string whoCasted)
+    {
+        flipped = false;
+        this.facingRight = facingRight;
+        caster = whoCasted;
     }
     private void Update()
     {
@@ -33,30 +37,32 @@ public class FireballController : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        var collisionStats = collision.gameObject.GetComponent<EntityStats>();
-        if (collisionStats != null)
+        if ( collision.gameObject.name!= caster)
         {
-            collisionStats.Damage(playerStats.DMG);
-            Debug.Log("Fireball collided with entity "+collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
+            var collisionStats = collision.gameObject.GetComponent<EntityStats>();
+            if (collisionStats != null)
+            {
+                collisionStats.Damage(fireballStats.DMG);
+                Debug.Log("Fireball collided with entity " + collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
+            }
+            if (collision.attachedRigidbody != null) //If enemy has rigidbody, push it back
+            {
+                Debug.Log("Fireball found a rigidbody");// Calculate Angle Between the collision point and the player
+                ContactPoint2D[] contactPoints = new ContactPoint2D[10];
+                collision.GetContacts(contactPoints);
+                Vector2 playerPosition = transform.position;
+                Vector2 dir = contactPoints[0].point - playerPosition;
+                // We then get the opposite (-Vector3) and normalize it
+                dir = dir.normalized;
+                collision.attachedRigidbody.velocity = Vector2.zero;
+                collision.attachedRigidbody.inertia = 0;
+                collision.attachedRigidbody.AddForce(dir * 5, ForceMode2D.Impulse);
+            }
         }
-        if (collision.rigidbody != null) //If enemy has rigidbody, push it back
-        {
-            Debug.Log("Fireball found a rigidbody");// Calculate Angle Between the collision point and the player
-            ContactPoint2D contactPoint = collision.GetContact(0);
-            Vector2 playerPosition = transform.position;
-            Vector2 dir = contactPoint.point - playerPosition;
-            // We then get the opposite (-Vector3) and normalize it
-            dir = dir.normalized;
-            collision.rigidbody.velocity = Vector2.zero;
-            collision.rigidbody.inertia = 0;
-            collision.rigidbody.AddForce(dir * playerStats.knockBackStrength, ForceMode2D.Impulse);
-        }
-
     }
-
     public void OnAnimationFinish() //Called via Animation Event when it finishes
     {
         this.gameObject.SetActive(false); //Put object back into the pool

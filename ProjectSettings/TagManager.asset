@@ -8,6 +8,7 @@ TagManager:
   - Apple
   - Enemy
   - Throw
+  - Ground
   layers:
   - Default
   - TransparentFX

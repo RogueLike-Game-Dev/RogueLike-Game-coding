@@ -14,8 +14,6 @@ public class CameraFollow : MonoBehaviour
     private float camY, camX;
     private float camOrthsize;
     private float cameraRatio;
-    private bool facingRight = true;
-
     private void Start()
     {
         if (player == null) //If not set from inspector
@@ -30,9 +28,6 @@ public class CameraFollow : MonoBehaviour
         mainCamera = GetComponent<Camera>();
         camOrthsize = mainCamera.orthographicSize;
         cameraRatio = (xMax + camOrthsize) / 2.0f;
-
-        //this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
-        
     }
 
     private void FixedUpdate()
@@ -43,9 +38,4 @@ public class CameraFollow : MonoBehaviour
         this.transform.position = smoothPos;
     }
 
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        transform.localPosition = new Vector3(transform.localPosition.x * -1, transform.localPosition.y, transform.position.z);
-    }
 }
