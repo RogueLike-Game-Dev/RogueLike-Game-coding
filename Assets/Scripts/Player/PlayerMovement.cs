@@ -4,15 +4,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     #region movementVariables
-    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private float jumpForce = 5f;
     private float moveSpeed;
-    [SerializeField] private float dashForce = 20f;
+    [SerializeField] private float dashForce = 8f;
     [Range(0.1f, 1f)] [SerializeField] private float dashCooldown = 0.5f;
     [Range(1, 3)] public int maxJumps = 2;
     [Range(1, 3)] public int maxDashes = 2;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
-    SpriteRenderer spriteRenderer; 
+    SpriteRenderer spriteRenderer;
     #endregion
 
     #region auxVariables
