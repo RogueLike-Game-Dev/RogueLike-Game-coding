@@ -194,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Knockback player (TODO)
             //We get the opposite (-Vector3) and normalize it
+            
             dir = -dir.normalized;
             rigidBody2D.velocity = Vector2.zero;
             rigidBody2D.inertia = 0;
@@ -201,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
         //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        if (collision.gameObject.name == "Tilemap" && dir.y < -0.89) 
+        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") && dir.y < -0.89) 
         {
                 isGrounded = true;
                 jumpCount = 0;
