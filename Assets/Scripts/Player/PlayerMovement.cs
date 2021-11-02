@@ -4,15 +4,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     #region movementVariables
-    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private float jumpForce = 5f;
     private float moveSpeed;
-    [SerializeField] private float dashForce = 20f;
+    [SerializeField] private float dashForce = 8f;
     [Range(0.1f, 1f)] [SerializeField] private float dashCooldown = 0.5f;
     [Range(1, 3)] public int maxJumps = 2;
     [Range(1, 3)] public int maxDashes = 2;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
-    SpriteRenderer spriteRenderer; 
+    SpriteRenderer spriteRenderer;
     #endregion
 
     #region auxVariables
@@ -194,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Knockback player (TODO)
             //We get the opposite (-Vector3) and normalize it
+            
             dir = -dir.normalized;
             rigidBody2D.velocity = Vector2.zero;
             rigidBody2D.inertia = 0;
@@ -201,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
         //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        if (collision.gameObject.name == "Tilemap" && dir.y < -0.89) 
+        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") && dir.y < -0.89) 
         {
                 isGrounded = true;
                 jumpCount = 0;

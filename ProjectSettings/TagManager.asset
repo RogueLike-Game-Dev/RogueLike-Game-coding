@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Throw
   - Ground
+  - Rock
   layers:
   - Default
   - TransparentFX
