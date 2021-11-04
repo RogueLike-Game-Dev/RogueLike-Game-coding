@@ -3636,7 +3636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519704607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.8, y: -7, z: 0}
+  m_LocalPosition: {x: -38.7, y: -7, z: 0}
   m_LocalScale: {x: 1.6377597, y: 1.5409085, z: 1}
   m_Children:
   - {fileID: 871105819}
@@ -8500,6 +8500,14 @@ PrefabInstance:
     - target: {fileID: 8853719286322005858, guid: d1ab43488ba64e945aa0422f395a5d02, type: 3}
       propertyPath: m_Name
       value: Wraith2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853719286322005918, guid: d1ab43488ba64e945aa0422f395a5d02, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8853719286322005918, guid: d1ab43488ba64e945aa0422f395a5d02, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1ab43488ba64e945aa0422f395a5d02, type: 3}
