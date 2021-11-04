@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackArea.SetActive(false);
-      
+
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
@@ -218,11 +218,39 @@ public class PlayerMovement : MonoBehaviour
             playerStats.gold++;
             Debug.Log("Player currently has: " + playerStats.gold + " gold");
         }
+        else if (collision.gameObject.CompareTag("Gold Chest")) //Picked up a gold chest
+        {
+            collision.gameObject.SetActive(false);
+            RunStats.goldCollected += 100;
+            playerStats.gold += 100;
+            Debug.Log("Player currently has: " + playerStats.gold + " gold");
+        }
         else if (collision.gameObject.tag == "Apple") //Picked up an apple
         {
             collision.gameObject.SetActive(false);
             playerStats.Heal(5); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
+        }
+        else if (collision.gameObject.CompareTag("Heart")) //Picked up a Heart
+        {
+            collision.gameObject.SetActive(false);
+            playerStats.Heal(10);
+            Debug.Log("Restored 10 HP");
+        }
+        else if (collision.gameObject.CompareTag("Star")) //Picked up a star
+        {
+            collision.gameObject.SetActive(false);
+            if (playerStats.currentHP != playerStats.maxHP)
+            {
+                playerStats.Heal(15);
+                Debug.Log("Restored 15 HP");
+               
+            }
+            else
+            {
+                playerStats.maxHP += 10;
+                Debug.Log("Maximised HP");
+            }
         }
         Debug.Log("Played entered trigger from: " + collision.gameObject.name);
     }

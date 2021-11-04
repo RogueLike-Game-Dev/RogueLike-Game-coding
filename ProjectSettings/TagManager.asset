@@ -10,6 +10,9 @@ TagManager:
   - Throw
   - Ground
   - Rock
+  - Gold Chest
+  - Heart
+  - Star
   layers:
   - Default
   - TransparentFX
