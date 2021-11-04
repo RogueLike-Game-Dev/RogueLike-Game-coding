@@ -15,11 +15,16 @@ public class MovingPlatformController : MonoBehaviour
         foreach(Transform iter in transforms)
             targetPoints.Add(iter.position); //Add the starting point so it can cycle
     }
+
     void FixedUpdate()
     {
-        if (platform.transform.position == targetPoints[currentTargetIndex]) // Platform got to current target
-            currentTargetIndex = (currentTargetIndex + 1) % targetPoints.Count; //Move to next target
-        
-        platform.transform.position = Vector2.MoveTowards(platform.transform.position, targetPoints[currentTargetIndex], moveSpeed);
+        if (platform.name != "Wraith2" || (platform.name == "Wraith2" && GameObject.Find("ShowWraith").GetComponent<ShowWraith2>().isShown))
+        {
+            if (platform.transform.position == targetPoints[currentTargetIndex]) // Platform got to current target
+                currentTargetIndex = (currentTargetIndex + 1) % targetPoints.Count; //Move to next target
+
+            platform.transform.position =
+                Vector2.MoveTowards(platform.transform.position, targetPoints[currentTargetIndex], moveSpeed);
+        }
     }
 }
