@@ -13,6 +13,7 @@ TagManager:
   - Gold Chest
   - Heart
   - Star
+  - Background
   layers:
   - Default
   - TransparentFX
