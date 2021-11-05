@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             var throwingObj = ObjectPooler.Instance.GetPooledObject("Throw");
             //throwingObj.SetDirection();
             if(facingRight)
-            throwingObj.transform.position = this.transform.position+Vector3.right;
+                throwingObj.transform.position = this.transform.position + Vector3.right;
             else
                 throwingObj.transform.position = this.transform.position + Vector3.left;
             throwingObj.SetActive(true);
@@ -206,7 +206,8 @@ public class PlayerMovement : MonoBehaviour
         {
                 isGrounded = true;
                 jumpCount = 0;
-                animator.SetBool("isGrounded", isGrounded); }
+                animator.SetBool("isGrounded", isGrounded); 
+        }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -7,7 +7,8 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
     [SerializeField] private int _gold;
-    public int maxHP {
+    public int maxHP 
+    {
         get { return _maxHP; }
         set
         {
@@ -65,17 +66,15 @@ public class EntityStats : MonoBehaviour
         {
             if (animator != null && AnimatorHasParameter(animator,deathTriggerKey)) //And has animations + death animation
             {
-
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
             }
             else //No animations set, just make it inactive
             {
-                   if (this.gameObject.name == "Player")
-                GameManager.Instance.EndRun();
+                if (this.gameObject.name == "Player")
+                    GameManager.Instance.EndRun();
 
                 this.gameObject.SetActive(false);
             }
-         
         }
     }
     private bool AnimatorHasParameter(Animator animator, string parameterName)

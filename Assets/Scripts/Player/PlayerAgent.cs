@@ -1,6 +1,5 @@
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents.Actuators;
 using System.Collections;
@@ -41,7 +40,6 @@ public class PlayerAgent : Agent
         // If the Agent fell, zero its momentum
         if (transform.localPosition.y < -5)
         {
-           
             rigidBody2D.velocity = Vector3.zero;
             transform.localPosition = new Vector3(0, 0.5f, 0);
         }
