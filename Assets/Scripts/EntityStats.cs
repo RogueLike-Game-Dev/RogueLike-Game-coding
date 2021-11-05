@@ -36,10 +36,13 @@ public class EntityStats : MonoBehaviour
             OnGoldChange?.Invoke();
         }
     }
+
     [Tooltip("How much time passes between attacks")] public float timeBetweenAttacks;
     [Tooltip("How much DMG does the entity does")] public int DMG;
     [Tooltip("How fast does the entity move")] public float movementSpeed;
     [Tooltip("How much should the player get knocked back when colliding with this entity")] public float knockBackStrength; 
+    [Tooltip("Whether Player is invulnerable or not")] public bool isInvulnerable = false;
+    [Tooltip("How much time Player should be invulnerable for")] public float TimeOfInvulnerability = 2f;
     [SerializeField] private Animator animator;
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";
     [SerializeField] [Tooltip("Name of the Animator Trigger for Dying animation")] private string deathTriggerKey = "isDying";

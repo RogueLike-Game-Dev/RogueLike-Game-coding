@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded || jumpCount < maxJumps)
         {
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.y, 0);
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetTrigger("isJumping");
             isGrounded = false;
@@ -187,22 +187,24 @@ public class PlayerMovement : MonoBehaviour
         ContactPoint2D contactPoint = collision.GetContact(0);
         Vector2 playerPosition = transform.position;
         Vector2 dir = contactPoint.point - playerPosition;
-        //Debug.Log("dir: "+dir);
+        //Debug.Log("collisionStats: "+collisionStats);
 
         if (collisionStats != null)
         { playerStats.Damage(collisionStats.DMG);
 
-            //Knockback player (TODO)
-            //We get the opposite (-Vector3) and normalize it
             
+            //We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
+            //Knockback player
             rigidBody2D.velocity = Vector2.zero;
             rigidBody2D.inertia = 0;
-            rigidBody2D.AddForce(dir * collisionStats.knockBackStrength, ForceMode2D.Impulse);
+            rigidBody2D.AddForce(dir * playerStats.knockBackStrength, ForceMode2D.Impulse);
+            Debug.Log("added force: "+(dir *playerStats.knockBackStrength));
 
         }
         //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") && dir.y < -0.89) 
+        //The -0.85 value is hardcoded and should be changed along with the player's collision box 
+        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") && dir.y < -0.85) 
         {
                 isGrounded = true;
                 jumpCount = 0;
