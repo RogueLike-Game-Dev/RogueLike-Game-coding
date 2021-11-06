@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,9 +72,14 @@ public class EntityStats : MonoBehaviour
             else //No animations set, just make it inactive
             {
                    if (this.gameObject.name == "Player")
-                GameManager.Instance.EndRun();
+                GameManager.EndRun();
 
                 this.gameObject.SetActive(false);
+            }
+
+            if (this.gameObject.name != "Player")
+            {
+                GameManager.Instance.AddEnemy();
             }
          
         }
@@ -88,10 +94,10 @@ public class EntityStats : MonoBehaviour
         return false;
     }
     
-    public void OnDeath()
+    public void OnDeath() //it's handler function for animation event
     {
         if (this.gameObject.name == "Player")
-            GameManager.Instance.EndRun();
+            GameManager.EndRun();
         this.gameObject.SetActive(false);
     }
     public void Heal(int amount)
