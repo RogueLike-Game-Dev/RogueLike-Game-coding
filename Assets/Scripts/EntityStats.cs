@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,6 +75,11 @@ public class EntityStats : MonoBehaviour
                 GameManager.EndRun();
 
                 this.gameObject.SetActive(false);
+            }
+
+            if (this.gameObject.name != "Player")
+            {
+                GameManager.Instance.AddEnemy();
             }
          
         }
