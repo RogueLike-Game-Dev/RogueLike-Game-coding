@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger("isFalling");
-            if (transform.position.y <= -14.5)
+            if (transform.position.y <= -60)// to be restored to -14.5
                 GameManager.EndRun();
                 //animator.SetTrigger("isDying");
         }
