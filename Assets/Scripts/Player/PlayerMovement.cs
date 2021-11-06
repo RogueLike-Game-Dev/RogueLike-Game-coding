@@ -70,8 +70,14 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log("Dash on cooldown");
             }
         }
+
         if (rigidBody2D.velocity.y < 0)
+        {
             animator.SetTrigger("isFalling");
+            if (transform.position.y <= -14.5)
+                GameManager.EndRun();
+                //animator.SetTrigger("isDying");
+        }
     }
 
     void FixedUpdate()

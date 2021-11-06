@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum RoomType { maxHP, gold, heal, powerUp};
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    private GameObject player;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,8 +20,9 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-    public void EndRun()
+    public static void EndRun()
     {
+        SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
         Debug.Log("Player died, move to end screen");
     }
 
