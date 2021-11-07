@@ -10,6 +10,7 @@ public class SwordController : MonoBehaviour
     private float speed = 8f;
     private float rotationsPerMinute = 100f;
     private EntityStats playerStats;
+    private PlayerMovement playerMovement;
     private Rigidbody2D playerRb;
     private Vector2 playerPosition;
 
@@ -20,6 +21,7 @@ public class SwordController : MonoBehaviour
         playerStats = GameObject.Find("Player").GetComponent<EntityStats>();
         playerRb =  GameObject.Find("Player").GetComponent<Rigidbody2D>();
         playerPosition = GameObject.Find("Player").transform.position;
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -31,15 +33,24 @@ public class SwordController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name == "Player")
         {
-            var collisionStats = this.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
-            if (collisionStats != null)
-            { playerStats.Damage(collisionStats.DMG);
-                playerRb.velocity = Vector2.zero;
-                playerRb.inertia = 0;
-                playerRb.AddForce(playerPosition * collisionStats.knockBackStrength, ForceMode2D.Impulse);
+            if (playerMovement.bubbleShieldActive &&
+                playerMovement.characterType.Equals(PlayerMovement.CharacterType.Esteros))
+            {
+                this.gameObject.SetActive(false);
+            }
+            else
+            {
+                var collisionStats = this.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
+                if (collisionStats != null)
+                {
+                    playerStats.Damage(collisionStats.DMG);
+                    playerRb.velocity = Vector2.zero;
+                    playerRb.inertia = 0;
+                    playerRb.AddForce(playerPosition * collisionStats.knockBackStrength, ForceMode2D.Impulse);
 
+                }
             }
         }
 

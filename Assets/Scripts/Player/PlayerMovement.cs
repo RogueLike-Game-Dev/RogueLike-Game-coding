@@ -26,7 +26,17 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     private int dashCount = 0;
     private EntityStats playerStats;
+    private GameObject bubbleShield;
+    public bool bubbleShieldActive;
+    public enum CharacterType
+    {
+        Demetria, //Radu's player
+        Esteros, //Paula's player
+        
+    }
 
+    public CharacterType characterType;
+    
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -37,6 +47,13 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackArea.SetActive(false);
+        if (characterType.Equals( CharacterType.Esteros))
+        {
+            bubbleShield = GameObject.Find("BubbleShield");
+            bubbleShield.SetActive(false);
+            bubbleShieldActive = false;
+
+        }
 
     }
     private void Update()
@@ -52,9 +69,10 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
-            StartCoroutine(Throw());
+            SpecialAttack();
         if (Input.GetKeyDown(KeyCode.Mouse0))
             StartCoroutine(Attack());
+
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             Jump();
 
@@ -87,6 +105,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Action Functions
+
+    private void SpecialAttack()
+    {
+        if(characterType.Equals(CharacterType.Demetria))
+            StartCoroutine(Throw());
+        else if (characterType.Equals(CharacterType.Esteros))
+        {
+            StartCoroutine(AttackEsteros());
+        }
+    }
     private IEnumerator Throw()
     {
         if(!attackCooldown)
@@ -95,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             var throwingObj = ObjectPooler.Instance.GetPooledObject("Throw");
             //throwingObj.SetDirection();
             if(facingRight)
-            throwingObj.transform.position = this.transform.position+Vector3.right;
+                throwingObj.transform.position = this.transform.position+Vector3.right;
             else
                 throwingObj.transform.position = this.transform.position + Vector3.left;
             throwingObj.SetActive(true);
@@ -124,6 +152,16 @@ public class PlayerMovement : MonoBehaviour
         else
             Debug.Log("Attack on cooldown");
     }
+
+    private IEnumerator AttackEsteros()
+    {
+        bubbleShield.SetActive(true);
+        bubbleShieldActive = true;
+        yield return new WaitForSeconds(3f);
+        bubbleShield.SetActive(false);
+        bubbleShieldActive = false;
+    }
+
     private void Jump()
     {
         if (isGrounded || jumpCount < maxJumps)
@@ -195,7 +233,12 @@ public class PlayerMovement : MonoBehaviour
         Vector2 dir = contactPoint.point - playerPosition;
         //Debug.Log("dir: "+dir);
 
-        if (collisionStats != null)
+        if (collisionStats != null && characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
+        {
+            if (collision.gameObject.CompareTag("Enemy")) ;
+            else collision.gameObject.SetActive(false);
+        }
+        else if(collisionStats != null)
         { playerStats.Damage(collisionStats.DMG);
 
             //Knockback player (TODO)
