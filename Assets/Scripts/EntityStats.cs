@@ -109,7 +109,7 @@ public class EntityStats : MonoBehaviour
     }
     public void Damage(int amount)
     {
-        if (amount < 0)
+        if (amount < 0 || isInvulnerable)
         {
             Debug.Log("NU ABUZA DE FUNCTIE");
             return;

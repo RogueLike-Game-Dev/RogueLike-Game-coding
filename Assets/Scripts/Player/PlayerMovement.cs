@@ -5,7 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     #region movementVariables
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float fallSpeed = 0.15f;
+    [SerializeField] private float  acceleratedFallSpeed = 0.15f;
+    [SerializeField] private float deltaVelocityXDecay = 15;
+    [SerializeField] private const float knockBackDuration = 0.5f;
     private float moveSpeed;
     [SerializeField] private float dashForce = 8f;
     [Range(0.1f, 1f)] [SerializeField] private float dashCooldown = 0.5f;
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing = false;
+    private bool isKnockedback = false;
     private bool isGrounded = true;
     private bool attackCooldown = false;
     private float moveDirection = 0f;
@@ -38,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackArea.SetActive(false);
-
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
@@ -77,12 +79,24 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isDashing)
+        if (!isDashing && !isKnockedback)
+        {
+        // Velocity when key is pressed
+        if (moveDirection != 0)
+        {
             rigidBody2D.velocity = new Vector2(moveSpeed * moveDirection, rigidBody2D.velocity.y);
+            moveDirection = 0;
+        }
 
-        //Slowly decay the y velocity after the apex of a jump to speed up falling
-        if (!isGrounded && rigidBody2D.velocity.y < 2)
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, rigidBody2D.velocity.y-fallSpeed);
+        // Velocity when falling
+        else if (!isGrounded && rigidBody2D.velocity.y < 2)
+        {
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x - rigidBody2D.velocity.x/deltaVelocityXDecay, rigidBody2D.velocity.y-acceleratedFallSpeed);
+            //Debug.Log(1);
+        }
+            
+        }
+        
     }
 
     #region Action Functions
@@ -125,6 +139,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
+        if (isKnockedback || isDashing)
+            return;
         if (isGrounded || jumpCount < maxJumps)
         {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
@@ -183,7 +199,19 @@ public class PlayerMovement : MonoBehaviour
             dashCount = 0;
         }
     }
+    
     #endregion
+    private IEnumerator KnockBack(Vector2 dir, float knockBackStrength, float duration = knockBackDuration)
+    {
+        isKnockedback = true;
+        rigidBody2D.velocity = Vector2.zero;
+        rigidBody2D.inertia = 0;
+        rigidBody2D.AddForce(dir * knockBackStrength, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(duration);
+
+        isKnockedback = false;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
@@ -197,29 +225,26 @@ public class PlayerMovement : MonoBehaviour
         if (collisionStats != null && !playerStats.isInvulnerable)
         { playerStats.Damage(collisionStats.DMG);
 
-            
-            //We get the opposite (-Vector3) and normalize it
+            // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
 
-            //Knockback player (knockback on Y works but not on X)
-            //Will probably need to re-work Update / FixedUpdate split 
-            //(it doesnt work bcs we only consider the PC as moving or not moving and we are constantly applying force and overwritting previous forces)
-            //Or just add another isMoving flag and hack smth in FixedUpdate
-            rigidBody2D.velocity = Vector2.zero;
-            rigidBody2D.inertia = 0;
-            rigidBody2D.AddForce(dir * playerStats.knockBackStrength * new Vector2(300f, 0.5f), ForceMode2D.Impulse);
-            Debug.Log("added force: "+(dir *playerStats.knockBackStrength * new Vector2(300f, 0.5f)));
-
+            // knockBack player (knockBack on Y works but not on X)
+            StartCoroutine(KnockBack(dir, playerStats.knockBackStrength));
         }
-        //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        //The -0.85 value is hardcoded and should be changed along with the player's collision box 
-        //TODO: add a very small amount of knockback on collision with walls to avoid wall jank
+        // Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
+        // The -0.85 value is hardcoded and should be changed along with the player's collision box 
         if (collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") 
         {
-                isGrounded = true;
                 if (dir.y < -0.85)
+                {
                     jumpCount = 0;
-                animator.SetBool("isGrounded", isGrounded); 
+                    isGrounded = true;
+                    animator.SetBool("isGrounded", isGrounded); 
+                }
+                // Add a very small amount of knockBack on collision with walls.
+                else
+                    StartCoroutine(KnockBack(dir, 2f, 0.2f));
+                
         }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
     }
