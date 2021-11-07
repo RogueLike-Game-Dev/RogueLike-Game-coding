@@ -10,7 +10,7 @@ public class ShowWraith2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name == "Player")
         {
             GameObject wraith2 = GameObject.Find("Wraith2");
             if (wraith2 != null)
