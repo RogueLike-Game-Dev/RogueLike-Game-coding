@@ -1,4 +1,6 @@
 using System.Collections;
+using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -218,6 +220,22 @@ public class PlayerMovement : MonoBehaviour
             RunStats.goldCollected++;
             playerStats.gold++;
             Debug.Log("Player currently has: " + playerStats.gold + " gold");
+        }
+        else if (collision.gameObject.CompareTag("Key"))    // Picked up a key 
+        {
+            collision.gameObject.SetActive(false);
+            RunStats.keysCollected++;
+            playerStats.keys++;
+            Debug.Log("Player currently has: " + playerStats.keys + " keys");
+        }
+        else if (collision.gameObject.CompareTag("Chest"))  // Collided with a chest that requires a key
+        {
+            if (playerStats.keys >= 1) {
+                var unlockedChest = Resources.Load<Sprite>("Sprites/Chest_02_Unlocked");
+                RunStats.keysCollected--;
+                collision.gameObject.GetComponent<SpriteRenderer>().sprite = unlockedChest;    
+            }
+            Debug.Log("Player currently has: " + playerStats.keys + " keys");
         }
         else if (collision.gameObject.CompareTag("Gold Chest")) //Picked up a gold chest
         {

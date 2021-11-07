@@ -9,5 +9,6 @@ public static class RunStats
     public static RoomType currentRoom;
     public static int goldCollected;
     public static Time startTime;
+    public static int keysCollected;
 }
 

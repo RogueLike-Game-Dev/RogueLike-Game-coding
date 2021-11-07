@@ -7,6 +7,7 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
     [SerializeField] private int _gold;
+    [SerializeField] private int _keys;
     public int maxHP 
     {
         get { return _maxHP; }
@@ -37,6 +38,15 @@ public class EntityStats : MonoBehaviour
             OnGoldChange?.Invoke();
         }
     }
+
+    public int keys {
+        get { return _keys; }
+        set {
+            if (_keys == value) return;
+            _keys = value;
+        }
+    }
+    
     [Tooltip("How much time passes between attacks")] public float timeBetweenAttacks;
     [Tooltip("How much DMG does the entity does")] public int DMG;
     [Tooltip("How fast does the entity move")] public float movementSpeed;
