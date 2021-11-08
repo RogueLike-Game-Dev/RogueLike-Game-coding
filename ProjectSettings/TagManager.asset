@@ -16,6 +16,9 @@ TagManager:
   - Background
   - Key
   - Chest
+  - Lava
+  - Diamond
+  - Collectible
   layers:
   - Default
   - TransparentFX

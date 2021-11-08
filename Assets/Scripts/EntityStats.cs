@@ -8,6 +8,7 @@ public class EntityStats : MonoBehaviour
     private int _currentHP;
     [SerializeField] private int _gold;
     [SerializeField] private int _keys;
+    [SerializeField] private int _collectibles;
     public int maxHP 
     {
         get { return _maxHP; }
@@ -39,11 +40,21 @@ public class EntityStats : MonoBehaviour
         }
     }
 
-    public int keys {
+    public int keys 
+    {
         get { return _keys; }
         set {
             if (_keys == value) return;
             _keys = value;
+        }
+    }
+    
+    public int collectibles 
+    {
+        get { return _collectibles; }
+        set {
+            if (_collectibles == value) return;
+            _collectibles = value;
         }
     }
     

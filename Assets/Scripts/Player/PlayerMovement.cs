@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEditor;
 using UnityEditor.VersionControl;
@@ -43,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
+        
+        Debug.Log("Player collectibles: " + playerStats.collectibles);
+        
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
             Flip();
@@ -239,9 +243,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Gold Chest")) //Picked up a gold chest
         {
-            collision.gameObject.SetActive(false);
             RunStats.goldCollected += 100;
             playerStats.gold += 100;
+            var unlockedChest = Resources.Load<Sprite>("Sprites/Chest_01_Unlocked");
+            collision.gameObject.GetComponent<SpriteRenderer>().sprite = unlockedChest;
+            Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
             Debug.Log("Player currently has: " + playerStats.gold + " gold");
         }
         else if (collision.gameObject.tag == "Apple") //Picked up an apple
@@ -263,7 +269,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 playerStats.Heal(15);
                 Debug.Log("Restored 15 HP");
-               
             }
             else
             {
@@ -271,7 +276,27 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Maximised HP");
             }
         }
+        else if (collision.gameObject.CompareTag("Lava")) 
+        {
+            playerStats.Damage(playerStats.currentHP);
+            Debug.Log("You have died!");
+        }
+        else if (collision.gameObject.CompareTag("Diamond")) 
+        {
+            collision.gameObject.SetActive(false);
+            RunStats.goldCollected += 250;
+            playerStats.gold += 250;  
+        }
         Debug.Log("Played entered trigger from: " + collision.gameObject.name);
     }
 
+    private void OnTriggerStay2D(Collider2D collider) {
+        if (collider.gameObject.CompareTag("Collectible")) {
+            if (Input.GetKey(KeyCode.G)) {
+                collider.gameObject.SetActive(false);
+                playerStats.collectibles++;
+                Debug.Log("COLLECTIBLES:" + playerStats.collectibles);
+            }
+        }
+    }
 }
