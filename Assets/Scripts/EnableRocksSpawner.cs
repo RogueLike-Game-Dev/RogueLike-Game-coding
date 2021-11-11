@@ -25,19 +25,24 @@ public class EnableRocksSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Player"))
         {
+            
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().facingRight)
             {
+                
                 foreach (var varSpawner in spawners)
                 {
                     varSpawner.GetComponent<SpawningRocks>().InvokeRocks();
+                    
                 }
             }
             else
             {
                 foreach (var varSpawner in spawners)
                 {
+                    
                     varSpawner.GetComponent<SpawningRocks>().CancelInvokeRocks();
                 }
             }
