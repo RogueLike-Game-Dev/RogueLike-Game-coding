@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashForce = 8f;
     [Range(0.1f, 1f)] [SerializeField] private float dashCooldown = 0.5f;
     [Range(1, 3)] public int maxJumps = 2;
-    [Range(1, 3)] public int maxDashes = 2;
+    [Range(1, 3)] public int maxDashes = 5;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
     SpriteRenderer spriteRenderer;
@@ -222,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
         //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) && dir.y < -0.89) 
+        if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
                 isGrounded = true;
                 jumpCount = 0;
