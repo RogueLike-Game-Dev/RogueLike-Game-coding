@@ -13,6 +13,13 @@ TagManager:
   - Gold Chest
   - Heart
   - Star
+  - Background
+  - Key
+  - Chest
+  - Lava
+  - Diamond
+  - Collectible
+  - NPC
   layers:
   - Default
   - TransparentFX
