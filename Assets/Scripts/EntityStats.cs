@@ -9,6 +9,7 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private int _gold;
     [SerializeField] private int _keys;
     [SerializeField] private int _collectibles;
+    [SerializeField] private int _enemiesKilled;
     public int maxHP 
     {
         get { return _maxHP; }
@@ -55,6 +56,15 @@ public class EntityStats : MonoBehaviour
         set {
             if (_collectibles == value) return;
             _collectibles = value;
+        }
+    }
+    
+    public int enemiesKilled 
+    {
+        get { return _enemiesKilled; }
+        set {
+            if (_enemiesKilled == value) return;
+            _enemiesKilled = value;
         }
     }
     

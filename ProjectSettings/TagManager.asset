@@ -19,6 +19,7 @@ TagManager:
   - Lava
   - Diamond
   - Collectible
+  - NPC
   layers:
   - Default
   - TransparentFX

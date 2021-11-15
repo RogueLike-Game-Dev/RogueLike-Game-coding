@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private int dashCount;
     private EntityStats playerStats;
     private GameObject collectible;
+    private bool dialogueActive;
 
     #endregion
     // Start is called before the first frame update
@@ -44,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
-        
-        Debug.Log("Player collectibles: " + playerStats.collectibles);
         
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
@@ -87,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collectible);
             playerStats.collectibles++;
-            Debug.Log("COLLECTIBLES:" + playerStats.collectibles);
         }
         
         if (rigidBody2D.velocity.y < 0)
@@ -122,18 +120,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator Attack()
     {
-        if (!attackCooldown)
+        if (!attackCooldown && !dialogueActive)
         {
             Debug.Log("Attacking");
             attackArea.SetActive(true);
-        
-            
+
             animator.SetTrigger("isAttacking");
             attackCooldown = true;
             yield return new WaitForSeconds(0.3f);
             attackArea.SetActive(false);
             attackCooldown = false;
-            
         }
         else
             Debug.Log("Attack on cooldown");
@@ -207,7 +203,6 @@ public class PlayerMovement : MonoBehaviour
         ContactPoint2D contactPoint = collision.GetContact(0);
         Vector2 playerPosition = transform.position;
         Vector2 dir = contactPoint.point - playerPosition;
-        //Debug.Log("dir: "+dir);
 
         if (collisionStats != null)
         { playerStats.Damage(collisionStats.DMG);
@@ -251,16 +246,10 @@ public class PlayerMovement : MonoBehaviour
             if (playerStats.keys >= 1) {
                 var unlockedChest = Resources.Load<Sprite>("Sprites/Chest_02_Unlocked");
                 RunStats.keysCollected--;
+                playerStats.keys--;
                 collision.gameObject.GetComponent<SpriteRenderer>().sprite = unlockedChest;
-                var parent = collision.transform.parent; 
-                if (parent)
-                {
-                    if (parent.childCount > 1)
-                    {
-                        var child = parent.gameObject.transform.GetChild(1);
-                        child.gameObject.SetActive(true);
-                    }
-                }
+                SetActiveChildCollision(collision, 1, true);
+                Destroy(collision.gameObject.GetComponent<BoxCollider2D>());
             }
             Debug.Log("Player currently has: " + playerStats.keys + " keys");
         }
@@ -310,6 +299,11 @@ public class PlayerMovement : MonoBehaviour
             RunStats.goldCollected += 250;
             playerStats.gold += 250;  
         }
+        else if (collision.gameObject.CompareTag("NPC"))
+        {
+            SetActiveChildCollision(collision, 1, true);
+            dialogueActive = true;
+        }
         Debug.Log("Played entered trigger from: " + collision.gameObject.name);
     }
 
@@ -328,6 +322,24 @@ public class PlayerMovement : MonoBehaviour
         {
             isOnCollectible = false;
             collectible = null;
+        }
+        else if (collision.gameObject.CompareTag("NPC"))
+        {
+            SetActiveChildCollision(collision, 1, false);
+            dialogueActive = false;
+        }
+    }
+
+    private void SetActiveChildCollision(Collider2D collider, int childNumber, bool active)
+    {
+        var parent = collider.transform.parent; 
+        if (parent)
+        {
+            if (parent.childCount > childNumber)
+            {
+                var child = parent.gameObject.transform.GetChild(childNumber);
+                child.gameObject.SetActive(active);
+            }
         }
     }
 }
