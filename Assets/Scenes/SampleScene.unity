@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &247095211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247095212}
+  m_Layer: 0
+  m_Name: LeftEdge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247095212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247095211}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.97, y: -3.6015654, z: 16.06411}
+  m_LocalScale: {x: 0.3621406, y: 0.3621406, z: 0.3621406}
+  m_Children: []
+  m_Father: {fileID: 562075126}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &329410017
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +1028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519704607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.08, y: -0.96, z: 0}
+  m_LocalPosition: {x: 2.78, y: 3.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1373892076}
@@ -1096,6 +1126,39 @@ MonoBehaviour:
   animator: {fileID: 0}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
+--- !u!1 &562075125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 562075126}
+  m_Layer: 0
+  m_Name: PatrollingGolem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &562075126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562075125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.815708, y: 1.0831274, z: -16.06411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 680299072}
+  - {fileID: 1744427641}
+  - {fileID: 247095212}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638163848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1209,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2131237515}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &680299071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680299072}
+  m_Layer: 0
+  m_Name: RightEdge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680299072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680299071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.54, y: -3.63, z: 16.06411}
+  m_LocalScale: {x: 0.3621406, y: 0.3621406, z: 0.3621406}
+  m_Children: []
+  m_Father: {fileID: 562075126}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781643099
 GameObject:
@@ -2125,6 +2218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1277968017, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2355151553259897000, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2169,9 +2266,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2355151553259897003, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
+      propertyPath: DMG
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355151553259897003, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
+      propertyPath: _maxHP
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2355151553259897007, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
       propertyPath: m_Name
       value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355151553259897007, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
@@ -2190,6 +2299,7 @@ GameObject:
   - component: {fileID: 1744427637}
   - component: {fileID: 1744427636}
   - component: {fileID: 1744427642}
+  - component: {fileID: 1744427643}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Enemy
@@ -2225,7 +2335,7 @@ MonoBehaviour:
   _gold: 0
   timeBetweenAttacks: 0
   DMG: 0
-  movementSpeed: 3
+  movementSpeed: 1
   knockBackStrength: 0
   animator: {fileID: 1744427638}
   hurtTriggerKey: isHurt
@@ -2333,12 +2443,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744427635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.67, y: -1.7, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.145708, y: -2.7831273, z: 16.06411}
   m_LocalScale: {x: 0.3621406, y: 0.3621406, z: 0.3621406}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 562075126}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1744427642
 Rigidbody2D:
@@ -2348,7 +2458,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744427635}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2361,6 +2471,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1744427643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744427635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ce2a615888de34eb18805635f34772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHP: 100
+  _gold: 0
+  timeBetweenAttacks: 0
+  DMG: 0
+  movementSpeed: 1
+  knockBackStrength: 0
+  animator: {fileID: 1744427638}
+  hurtTriggerKey: isHurt
+  deathTriggerKey: isDying
 --- !u!1 &1752465100
 GameObject:
   m_ObjectHideFlags: 0
