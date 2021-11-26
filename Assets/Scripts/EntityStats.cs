@@ -130,6 +130,7 @@ public class EntityStats : MonoBehaviour
         if (this.gameObject.name == "Player")
             GameManager.EndRun();
         this.gameObject.SetActive(false);
+        GameObject.Find("Player").GetComponent<EntityStats>().enemiesKilled++;
     }
     public void Heal(int amount)
     {

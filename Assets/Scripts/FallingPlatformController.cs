@@ -5,7 +5,7 @@ public class FallingPlatformController : MonoBehaviour
     private Vector3 initialPosition;
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider2D;
-    private float dropAfter = 1.0f;
+    private float dropAfter = 0.7f;
     private float respawnAfter = 5.0f;
     
     private void Start() 
