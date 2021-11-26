@@ -20,6 +20,7 @@ TagManager:
   - Diamond
   - Collectible
   - NPC
+  - EnemyAttackArea
   layers:
   - Default
   - TransparentFX

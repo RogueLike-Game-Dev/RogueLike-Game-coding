@@ -96,16 +96,16 @@ public class EntityStats : MonoBehaviour
     {
         if (currentHP <= 0) //If it's supposed to die
         {
-            if (animator != null && AnimatorHasParameter(animator,deathTriggerKey)) //And has animations + death animation
+            if (animator != null && AnimatorHasParameter(animator, deathTriggerKey)) //And has animations + death animation
             {
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
             }
             else //No animations set, just make it inactive
             {
                    if (this.gameObject.name == "Player")
-                GameManager.EndRun();
+                        GameManager.EndRun();
 
-                this.gameObject.SetActive(false);
+                   this.gameObject.SetActive(false);
             }
 
             if (this.gameObject.name != "Player")

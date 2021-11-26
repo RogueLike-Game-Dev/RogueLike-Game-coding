@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region auxVariables
+
+    private GameObject cameraContainer;
     private Rigidbody2D rigidBody2D;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             bubbleShieldActive = false;
 
         }
-
+        cameraContainer = GameObject.Find("CameraContainer");
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
@@ -197,10 +199,12 @@ public class PlayerMovement : MonoBehaviour
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
         // Multiply the player's x local scale by -1.
-        // Vector3 theScale = transform.localScale;
-        // theScale.x *= -1;
-        // transform.localScale = theScale;
-        spriteRenderer.flipX =! spriteRenderer.flipX;
+        Vector3 theScale = transform.localScale; 
+        theScale.x *= -1;
+        transform.localScale = theScale;
+        var cameraScale = cameraContainer.transform.localScale;
+        cameraScale.x *= -1;
+        cameraContainer.transform.localScale = cameraScale;
     }
     private void Stomp()
     {
@@ -253,9 +257,10 @@ public class PlayerMovement : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy")) ;
             else collision.gameObject.SetActive(false);
         }
-        else if(collisionStats != null)
-        { playerStats.Damage(collisionStats.DMG);
-
+        else if(collisionStats != null && !collision.gameObject.CompareTag("Enemy"))
+        { 
+            playerStats.Damage(collisionStats.DMG);
+            
             //Knockback player (TODO)
             //We get the opposite (-Vector3) and normalize it
             
@@ -268,9 +273,9 @@ public class PlayerMovement : MonoBehaviour
         //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
         if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
-                isGrounded = true;
-                jumpCount = 0;
-                animator.SetBool("isGrounded", isGrounded); 
+            isGrounded = true;
+            jumpCount = 0;
+            animator.SetBool("isGrounded", isGrounded); 
         }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
     }
