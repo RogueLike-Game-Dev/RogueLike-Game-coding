@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1638282522",
+        "python_version": "3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\documente\\An3_sem1\\RL\\RogueLike-Game-coding\\venv\\lib\\site-packages\\mlagents\\trainers\\learn.py config.yaml --run-id=ParallelTraining4env --num-envs=4 --env=D:\\documente\\An3_sem1\\RL\\bossfight\\NewNewMl.exe --no-graphics",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.4",
+        "end_time_seconds": "1638282584"
+    },
+    "total": 62.1750962,
+    "count": 1,
+    "self": 10.006539799999999,
+    "children": {
+        "run_training.setup": {
+            "total": 0.3622824,
+            "count": 1,
+            "self": 0.3622824
+        },
+        "TrainerController.start_learning": {
+            "total": 51.806274,
+            "count": 1,
+            "self": 0.0018627000000037697,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 51.8043471,
+                    "count": 1,
+                    "self": 51.8043471
+                },
+                "trainer_threads": {
+                    "total": 1.9399999999336615e-05,
+                    "count": 1,
+                    "self": 1.9399999999336615e-05
+                },
+                "TrainerController._save_models": {
+                    "total": 4.479999999773554e-05,
+                    "count": 1,
+                    "self": 4.479999999773554e-05
+                }
+            }
+        }
+    }
+}
