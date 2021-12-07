@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5174153884762856048}
   - component: {fileID: 4980605784673216930}
   - component: {fileID: 4980233008830797914}
+  - component: {fileID: -7979538513331074209}
   m_Layer: 0
   m_Name: Thunderball Explosion 1 Edited
   m_TagString: Untagged
@@ -48,7 +49,7 @@ ParticleSystem:
   serializedVersion: 7
   lengthInSec: 3
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4880,6 +4881,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!210 &-7979538513331074209
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176966642692414796}
+  m_Enabled: 1
+  m_SortingLayerID: 1385145095
+  m_SortingLayer: 1
+  m_SortingOrder: 4
 --- !u!1 &5177281542123667916
 GameObject:
   m_ObjectHideFlags: 0
