@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     #region movementVariables
     [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float  acceleratedFallSpeed = 0.15f;
+    [SerializeField] private float deltaVelocityXDecay = 15;
+    [SerializeField] private const float knockBackDuration = 0.5f;
     private float moveSpeed;
     [SerializeField] private float dashForce = 8f;
     [Range(0.1f, 1f)] [SerializeField] private float dashCooldown = 0.5f;
@@ -20,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing = false;
+    private bool isKnockedback = false;
     private bool isGrounded = true;
     private bool attackCooldown = false;
     private float moveDirection = 0f;
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackArea.SetActive(false);
+
         if (characterType.Equals( CharacterType.Esteros))
         {
             bubbleShield = GameObject.Find("BubbleShield");
@@ -100,8 +105,24 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isDashing)
+        if (!isDashing && !isKnockedback)
+        {
+        // Velocity when key is pressed
+        if (moveDirection != 0)
+        {
             rigidBody2D.velocity = new Vector2(moveSpeed * moveDirection, rigidBody2D.velocity.y);
+            moveDirection = 0;
+        }
+
+        // Velocity when falling
+        else if (!isGrounded && rigidBody2D.velocity.y < 2)
+        {
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x - rigidBody2D.velocity.x/deltaVelocityXDecay, rigidBody2D.velocity.y-acceleratedFallSpeed);
+            //Debug.Log(1);
+        }
+            
+        }
+        
     }
 
     #region Action Functions
@@ -164,9 +185,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        if (isKnockedback || isDashing)
+            return;
         if (isGrounded || jumpCount < maxJumps)
         {
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.y, 0);
+            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetTrigger("isJumping");
             isGrounded = false;
@@ -222,7 +245,19 @@ public class PlayerMovement : MonoBehaviour
             dashCount = 0;
         }
     }
+    
     #endregion
+    private IEnumerator KnockBack(Vector2 dir, float knockBackStrength, float duration = knockBackDuration)
+    {
+        isKnockedback = true;
+        rigidBody2D.velocity = Vector2.zero;
+        rigidBody2D.inertia = 0;
+        rigidBody2D.AddForce(dir * knockBackStrength, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(duration);
+
+        isKnockedback = false;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
@@ -231,31 +266,40 @@ public class PlayerMovement : MonoBehaviour
         ContactPoint2D contactPoint = collision.GetContact(0);
         Vector2 playerPosition = transform.position;
         Vector2 dir = contactPoint.point - playerPosition;
-        //Debug.Log("dir: "+dir);
+        //Debug.Log("collisionStats: "+collisionStats);
 
-        if (collisionStats != null && characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
+
+        if (collisionStats != null && !playerStats.isInvulnerable)
+
+       { if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
         {
             if (collision.gameObject.CompareTag("Enemy")) ;
             else collision.gameObject.SetActive(false);
-        }
+        }}
         else if(collisionStats != null)
         { playerStats.Damage(collisionStats.DMG);
 
-            //Knockback player (TODO)
-            //We get the opposite (-Vector3) and normalize it
-            
+            // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
-            rigidBody2D.velocity = Vector2.zero;
-            rigidBody2D.inertia = 0;
-            rigidBody2D.AddForce(dir * collisionStats.knockBackStrength, ForceMode2D.Impulse);
 
+            // knockBack player (knockBack on Y works but not on X)
+            StartCoroutine(KnockBack(dir, playerStats.knockBackStrength));
         }
-        //Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
-        if ((collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") && dir.y < -0.89) 
+        // Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
+        // The -0.85 value is hardcoded and should be changed along with the player's collision box 
+        if (collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") 
         {
-                isGrounded = true;
-                jumpCount = 0;
-                animator.SetBool("isGrounded", isGrounded); }
+                if (dir.y < -0.85)
+                {
+                    jumpCount = 0;
+                    isGrounded = true;
+                    animator.SetBool("isGrounded", isGrounded); 
+                }
+                // Add a very small amount of knockBack on collision with walls.
+                else
+                    StartCoroutine(KnockBack(dir, 2f, 0.2f));
+                
+        }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
     }
     private void OnTriggerEnter2D(Collider2D collision)
