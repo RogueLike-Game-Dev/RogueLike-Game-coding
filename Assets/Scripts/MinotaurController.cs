@@ -8,7 +8,8 @@ public class MinotaurController : MonoBehaviour
     private float speed;
     private GameObject target;
     private bool facingRight;
-    private float distance;
+    private float distanceX;
+    private float distanceY;
     private Animator animator;
     private bool isWalking;
     private string IS_WALKING;
@@ -34,9 +35,10 @@ public class MinotaurController : MonoBehaviour
 
     void Update()
     {
-        distance = Mathf.Abs(target.transform.position.x - transform.position.x);
+        distanceX = Mathf.Abs(target.transform.position.x - transform.position.x);
+        distanceY = Mathf.Abs(target.transform.position.y - transform.position.y);
 
-        if (distance < 1.7f && target)  // enemy starts attacking the player
+        if (distanceX < 1.7f && distanceY < 0.5 && target)  // enemy starts attacking the player
         {
             isWalking = false;
             animator.SetBool(IS_WALKING, isWalking);
@@ -50,7 +52,7 @@ public class MinotaurController : MonoBehaviour
             isWalking = true;
             animator.SetBool(IS_WALKING, isWalking);
         }
-        else if (distance < 10.0f && target)     // enemy starts walking towards the player
+        else if (distanceX < 10.0f && distanceY < 0.5 && target)     // enemy starts walking towards the player
         {
             // moving the enemy towards the player
             isWalking = true;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class LevelDiana : MonoBehaviour
 {
     private const int itemsToCollect = 8;
-    private const int enemiesToFight = 0;
+    private const int enemiesToFight = 8;
     private EntityStats playerStats;
     private GameObject player;
     private Transform oneColumnDialogueText;
@@ -48,6 +48,8 @@ public class LevelDiana : MonoBehaviour
 
     void Update()
     {
+        print("ITEMS COLLECTED:" + playerStats.collectibles);
+        print("ENEMIES KILLED:" + playerStats.enemiesKilled);
         dialogueBox = GameObject.Find("DialogueBox");
 
         if (dialogueBox)
@@ -111,7 +113,7 @@ public class LevelDiana : MonoBehaviour
             finishedLevel = true;
         }
 
-        if (currentDialogueIndex == NPCdialogueTexts.Length - 2)
+        if (currentDialogueIndex >= NPCdialogueTexts.Length - 2)
         {
             var continueButton = GameObject.Find("ContinueButton");
             if (continueButton)
