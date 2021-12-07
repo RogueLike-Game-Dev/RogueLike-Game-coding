@@ -38,10 +38,16 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         camY = Mathf.Clamp(playerPosition.y, yMin + camOrthsize, yMax - camOrthsize);
         camX = Mathf.Clamp(playerPosition.x, xMin + cameraRatio, xMax - cameraRatio);
         smoothPos = Vector3.Lerp(cameraPosition, new Vector3(camX, camY, cameraPosition.z), smoothSpeed);
         cameraPosition = smoothPos;
+
+       // camY = Mathf.Clamp(player.transform.position.y, yMin + camOrthsize, yMax - camOrthsize);
+        //camX = Mathf.Clamp(player.transform.position.x, xMin + camOrthsize*mainCamera.aspect, xMax - camOrthsize * mainCamera.aspect);
+        //smoothPos = Vector3.Lerp(this.transform.position, new Vector3(camX, camY, this.transform.position.z), smoothSpeed);
+        //this.transform.position = smoothPos;
     }
 
 }
