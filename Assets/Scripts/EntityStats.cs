@@ -8,7 +8,11 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
     [SerializeField] private int _gold;
-    public int maxHP {
+    [SerializeField] private int _keys;
+    [SerializeField] private int _collectibles;
+    [SerializeField] private int _enemiesKilled;
+    public int maxHP 
+    {
         get { return _maxHP; }
         set
         {
@@ -37,6 +41,34 @@ public class EntityStats : MonoBehaviour
             OnGoldChange?.Invoke();
         }
     }
+
+    public int keys 
+    {
+        get { return _keys; }
+        set {
+            if (_keys == value) return;
+            _keys = value;
+        }
+    }
+    
+    public int collectibles 
+    {
+        get { return _collectibles; }
+        set {
+            if (_collectibles == value) return;
+            _collectibles = value;
+        }
+    }
+    
+    public int enemiesKilled 
+    {
+        get { return _enemiesKilled; }
+        set {
+            if (_enemiesKilled == value) return;
+            _enemiesKilled = value;
+        }
+    }
+    
 
     [Tooltip("How much time passes between attacks")] public float timeBetweenAttacks;
     [Tooltip("How much DMG does the entity does")] public int DMG;
@@ -67,17 +99,16 @@ public class EntityStats : MonoBehaviour
     {
         if (currentHP <= 0) //If it's supposed to die
         {
-            if (animator != null && AnimatorHasParameter(animator,deathTriggerKey)) //And has animations + death animation
+            if (animator != null && AnimatorHasParameter(animator, deathTriggerKey)) //And has animations + death animation
             {
-
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
             }
             else //No animations set, just make it inactive
             {
                    if (this.gameObject.name == "Player")
-                GameManager.EndRun();
+                        GameManager.EndRun();
 
-                this.gameObject.SetActive(false);
+                   this.gameObject.SetActive(false);
             }
 
             if (this.gameObject.name != "Player")
@@ -102,6 +133,7 @@ public class EntityStats : MonoBehaviour
         if (this.gameObject.name == "Player")
             GameManager.EndRun();
         this.gameObject.SetActive(false);
+        GameObject.Find("Player").GetComponent<EntityStats>().enemiesKilled++;
     }
     public void Heal(int amount)
     {

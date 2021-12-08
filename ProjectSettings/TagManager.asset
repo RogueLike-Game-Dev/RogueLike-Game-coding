@@ -13,7 +13,14 @@ TagManager:
   - Gold Chest
   - Heart
   - Star
-  - Lightning
+  - Background
+  - Key
+  - Chest
+  - Lava
+  - Diamond
+  - Collectible
+  - NPC
+  - EnemyAttackArea
   layers:
   - Default
   - TransparentFX
