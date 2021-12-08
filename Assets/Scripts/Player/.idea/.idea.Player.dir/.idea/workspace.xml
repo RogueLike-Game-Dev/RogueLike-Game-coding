@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6a8549a-a343-44a8-8ef4-f4e27ef053a5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Animations/GolemAnimations/Dying.anim" beforeDir="false" afterPath="$PROJECT_DIR$/../../Animations/GolemAnimations/Dying.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Animations/GolemAnimations/Golem.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../../Animations/GolemAnimations/Golem.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GolemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../GolemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EntityStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../EntityStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Player.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AttackAreaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AttackAreaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +16,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AttackAreaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../EntityStats.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../GolemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../DoubleCoinsController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../LightningPlantController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../BonusDMGController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GolemController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UIController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../EntityStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../DefencePlantController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21SAZlujOQodkypKfFITd7T2yei" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -42,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1637924179136</updated>
       <workItem from="1637924206360" duration="4457000" />
+      <workItem from="1638964852139" duration="13224000" />
     </task>
     <servers />
   </component>
@@ -49,7 +55,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

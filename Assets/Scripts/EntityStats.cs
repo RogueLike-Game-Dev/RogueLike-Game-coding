@@ -159,4 +159,17 @@ public class EntityStats : MonoBehaviour
             animator.SetTrigger(hurtTriggerKey);
         }
     }
+
+	public int HPPowerUp()
+	{
+		int aux = currentHP;
+		currentHP = maxHP;
+		return aux;
+	}
+
+	public void HPResetPowerUp(int hp)
+	{
+		currentHP = Mathf.Min(currentHP,hp);
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+	}
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ae63882e-784f-4965-a512-12e779edd0f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Characters/Golem_2/PNG/Vector Parts/Golem.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Golem_2/PNG/Vector Parts/Golem.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Golem_2/PNG/Vector Parts/Golem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Golem_2/PNG/Vector Parts/Golem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Golem_3/PNG/Vector Parts/Golem.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Golem_3/PNG/Vector Parts/Golem.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Golem_3/PNG/Vector Parts/Golem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Golem_3/PNG/Vector Parts/Golem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Body.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Body.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Face 03.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Head.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Head.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Left Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Right Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Weapon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_01/Vector Parts/Weapon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Body.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Body.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Face 03.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Head.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Head.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Left Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Right Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Weapon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_02/Vector Parts/Weapon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Body.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Body.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 03.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Face 03.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Head.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Head.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Left Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Arm.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Arm.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Hand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Hand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Leg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Right Leg.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Weapon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Characters/Minotaurs/PNG/Minotaur_03/Vector Parts/Weapon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Vector Parts/Golem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vector Parts/Golem.prefab" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2208aZvNdunkkINQsGD31qCRCki" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1638963213309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638963213309</updated>
+      <workItem from="1638963239634" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

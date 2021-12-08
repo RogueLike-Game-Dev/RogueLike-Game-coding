@@ -6,12 +6,19 @@ public class AttackAreaController : MonoBehaviour
 {
     [SerializeField] private EntityStats playerStats;
     [SerializeField] private BossAgent agent;
+    private GameObject effect;
+    private bool showEffect;
     private void OnCollisionEnter2D(Collision2D collision)
     {
       
         var collisionStats = collision.gameObject.GetComponent<EntityStats>();
         if (collisionStats != null)
         {
+            
+            if (showEffect)
+            {
+                Instantiate(effect, transform.position + new Vector3(-0.5f,1,0), transform.rotation);//.transform.SetParent(transform);
+            }
             collisionStats.Damage(playerStats.DMG);
             if (agent != null)
                 agent.SetReward(0.1f);
@@ -31,4 +38,16 @@ public class AttackAreaController : MonoBehaviour
         }
 
     }
+
+    public void SetEffect(GameObject newEffect)
+    {
+        effect = newEffect;
+    }
+
+    public void SetShowEffect(bool val)
+    {
+        showEffect = val;
+    }
+    
+    
 }

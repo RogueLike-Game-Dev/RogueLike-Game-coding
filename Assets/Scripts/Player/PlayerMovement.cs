@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject cameraContainer;
     private Rigidbody2D rigidBody2D;
+	private bool doubleCoins = false;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing = false;
@@ -329,6 +330,12 @@ public class PlayerMovement : MonoBehaviour
             collision.gameObject.SetActive(false);
             RunStats.goldCollected++;
             playerStats.gold++;
+			if (doubleCoins)
+			{
+				RunStats.goldCollected++;
+            	playerStats.gold++;
+			}
+
             Debug.Log("Player currently has: " + playerStats.gold + " gold");
         }
         else if (collision.gameObject.CompareTag("Key"))    // Picked up a key 
@@ -439,4 +446,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+	public void SetDoubleCoins(bool val)
+	{
+		doubleCoins = val;
+	}
 }
