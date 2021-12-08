@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439857524522655415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.44, y: 4.679058, z: -10}
+  m_LocalPosition: {x: 9.4400015, y: 4.679058, z: -10}
   m_LocalScale: {x: 0.6105902, y: 0.6489678, z: 1}
   m_Children:
   - {fileID: 439857525505490247}
@@ -272,6 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 13
+  acceleratedFallSpeed: 0.15
+  deltaVelocityXDecay: 15
   dashForce: 16
   dashCooldown: 0.5
   maxJumps: 2
@@ -295,10 +297,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHP: 10000
   _gold: 0
+  _keys: 0
+  _collectibles: 0
+  _enemiesKilled: 0
   timeBetweenAttacks: 1
   DMG: 50
   movementSpeed: 5
   knockBackStrength: 5
+  isInvulnerable: 0
+  TimeOfInvulnerability: 2
   animator: {fileID: 439857524873792399}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
@@ -857,6 +864,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 439857526423894735}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db8e0d5cce6a3543a1221f89ad9581a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0372b351c44ce3a4b89201c628d24ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

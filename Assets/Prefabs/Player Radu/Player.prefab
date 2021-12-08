@@ -615,6 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 13
+  acceleratedFallSpeed: 0.15
+  deltaVelocityXDecay: 15
   dashForce: 16
   dashCooldown: 0.5
   maxJumps: 2
@@ -622,6 +624,8 @@ MonoBehaviour:
   attackArea: {fileID: 3662216567159904533}
   feetPosition: {fileID: 3662216567404652574}
   facingRight: 1
+  bubbleShieldActive: 0
+  characterType: 0
 --- !u!114 &3662216568215184600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,10 +640,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHP: 10000
   _gold: 0
+  _keys: 0
+  _collectibles: 0
+  _enemiesKilled: 0
   timeBetweenAttacks: 1
   DMG: 50
   movementSpeed: 5
   knockBackStrength: 5
+  isInvulnerable: 0
+  TimeOfInvulnerability: 2
   animator: {fileID: 0}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
@@ -670,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662216568803308006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.44, y: 4.679058, z: -10}
+  m_LocalPosition: {x: 9.4400015, y: 4.679058, z: -10}
   m_LocalScale: {x: 0.6105902, y: 0.6489678, z: 1}
   m_Children:
   - {fileID: 3662216567584707094}

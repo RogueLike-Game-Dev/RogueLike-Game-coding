@@ -20,12 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     #region auxVariables
 
-    private GameObject cameraContainer;
     private Rigidbody2D rigidBody2D;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
-    private bool isDashing = false;
-    private bool isKnockedback = false;
+    private bool isDashing;
+    private bool isKnockedback;
     private bool isGrounded = true;
     private bool isMoving;
     private bool isOnCollectible;
@@ -56,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        attackArea = GameObject.Find("AttackArea");
         attackArea.SetActive(false);
 
         if (characterType.Equals( CharacterType.Esteros))
@@ -65,10 +65,10 @@ public class PlayerMovement : MonoBehaviour
             bubbleShieldActive = false;
 
         }
-        cameraContainer = GameObject.Find("CameraContainer");
     }
     private void Update()
-    {//Input handling in Update, force handling in FixedUpdate 
+    {
+        //Input handling in Update, force handling in FixedUpdate 
         
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
@@ -127,22 +127,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDashing && !isKnockedback)
         {
-        // Velocity when key is pressed
-        if (moveDirection != 0)
-        {
-            rigidBody2D.velocity = new Vector2(moveSpeed * moveDirection, rigidBody2D.velocity.y);
-            moveDirection = 0;
-        }
+            // Velocity when key is pressed
+            if (moveDirection != 0)
+            {
+                rigidBody2D.velocity = new Vector2(moveSpeed * moveDirection, rigidBody2D.velocity.y);
+                moveDirection = 0;
+            }
 
-        // Velocity when falling
-        else if (!isGrounded && rigidBody2D.velocity.y < 2)
-        {
-            rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x - rigidBody2D.velocity.x/deltaVelocityXDecay, rigidBody2D.velocity.y-acceleratedFallSpeed);
-            //Debug.Log(1);
+            // Velocity when falling
+            else if (!isGrounded && rigidBody2D.velocity.y < 2)
+            {
+                var velocity = rigidBody2D.velocity;
+                rigidBody2D.velocity = new Vector2(
+                    velocity.x - velocity.x / deltaVelocityXDecay, 
+                    velocity.y - acceleratedFallSpeed
+                    );
+            }
         }
-            
-        }
-        
     }
 
     #region Action Functions
@@ -221,13 +222,23 @@ public class PlayerMovement : MonoBehaviour
         
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale; 
-        theScale.x *= -1;
-        transform.localScale = theScale;
-        var cameraScale = cameraContainer.transform.localScale;
-        cameraScale.x *= -1;
-        cameraContainer.transform.localScale = cameraScale;
+        var negative = 1;
+        if (!facingRight)
+        {
+            negative = -1;
+        }
+        
+        spriteRenderer.flipX =! spriteRenderer.flipX;
+        
+        var attackAreaSize = attackArea.GetComponent<BoxCollider2D>().size;
+        var playerColliderSizeX = GetComponent<BoxCollider2D>().size.x;
+
+        var attackLocalPosition = attackArea.transform.localPosition;
+        var newX = attackLocalPosition.x + negative * (attackAreaSize.x + playerColliderSizeX);
+        var newY = attackLocalPosition.y;
+        var newZ = attackLocalPosition.z;
+        
+        attackArea.transform.localPosition = new Vector3(newX, newY, newZ);
     }
     private void Stomp()
     {
@@ -286,17 +297,23 @@ public class PlayerMovement : MonoBehaviour
         ContactPoint2D contactPoint = collision.GetContact(0);
         Vector2 playerPosition = transform.position;
         Vector2 dir = contactPoint.point - playerPosition;
+        
+        // Debug.Log("IS IT NULL?? " + collisionStats != null);
 
-        if (collisionStats != null && !playerStats.isInvulnerable)
+        if (collisionStats != null && playerStats.isInvulnerable)
+        { 
+            Debug.Log("ENTERED SOMETHING");
+            if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
+            {
+                if (collision.gameObject.CompareTag("Enemy")) ;
+                else collision.gameObject.SetActive(false);
 
-       { if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
-        {
-            if (collision.gameObject.CompareTag("Enemy")) ;
-            else collision.gameObject.SetActive(false);
-
-        }}
-        else if(collisionStats != null)
-        { playerStats.Damage(collisionStats.DMG);
+            }
+        }
+        else if (collisionStats != null)
+        { 
+            playerStats.Damage(collisionStats.DMG);
+            Debug.Log("DAMAGED: " + collisionStats.DMG);
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
@@ -307,7 +324,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Check relative direction on Y axis to see if impact ocurred between map and the bottom of the player
         // The -0.85 value is hardcoded and should be changed along with the player's collision box 
-        if (collision.gameObject.name == "Tilemap" || collision.gameObject.tag == "Ground") 
+        if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
                 if (dir.y < -0.85)
                 {
@@ -427,9 +444,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void SetActiveChildCollision(Collider2D collider, int childNumber, bool active)
+    private void SetActiveChildCollision(Collider2D collision, int childNumber, bool active)
     {
-        var parent = collider.transform.parent; 
+        var parent = collision.transform.parent; 
         if (parent)
         {
             if (parent.childCount > childNumber)
