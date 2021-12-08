@@ -298,11 +298,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerPosition = transform.position;
         Vector2 dir = contactPoint.point - playerPosition;
         
-        // Debug.Log("IS IT NULL?? " + collisionStats != null);
-
         if (collisionStats != null && playerStats.isInvulnerable)
         { 
-            Debug.Log("ENTERED SOMETHING");
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
                 if (collision.gameObject.CompareTag("Enemy")) ;
@@ -313,7 +310,6 @@ public class PlayerMovement : MonoBehaviour
         else if (collisionStats != null)
         { 
             playerStats.Damage(collisionStats.DMG);
-            Debug.Log("DAMAGED: " + collisionStats.DMG);
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
