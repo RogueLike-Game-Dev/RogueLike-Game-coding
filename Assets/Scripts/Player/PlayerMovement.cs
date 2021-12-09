@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject cameraContainer;
     private Rigidbody2D rigidBody2D;
 	private bool doubleCoins = false;
+
+    private bool doubleHeal = false;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing = false;
@@ -369,26 +371,59 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Apple")) //Picked up an apple
         {
             collision.gameObject.SetActive(false);
-            playerStats.Heal(5); //Oare e o idee buna sa fie hard coded aici?
+            if (doubleHeal)
+            {
+                playerStats.Heal(2 * 5);
+            }
+            else 
+            {
+                playerStats.Heal(5); //Oare e o idee buna sa fie hard coded aici?
+            }
             Debug.Log("Restored HP");
         }
         else if (collision.gameObject.CompareTag("Heart")) //Picked up a Heart
         {
             collision.gameObject.SetActive(false);
-            playerStats.Heal(10);
-            Debug.Log("Restored 10 HP");
+            if (doubleHeal)
+            {
+                playerStats.Heal(2 * 10);
+            }
+            else 
+            {
+                playerStats.Heal(10); 
+                Debug.Log("Restored 10 HP");
+            
+            }
+            
         }
         else if (collision.gameObject.CompareTag("Star")) //Picked up a star
         {
             collision.gameObject.SetActive(false);
             if (playerStats.currentHP != playerStats.maxHP)
             {
-                playerStats.Heal(15);
-                Debug.Log("Restored 15 HP");
+                if (doubleHeal)
+                {
+                    playerStats.Heal(2 * 15);
+                }
+                else 
+                {
+                    playerStats.Heal(15); 
+                    Debug.Log("Restored 15 HP");
+            
+                }
             }
             else
             {
-                playerStats.maxHP += 10;
+                
+                if (doubleHeal)
+                {
+                    playerStats.maxHP += 2 * 10;
+                }
+                else 
+                {
+                    playerStats.maxHP += 10;
+                    
+                }
                 Debug.Log("Maximised HP");
             }
         }
@@ -450,4 +485,9 @@ public class PlayerMovement : MonoBehaviour
 	{
 		doubleCoins = val;
 	}
+    
+    public void SetDoubleHeal(bool val)
+    {
+        doubleHeal = val;
+    }
 }
