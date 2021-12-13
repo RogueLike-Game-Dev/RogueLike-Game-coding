@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     #region movementVariables
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] public float jumpForce = 5f;
     [SerializeField] private float  acceleratedFallSpeed = 0.15f;
     [SerializeField] private float deltaVelocityXDecay = 15;
     [SerializeField] private const float knockBackDuration = 0.5f;
