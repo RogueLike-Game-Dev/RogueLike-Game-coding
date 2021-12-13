@@ -12,6 +12,7 @@ public class MysteryPowerUpController : MonoBehaviour
     [SerializeField] private GameObject powerUp4; 
     [SerializeField] private GameObject powerUp5; 
     [SerializeField] private GameObject powerUp6; 
+    [SerializeField] private GameObject powerUp7; 
     
     
     
@@ -41,6 +42,7 @@ public class MysteryPowerUpController : MonoBehaviour
         powerUps.Add(powerUp4);
         powerUps.Add(powerUp5);
         powerUps.Add(powerUp6);
+        powerUps.Add(powerUp7);
 
         
 
