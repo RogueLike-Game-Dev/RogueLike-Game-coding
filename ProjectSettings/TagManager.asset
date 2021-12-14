@@ -21,6 +21,7 @@ TagManager:
   - Collectible
   - NPC
   - EnemyAttackArea
+  - NextRoomDoor
   layers:
   - Default
   - TransparentFX

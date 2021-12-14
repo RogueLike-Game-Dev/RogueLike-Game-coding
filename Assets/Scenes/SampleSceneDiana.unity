@@ -513,6 +513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b4eaa978e829e44a85d6d20dd0a2780, type: 3}
+--- !u!1 &94039275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7887809697933844369, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+  m_PrefabInstance: {fileID: 1967148364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &111656370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2355151553259897000, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
@@ -1240,7 +1245,7 @@ Transform:
   - {fileID: 762921556}
   - {fileID: 1835942625}
   m_Father: {fileID: 1810251081}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &320054781
 GameObject:
@@ -1306,7 +1311,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2752,8 +2757,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 69, y: -38.2}
-  m_SizeDelta: {x: 52, y: 11}
+  m_AnchoredPosition: {x: 46.29, y: -38.2}
+  m_SizeDelta: {x: 97.43, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594157247
 MonoBehaviour:
@@ -68677,6 +68682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c268c132ec51f4386fca61ef3a13d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueButton: {fileID: 594157245}
+  nextLevelDoor: {fileID: 94039275}
 --- !u!4 &1753246960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2355151553259897000, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
@@ -68785,8 +68792,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1623480776}
-  - {fileID: 620054998}
   - {fileID: 306378573}
+  - {fileID: 620054998}
   - {fileID: 620602670}
   - {fileID: 738424434}
   - {fileID: 1814812049}
@@ -69927,6 +69934,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 899761780933941848, guid: 9612220d12d82094dbae8265dbaf9788, type: 3}
   m_PrefabInstance: {fileID: 940140670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1967148364
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559969408551266182, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887809697933844369, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_Name
+      value: NextRoomDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887809697933844369, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
 --- !u!1001 &1971455127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70599,6 +70667,8 @@ MonoBehaviour:
   DMG: 50
   movementSpeed: 5
   knockBackStrength: 5
+  isInvulnerable: 0
+  TimeOfInvulnerability: 2
   animator: {fileID: 0}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
@@ -70615,6 +70685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 13
+  acceleratedFallSpeed: 0.15
+  deltaVelocityXDecay: 15
   dashForce: 16
   dashCooldown: 0.5
   maxJumps: 2

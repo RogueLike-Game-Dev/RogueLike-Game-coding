@@ -15,6 +15,8 @@ public class LevelDiana : MonoBehaviour
     private int smallFontSize;
     private int bigFontSize;
     private int stringOffset;
+    public GameObject continueButton;
+    public GameObject nextLevelDoor;
 
     private bool visitedNPC;
     private bool finishedLevel;
@@ -52,14 +54,23 @@ public class LevelDiana : MonoBehaviour
         print("ENEMIES KILLED:" + playerStats.enemiesKilled);
         dialogueBox = GameObject.Find("DialogueBox");
 
+        // if the level is finished, the player must return the goods to the NPC
+        if (finishedLevel && currentDialogueIndex == 2)
+        {
+            continueButton.SetActive(true);
+            continueButton.transform.GetChild(0).GetComponent<Text>().text = "Return goods >";
+        }
+        
         if (dialogueBox)
         {
             oneColumnDialogueText = dialogueBox.gameObject.transform.GetChild(0);
             twoColumnDialogueText = dialogueBox.gameObject.transform.GetChild(1);
         }
         
+        // 2 -> the list of goods that must be returned
         if (currentDialogueIndex == 2)
         {
+            // 2 -> the list must be shown on 2 columns
             if (oneColumnDialogueText)
             {
                 oneColumnDialogueText.gameObject.SetActive(false);
@@ -84,8 +95,10 @@ public class LevelDiana : MonoBehaviour
                 twoColumnDialogueText.gameObject.SetActive(true);
             }
         }
+        // 0, 1 or 3 -> dialogue
         else
         {
+            // the dialogue must be shown on a single column
             if (twoColumnDialogueText)
             {
                 twoColumnDialogueText.gameObject.SetActive(false);
@@ -98,25 +111,26 @@ public class LevelDiana : MonoBehaviour
                 oneColumnDialogueText.GetComponent<Text>().text = NPCdialogueTexts[currentDialogueIndex];
 
                 oneColumnDialogueText.gameObject.SetActive(true);
-
-                if (finishedLevel)
-                {
-                    visitedNPC = true;
-                }
+            }
+            
+            // 3 -> player returned goods to the NPC
+            if (currentDialogueIndex == 3)
+            {
+                visitedNPC = true;
             }
         }
 
-        if (playerStats.collectibles == itemsToCollect &&
-            playerStats.enemiesKilled == enemiesToFight)
+        // finished level, now the player must return to the NPC
+        if (playerStats.collectibles >= itemsToCollect &&
+            playerStats.enemiesKilled >= enemiesToFight)
         {
-            currentDialogueIndex = NPCdialogueTexts.Length - 1;
             finishedLevel = true;
         }
 
-        if (currentDialogueIndex >= NPCdialogueTexts.Length - 2)
+        // if the level isn't finished, then the player cannot press the Continue button
+        if (currentDialogueIndex >= 2)
         {
-            var continueButton = GameObject.Find("ContinueButton");
-            if (continueButton)
+            if (continueButton && !finishedLevel)
             {
                 continueButton.SetActive(false);
             }
@@ -124,7 +138,8 @@ public class LevelDiana : MonoBehaviour
 
         if (finishedLevel && visitedNPC)
         {
-            Debug.Log("FINISHED LEVEL!");
+            continueButton.SetActive(false);
+            nextLevelDoor.SetActive(true);
         }
     }
 
