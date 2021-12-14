@@ -58,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
         attackArea = GameObject.Find("AttackArea");
         attackArea.SetActive(false);
 
+        playerStats.gold = RunStats.goldCollected;
+        playerStats.enemiesKilled = RunStats.enemiesKilled;
+        playerStats.currentHP = RunStats.remainingHP;
+
         if (characterType.Equals( CharacterType.Esteros))
         {
             bubbleShield = GameObject.Find("BubbleShield");
@@ -69,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //Input handling in Update, force handling in FixedUpdate 
+        RunStats.remainingHP = playerStats.currentHP;
         
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
