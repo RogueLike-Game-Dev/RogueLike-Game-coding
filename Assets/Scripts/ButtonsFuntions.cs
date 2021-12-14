@@ -21,7 +21,7 @@ public class ButtonsFuntions : MonoBehaviour
         RunStats.keysCollected = 0;
         RunStats.roomsCleared = 0;
         RunStats.playedTime = 0;
-        // also get start time
+        RunStats.remainingHP = 10000;
         LoadNextRoom.LoadRoom();
     }
 

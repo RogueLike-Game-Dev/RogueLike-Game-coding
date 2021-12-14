@@ -8,12 +8,17 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     private static GameObject player;
     private static EntityStats playerStats;
-
+    [SerializeField] private GameObject esterosPrefab;
+    [SerializeField] private GameObject demetriaPrefab;
+    private static GameObject playerPrefab;
+    
     private void Start()
     {
         player = GameObject.Find("Player");
-        if(player != null)
+        if (player != null)
+        {
             playerStats = player.GetComponent<EntityStats>();
+        }
     }
     
     private void Update()
@@ -31,6 +36,24 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        
+        var type = PlayerMovement.characterType;
+
+        if (type.Equals(PlayerMovement.CharacterType.Demetria))
+        {
+            playerPrefab = demetriaPrefab;
+        }
+        else if (type.Equals(PlayerMovement.CharacterType.Esteros))
+        {
+            playerPrefab = esterosPrefab;
+        }
+
+        if (SceneManager.GetActiveScene().name != "EndGameScene")
+        {
+            var playerInstance = Instantiate(playerPrefab);
+            playerInstance.transform.position = Vector3.zero;
+            playerInstance.name = "Player";
+        }
     }
     public static void EndRun()
     {

@@ -41,22 +41,21 @@ public class PlayerMovement : MonoBehaviour
     {
         Demetria, //Radu's player
         Esteros, //Paula's player
-        
     }
 
-    public CharacterType characterType;
+    public static CharacterType characterType;
     
     #endregion
+    
     // Start is called before the first frame update
     void Start()
-    { //Get references
+    { 
+        //Get references
         playerStats = GetComponent<EntityStats>();
         moveSpeed = playerStats.movementSpeed;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        attackArea = GameObject.Find("AttackArea");
-        attackArea.SetActive(false);
 
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
@@ -67,9 +66,18 @@ public class PlayerMovement : MonoBehaviour
             bubbleShield = GameObject.Find("BubbleShield");
             bubbleShield.SetActive(false);
             bubbleShieldActive = false;
-
         }
+        
+        if (!attackArea)
+        {
+            attackArea = GameObject.Find("AttackArea");
+        }
+        
+        attackArea.SetActive(false);
+        
+        print("CHARACTER TYPE:" + characterType);
     }
+    
     private void Update()
     {
         //Input handling in Update, force handling in FixedUpdate 
@@ -155,8 +163,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpecialAttack()
     {
-        if(characterType.Equals(CharacterType.Demetria))
+        if (characterType.Equals(CharacterType.Demetria))
+        {
             StartCoroutine(Throw());
+        }
         else if (characterType.Equals(CharacterType.Esteros))
         {
             StartCoroutine(AttackEsteros());
@@ -168,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Throwing");
             var throwingObj = ObjectPooler.Instance.GetPooledObject("Throw");
-            //throwingObj.SetDirection();
+            
             if(facingRight)
                 throwingObj.transform.position = this.transform.position + Vector3.right;
             else
@@ -313,8 +323,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         else if (collisionStats != null)
-        { 
-            playerStats.Damage(collisionStats.DMG);
+        {
+            if (collision.gameObject.name.Contains("Wraith"))
+            {
+                playerStats.Damage(collisionStats.DMG);
+            }
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
