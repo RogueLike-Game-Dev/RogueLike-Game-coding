@@ -108,7 +108,10 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Attack());
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            print("PRESSED UP");
             Jump();
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -343,7 +346,8 @@ public class PlayerMovement : MonoBehaviour
         // The -0.85 value is hardcoded and should be changed along with the player's collision box 
         if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
-                if (dir.y < -0.85)
+                print("COLLISION WITH GROUND: " + dir.y);
+                if (dir.y < 0)
                 {
                     jumpCount = 0;
                     isGrounded = true;
