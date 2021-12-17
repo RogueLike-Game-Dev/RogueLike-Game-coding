@@ -7,22 +7,22 @@ using UnityEngine.SceneManagement;
 public class ButtonsFuntions : MonoBehaviour
 {
     private GameObject smallBoard;
-    // Start is called before the first frame update
+    
     void Start()
     {
         smallBoard = GameObject.Find("SmallBoard");
         smallBoard.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void startGame()
     {
-        
-    }
-
-    public void startGame() //@TODO when generating rooms is finished
-    {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        RunStats.enemiesKilled = 0;
+        RunStats.goldCollected = 0;
+        RunStats.keysCollected = 0;
+        RunStats.roomsCleared = 0;
+        RunStats.playedTime = 0;
+        RunStats.remainingHP = 10000;
+        LoadNextRoom.LoadRoom();
     }
 
     public void CancelBanner()

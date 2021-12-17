@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class RunStats
@@ -11,5 +9,5 @@ public static class RunStats
     public static float playedTime = 0f;
     public static Time startTime;
     public static int keysCollected;
+    public static int remainingHP = GameObject.Find("Player").GetComponent<EntityStats>().maxHP;
 }
-

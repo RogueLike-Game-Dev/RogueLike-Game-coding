@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityStats : MonoBehaviour
@@ -24,7 +21,7 @@ public class EntityStats : MonoBehaviour
     [HideInInspector] public int currentHP
     {
         get { return _currentHP; }
-        private set
+        set
         {
             if (_currentHP == value) return;
             _currentHP = value;
@@ -110,12 +107,6 @@ public class EntityStats : MonoBehaviour
 
                    this.gameObject.SetActive(false);
             }
-
-            if (this.gameObject.name != "Player")
-            {
-                GameManager.Instance.AddEnemy();
-            }
-         
         }
     }
     private bool AnimatorHasParameter(Animator animator, string parameterName)
@@ -130,10 +121,16 @@ public class EntityStats : MonoBehaviour
     
     public void OnDeath() //it's handler function for animation event
     {
-        if (this.gameObject.name == "Player")
+        if (gameObject.name == "Player")
+        {
             GameManager.EndRun();
-        this.gameObject.SetActive(false);
-        GameObject.Find("Player").GetComponent<EntityStats>().enemiesKilled++;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            GameObject.Find("Player").GetComponent<EntityStats>().enemiesKilled++;
+            RunStats.enemiesKilled++;
+        }
     }
     public void Heal(int amount)
     {

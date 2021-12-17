@@ -36,7 +36,7 @@ public class SwordController : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             if (playerMovement.bubbleShieldActive &&
-                playerMovement.characterType.Equals(PlayerMovement.CharacterType.Esteros))
+                PlayerMovement.characterType.Equals(PlayerMovement.CharacterType.Esteros))
             {
                 this.gameObject.SetActive(false);
             }
