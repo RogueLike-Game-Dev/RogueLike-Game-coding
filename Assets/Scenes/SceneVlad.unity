@@ -23618,11 +23618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7211763722090822198, guid: 8413771722d30de42bd2149da5390b65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.71033
+      value: -29.66
       objectReference: {fileID: 0}
     - target: {fileID: 7211763722090822198, guid: 8413771722d30de42bd2149da5390b65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.428644
+      value: -15.88
       objectReference: {fileID: 0}
     - target: {fileID: 7211763722090822198, guid: 8413771722d30de42bd2149da5390b65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24806,6 +24806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1851955162}
+  - component: {fileID: 1851955163}
   m_Layer: 3
   m_Name: Apples
   m_TagString: Untagged
@@ -24835,6 +24836,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1851955163
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851955161}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
 --- !u!1 &1852341674
 GameObject:
   m_ObjectHideFlags: 0
@@ -83335,7 +83347,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 679cb95370353dc41a6bd085de80ca1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
