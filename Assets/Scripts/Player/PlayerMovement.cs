@@ -45,6 +45,13 @@ public class PlayerMovement : MonoBehaviour
     private const int throwingForce = 5;
     private const float throwingCooldownTime = 10.0f;
     private bool throwingCooldown;
+
+    private string fallingTriggerKey = "isFalling";
+    private string movingBoolKey = "isMoving";
+    private string throwingTriggerKey = "isThrowing";
+    private string attackingTriggerKey = "isAttacking";
+    private string jumpingTriggerKey = "isJumping";
+    private string groundedBoolKey = "isGrounded";
     
     public enum CharacterType
     {
@@ -100,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         if (moveDirection != 0)
         {
-            animator.SetBool("isMoving", true);
+            animator.SetBool(movingBoolKey, true);
             isMoving = true;
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            animator.SetBool(movingBoolKey, false);
             isMoving = false;
         }
 
@@ -140,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (rigidBody2D.velocity.y < 0)
         {
-            animator.SetTrigger("isFalling");
+            animator.SetTrigger(fallingTriggerKey);
             if (transform.position.y <= -30.0)
                 GameManager.EndRun();
                 //animator.SetTrigger("isDying");
@@ -199,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 throwingObj.transform.position = this.transform.position + Vector3.left;
             throwingObj.SetActive(true);
-            animator.SetTrigger("isThrowing");
+            animator.SetTrigger(throwingTriggerKey);
             attackCooldown = true;
             yield return new WaitForSeconds(playerStats.timeBetweenAttacks);
            
@@ -213,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Attacking");
             attackArea.SetActive(true);
 
-            animator.SetTrigger("isAttacking");
+            animator.SetTrigger(attackingTriggerKey);
             attackCooldown = true;
             yield return new WaitForSeconds(0.3f);
             attackArea.SetActive(false);
@@ -269,9 +276,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            animator.SetTrigger("isJumping");
+            animator.SetTrigger(jumpingTriggerKey);
             isGrounded = false;
-            animator.SetBool("isGrounded", isGrounded);
+            animator.SetBool(groundedBoolKey, isGrounded);
 
             jumpCount++;
         }
@@ -361,9 +368,8 @@ public class PlayerMovement : MonoBehaviour
         { 
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
-                if (collision.gameObject.CompareTag("Enemy")) ;
-                else collision.gameObject.SetActive(false);
-
+                if (!collision.gameObject.CompareTag("Enemy"))
+                    collision.gameObject.SetActive(false);
             }
         }
         else if (collisionStats != null)
@@ -388,7 +394,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     jumpCount = 0;
                     isGrounded = true;
-                    animator.SetBool("isGrounded", isGrounded); 
+                    animator.SetBool(groundedBoolKey, isGrounded); 
                 }
                 // Add a very small amount of knockBack on collision with walls.
                 else
