@@ -35,8 +35,10 @@ public class MinotaurController : MonoBehaviour
 
     void Update()
     {
-        distanceX = Mathf.Abs(target.transform.position.x - transform.position.x);
-        distanceY = Mathf.Abs(target.transform.position.y - transform.position.y);
+        var targetPos = target.transform.position;
+        var minotaurPos = transform.position;
+        distanceX = Mathf.Abs(targetPos.x - minotaurPos.x);
+        distanceY = Mathf.Abs(targetPos.y - minotaurPos.y);
 
         if (distanceX < 1.7f && distanceY < 0.5 && target)  // enemy starts attacking the player
         {

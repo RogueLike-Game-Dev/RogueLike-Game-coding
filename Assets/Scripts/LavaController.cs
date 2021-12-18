@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class LavaController : MonoBehaviour
 {
@@ -19,9 +16,8 @@ public class LavaController : MonoBehaviour
     {
         if (Time.time > timer) 
         {
-            this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
+            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
             timer += period;
         }
-        Debug.Log(this.tag);
     }
 }

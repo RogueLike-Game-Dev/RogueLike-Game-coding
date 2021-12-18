@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private static EntityStats playerStats;
     [SerializeField] private GameObject esterosPrefab;
     [SerializeField] private GameObject demetriaPrefab;
+    [SerializeField] private GameObject zhaxPrefab;
     private static GameObject playerPrefab;
     
     private void Start()
@@ -46,6 +47,10 @@ public class GameManager : MonoBehaviour
         else if (type.Equals(PlayerMovement.CharacterType.Esteros))
         {
             playerPrefab = esterosPrefab;
+        }
+        else if (type.Equals(PlayerMovement.CharacterType.Zhax))
+        {
+            playerPrefab = zhaxPrefab;
         }
 
         if (SceneManager.GetActiveScene().name != "EndGameScene")

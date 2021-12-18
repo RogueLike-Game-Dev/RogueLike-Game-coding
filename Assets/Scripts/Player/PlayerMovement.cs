@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     #region auxVariables
 
     private Rigidbody2D rigidBody2D;
-	private bool doubleCoins = false;
+	private bool doubleCoins;
 
-    private bool doubleHeal = false;
+    private bool doubleHeal;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing;
@@ -40,10 +40,17 @@ public class PlayerMovement : MonoBehaviour
     private bool dialogueActive;
     private GameObject bubbleShield;
     public bool bubbleShieldActive;
+    public GameObject[] zhaxThrowingObjects = new GameObject[7];
+    private readonly float[] torques = {25, 15, 30, 20, 20, 10, 20};
+    private const int throwingForce = 5;
+    private const float throwingCooldownTime = 10.0f;
+    private bool throwingCooldown;
+    
     public enum CharacterType
     {
-        Demetria, //Radu's player
-        Esteros, //Paula's player
+        Zhax,       // Diana's player
+        Demetria,   // Radu's player
+        Esteros,    // Paula's player
     }
 
     public static CharacterType characterType;
@@ -109,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            print("PRESSED UP");
             Jump();
         }
 
@@ -132,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
             playerStats.collectibles++;
         }
         
-
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger("isFalling");
@@ -176,6 +181,10 @@ public class PlayerMovement : MonoBehaviour
         else if (characterType.Equals(CharacterType.Esteros))
         {
             StartCoroutine(AttackEsteros());
+        }
+        else if (characterType.Equals(CharacterType.Zhax))
+        {
+            StartCoroutine(AttackZhax());
         }
     }
     private IEnumerator Throw()
@@ -221,6 +230,35 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(3f);
         bubbleShield.SetActive(false);
         bubbleShieldActive = false;
+    }
+
+    private IEnumerator AttackZhax()
+    {
+        if (!throwingCooldown)
+        {
+            var objectIndex = Random.Range(0, zhaxThrowingObjects.Length);
+            var throwingObject = Instantiate(zhaxThrowingObjects[objectIndex]);
+            // throwingObject.name = "ThrowingObject";
+            throwingObject.transform.position = transform.position;
+            throwingObject.layer = 8;
+
+            var minus = facingRight ? 1 : -1;
+            var rigidBodyObject = throwingObject.GetComponent<Rigidbody2D>();
+            var throwDirection = new Vector2(minus, 1);
+
+            rigidBodyObject.AddForce(throwingForce * throwDirection, ForceMode2D.Impulse);
+            rigidBodyObject.AddTorque(torques[objectIndex]);
+
+            throwingCooldown = true;
+            yield return new WaitForSeconds(throwingCooldownTime);
+            throwingCooldown = false;
+
+            Destroy(throwingObject);
+        }
+        else
+        {
+            print("Throwing on cooldown");
+        }
     }
 
     private void Jump()
@@ -346,7 +384,6 @@ public class PlayerMovement : MonoBehaviour
         // The -0.85 value is hardcoded and should be changed along with the player's collision box 
         if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
-                print("COLLISION WITH GROUND: " + dir.y);
                 if (dir.y < 0)
                 {
                     jumpCount = 0;

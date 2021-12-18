@@ -407,6 +407,14 @@ MonoBehaviour:
   feetPosition: {fileID: 3662216567404652574}
   facingRight: 1
   bubbleShieldActive: 0
+  zhaxThrowingObjects:
+  - {fileID: 4239136657139735998, guid: f3a65ae3b1b51ad459e2c232620238f1, type: 3}
+  - {fileID: 8723951041660151308, guid: cb41d302d5dfce64f85280daab70eac4, type: 3}
+  - {fileID: 4244711433007986137, guid: f2d2edd9b5a70a44ab82e92a216a11b0, type: 3}
+  - {fileID: 2076698599069221906, guid: 5990ddd70f78864418eb582e1febd2ec, type: 3}
+  - {fileID: 6351342098725113452, guid: f5e81400dbfd21e44be26527e4a034b4, type: 3}
+  - {fileID: 1389746574483878712, guid: 87f9fc5592d2d0c4e92d5e39980b26ac, type: 3}
+  - {fileID: 3197263978505919128, guid: 740b31b7840c9d946b78d5c7a0e04079, type: 3}
 --- !u!114 &3662216568215184600
 MonoBehaviour:
   m_ObjectHideFlags: 0
