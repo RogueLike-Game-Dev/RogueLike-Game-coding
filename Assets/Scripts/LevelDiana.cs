@@ -7,7 +7,7 @@ public class LevelDiana : MonoBehaviour
     private const int enemiesToFight = 8;
     private EntityStats playerStats;
     private GameObject player;
-    private GameObject camera;
+    private GameObject mainCamera;
     private Transform oneColumnDialogueText;
     private Transform twoColumnDialogueText;
     private GameObject dialogueBox;
@@ -48,11 +48,11 @@ public class LevelDiana : MonoBehaviour
         player.GetComponent<Rigidbody2D>().gravityScale = 1.5f;
         player.GetComponent<Rigidbody2D>().mass = 2.0f;
 
-        camera = player.transform.GetChild(0).gameObject;
-        camera.transform.localPosition = new Vector3(3.05f, 1.0f, -10.0f);
-        camera.GetComponent<Camera>().orthographicSize = 5;
+        mainCamera = player.transform.GetChild(0).gameObject;
+        mainCamera.transform.localPosition = new Vector3(3.05f, 1.0f, -10.0f);
+        mainCamera.GetComponent<Camera>().orthographicSize = 5;
 
-        var minimap = camera.transform.GetChild(0).gameObject;
+        var minimap = mainCamera.transform.GetChild(0).gameObject;
         minimap.transform.localPosition = new Vector3(5.0f, 3.0f, 0.0f);
         minimap.GetComponent<Camera>().orthographicSize = 9;
         
@@ -62,8 +62,6 @@ public class LevelDiana : MonoBehaviour
 
     void Update()
     {
-        print("ITEMS COLLECTED:" + playerStats.collectibles);
-        print("ENEMIES KILLED:" + playerStats.enemiesKilled);
         dialogueBox = GameObject.Find("DialogueBox");
 
         // if the level is finished, the player must return the goods to the NPC

@@ -71,7 +71,7 @@ public class EntityStats : MonoBehaviour
     [Tooltip("How much DMG does the entity does")] public int DMG;
     [Tooltip("How fast does the entity move")] public float movementSpeed;
     [Tooltip("How much should the player get knocked back when colliding with this entity")] public float knockBackStrength; 
-    [Tooltip("Whether Player is invulnerable or not")] public bool isInvulnerable = false;
+    [Tooltip("Whether Player is invulnerable or not")] public bool isInvulnerable;
     [Tooltip("How much time Player should be invulnerable for")] public float TimeOfInvulnerability = 2f;
     [SerializeField] private Animator animator;
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";
@@ -109,9 +109,9 @@ public class EntityStats : MonoBehaviour
             }
         }
     }
-    private bool AnimatorHasParameter(Animator animator, string parameterName)
+    private bool AnimatorHasParameter(Animator _animator, string parameterName)
     {
-        foreach (AnimatorControllerParameter param in animator.parameters)
+        foreach (AnimatorControllerParameter param in _animator.parameters)
         {
             if (param.name == parameterName)
                 return true;

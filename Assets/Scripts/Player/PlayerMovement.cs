@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     #region auxVariables
 
     private Rigidbody2D rigidBody2D;
-	private bool doubleCoins = false;
+	private bool doubleCoins;
 
-    private bool doubleHeal = false;
+    private bool doubleHeal;
     private Animator animator;
     [HideInInspector] public bool facingRight = true;
     private bool isDashing;
@@ -40,10 +40,24 @@ public class PlayerMovement : MonoBehaviour
     private bool dialogueActive;
     private GameObject bubbleShield;
     public bool bubbleShieldActive;
+    public GameObject[] zhaxThrowingObjects = new GameObject[7];
+    private readonly float[] torques = {25, 15, 30, 20, 20, 10, 20};
+    private int throwingForce;
+    private const float throwingCooldownTime = 10.0f;
+    private bool throwingCooldown;
+
+    private string fallingTriggerKey = "isFalling";
+    private string movingBoolKey = "isMoving";
+    private string throwingTriggerKey = "isThrowing";
+    private string attackingTriggerKey = "isAttacking";
+    private string jumpingTriggerKey = "isJumping";
+    private string groundedBoolKey = "isGrounded";
+    
     public enum CharacterType
     {
-        Demetria, //Radu's player
-        Esteros, //Paula's player
+        Zhax,       // Diana's player
+        Demetria,   // Radu's player
+        Esteros,    // Paula's player
     }
 
     public static CharacterType characterType;
@@ -93,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         if (moveDirection != 0)
         {
-            animator.SetBool("isMoving", true);
+            animator.SetBool(movingBoolKey, true);
             isMoving = true;
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            animator.SetBool(movingBoolKey, false);
             isMoving = false;
         }
 
@@ -108,7 +122,9 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Attack());
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
             Jump();
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -129,10 +145,9 @@ public class PlayerMovement : MonoBehaviour
             playerStats.collectibles++;
         }
         
-
         if (rigidBody2D.velocity.y < 0)
         {
-            animator.SetTrigger("isFalling");
+            animator.SetTrigger(fallingTriggerKey);
             if (transform.position.y <= -30.0)
                 GameManager.EndRun();
                 //animator.SetTrigger("isDying");
@@ -174,6 +189,10 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(AttackEsteros());
         }
+        else if (characterType.Equals(CharacterType.Zhax))
+        {
+            StartCoroutine(AttackZhax());
+        }
     }
     private IEnumerator Throw()
     {
@@ -187,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 throwingObj.transform.position = this.transform.position + Vector3.left;
             throwingObj.SetActive(true);
-            animator.SetTrigger("isThrowing");
+            animator.SetTrigger(throwingTriggerKey);
             attackCooldown = true;
             yield return new WaitForSeconds(playerStats.timeBetweenAttacks);
            
@@ -201,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Attacking");
             attackArea.SetActive(true);
 
-            animator.SetTrigger("isAttacking");
+            animator.SetTrigger(attackingTriggerKey);
             attackCooldown = true;
             yield return new WaitForSeconds(0.3f);
             attackArea.SetActive(false);
@@ -220,6 +239,42 @@ public class PlayerMovement : MonoBehaviour
         bubbleShieldActive = false;
     }
 
+    private IEnumerator AttackZhax()
+    {
+        if (!throwingCooldown)
+        {
+            if (jumpCount != 0 || isMoving)
+            {
+                throwingForce = 10;
+            }
+            else
+            {
+                throwingForce = 5;
+            }
+            var objectIndex = Random.Range(0, zhaxThrowingObjects.Length);
+            var throwingObject = Instantiate(zhaxThrowingObjects[objectIndex]);
+            throwingObject.transform.position = transform.position;
+            throwingObject.layer = 8;
+
+            var minus = facingRight ? 1 : -1;
+            var rigidBodyObject = throwingObject.GetComponent<Rigidbody2D>();
+            var throwDirection = new Vector2(minus * throwingForce, 5);
+
+            rigidBodyObject.AddForce(throwDirection, ForceMode2D.Impulse);
+            rigidBodyObject.AddTorque(torques[objectIndex]);
+
+            throwingCooldown = true;
+            yield return new WaitForSeconds(throwingCooldownTime);
+            throwingCooldown = false;
+
+            Destroy(throwingObject);
+        }
+        else
+        {
+            print("Throwing on cooldown");
+        }
+    }
+
     private void Jump()
     {
         if (isKnockedback || isDashing)
@@ -228,9 +283,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            animator.SetTrigger("isJumping");
+            animator.SetTrigger(jumpingTriggerKey);
             isGrounded = false;
-            animator.SetBool("isGrounded", isGrounded);
+            animator.SetBool(groundedBoolKey, isGrounded);
 
             jumpCount++;
         }
@@ -320,9 +375,8 @@ public class PlayerMovement : MonoBehaviour
         { 
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
-                if (collision.gameObject.CompareTag("Enemy")) ;
-                else collision.gameObject.SetActive(false);
-
+                if (!collision.gameObject.CompareTag("Enemy"))
+                    collision.gameObject.SetActive(false);
             }
         }
         else if (collisionStats != null)
@@ -343,11 +397,11 @@ public class PlayerMovement : MonoBehaviour
         // The -0.85 value is hardcoded and should be changed along with the player's collision box 
         if (collision.gameObject.name == "Tilemap" || collision.gameObject.CompareTag("Ground")) 
         {
-                if (dir.y < -0.85)
+                if (dir.y < 0)
                 {
                     jumpCount = 0;
                     isGrounded = true;
-                    animator.SetBool("isGrounded", isGrounded); 
+                    animator.SetBool(groundedBoolKey, isGrounded); 
                 }
                 // Add a very small amount of knockBack on collision with walls.
                 else

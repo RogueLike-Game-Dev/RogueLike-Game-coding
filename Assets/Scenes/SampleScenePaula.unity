@@ -4026,6 +4026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esterosPrefab: {fileID: 439857524873792432, guid: 19247a428d434f1478a9baea7d6dd3f2, type: 3}
   demetriaPrefab: {fileID: 3662216568215184609, guid: 3e3927091289dcc4e926a554d3a6c8f1, type: 3}
+  zhaxPrefab: {fileID: 3662216568215184609, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
 --- !u!4 &781643101
 Transform:
   m_ObjectHideFlags: 0
