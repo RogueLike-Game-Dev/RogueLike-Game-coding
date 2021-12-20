@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public bool bubbleShieldActive;
     public GameObject[] zhaxThrowingObjects = new GameObject[7];
     private readonly float[] torques = {25, 15, 30, 20, 20, 10, 20};
-    private const int throwingForce = 5;
+    private int throwingForce;
     private const float throwingCooldownTime = 10.0f;
     private bool throwingCooldown;
 
@@ -243,17 +243,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!throwingCooldown)
         {
+            if (jumpCount != 0 || isMoving)
+            {
+                throwingForce = 10;
+            }
+            else
+            {
+                throwingForce = 5;
+            }
             var objectIndex = Random.Range(0, zhaxThrowingObjects.Length);
             var throwingObject = Instantiate(zhaxThrowingObjects[objectIndex]);
-            // throwingObject.name = "ThrowingObject";
             throwingObject.transform.position = transform.position;
             throwingObject.layer = 8;
 
             var minus = facingRight ? 1 : -1;
             var rigidBodyObject = throwingObject.GetComponent<Rigidbody2D>();
-            var throwDirection = new Vector2(minus, 1);
+            var throwDirection = new Vector2(minus * throwingForce, 5);
 
-            rigidBodyObject.AddForce(throwingForce * throwDirection, ForceMode2D.Impulse);
+            rigidBodyObject.AddForce(throwDirection, ForceMode2D.Impulse);
             rigidBodyObject.AddTorque(torques[objectIndex]);
 
             throwingCooldown = true;
