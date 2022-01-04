@@ -207,22 +207,22 @@ public class SpendGoldController : MonoBehaviour
                         if (chosenSkill == armorSkill)
                         {
                             armorIndex++;
-                            UnlockNextSkillLevel(armorButtonsInOrder, armorIndex, "ARMOR_TREE");
+                            UnlockNextSkillLevel(armorButtonsInOrder, armorIndex, "ARMOR_TREE", 3);
                         }
                         else if (chosenSkill == hpSkill || chosenSkill == hpRegenSkill)
                         {
                             hpIndex++;
-                            UnlockNextSkillLevel(hpButtonsInOrder, hpIndex, "HP_TREE");
+                            UnlockNextSkillLevel(hpButtonsInOrder, hpIndex, "HP_TREE", 6);
                         }
                         else if (chosenSkill == damageSkill || chosenSkill == magicalDamageSkill)
                         {
                             damageIndex++;
-                            UnlockNextSkillLevel(damageButtonsInOrder, damageIndex, "DAMAGE_TREE");
+                            UnlockNextSkillLevel(damageButtonsInOrder, damageIndex, "DAMAGE_TREE", 5);
                         }
                         else if (chosenSkill == movementSpeedSkill || chosenSkill == jumpSkill)
                         {
                             speedIndex++;
-                            UnlockNextSkillLevel(speedButtonsInOrder, speedIndex, "SPEED_JUMP_TREE");
+                            UnlockNextSkillLevel(speedButtonsInOrder, speedIndex, "SPEED_JUMP_TREE", 4);
                         }
                     }
                     else
@@ -254,8 +254,16 @@ public class SpendGoldController : MonoBehaviour
         canPress = true;
     }
 
-    private void UnlockNextSkillLevel(string[] buttons, int index, string treeName)
+    private void UnlockNextSkillLevel(string[] buttons, int index, string treeName, int maxIndex)
     {
+        var tree = GameObject.Find(treeName);
+
+        var outline = tree.transform.Find("Outline" + index);
+        if (outline)
+        {
+            outline.gameObject.SetActive(true);
+        }        
+        
         if (index >= buttons.Length)
         {
             return;
@@ -269,25 +277,25 @@ public class SpendGoldController : MonoBehaviour
         }
 
         // deactivate next locked (question mark) skill
-        var tree = GameObject.Find(treeName);
+        
         // index = the index of the locked skill that must be unlocked
         // - 1 = the locked skill that must be deactivated
         // + buttons.Length = jump over the height of the tree
-        if (index - 1 + buttons.Length < tree.transform.childCount)
+        if (index - 1 + buttons.Length < maxIndex)
         {
             var locked = tree.transform.GetChild(index - 1 + buttons.Length);
             locked.gameObject.SetActive(false);
         }
 
         // activate next skill
-        if (index < tree.transform.childCount)
+        if (index < maxIndex)
         {
             var skill = tree.transform.GetChild(index);
             skill.gameObject.SetActive(true);
         }
         
         // activate next+1 locked (question mark)
-        if (index + buttons.Length < tree.transform.childCount)
+        if (index + buttons.Length < maxIndex)
         {
             var unlocked = tree.transform.GetChild(index + buttons.Length);
             unlocked.gameObject.SetActive(true);
