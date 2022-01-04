@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3b29d51cdf7710d438423950d82d2c9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 9, y: 9}
@@ -176,4 +176,6 @@ MonoBehaviour:
   projectileNumber: 5
   fan: 0
   timeBetweenAttacks: 1
-  facingRight: 0
+  isActive: 1
+  facingUp: 0
+  facingDown: 0
