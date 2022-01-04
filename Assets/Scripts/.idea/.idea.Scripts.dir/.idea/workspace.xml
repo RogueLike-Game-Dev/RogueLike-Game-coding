@@ -2,27 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7342ef19-61a8-40a6-a611-ad74d9367d1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../BonusDMGController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BonusDMGController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BonusHealController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BonusHealController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DefencePlantController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DefencePlantController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoubleCoinsController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoubleCoinsController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Glow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Glow.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../InvulnerabilityPlantController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../InvulnerabilityPlantController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JumpPowerUpController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JumpPowerUpController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LightningPlantController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LightningPlantController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MysteryPowerUpController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MysteryPowerUpController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_01/Vector Parts/01.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_01/Vector Parts/01.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_01/Vector Parts/01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_01/Vector Parts/01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_02/Vector Parts/02.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_02/Vector Parts/02.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_02/Vector Parts/02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_02/Vector Parts/02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_03/Vector Parts/03.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_03/Vector Parts/03.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_03/Vector Parts/03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Satyrs/PNG/Satyr_03/Vector Parts/03.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/Unity Package/Satyr_01.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/Unity Package/Satyr_02.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Satyrs/Unity Package/Satyr_03.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/BossScene_timers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/BossScene_timers.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleSceneDiana_timers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleSceneDiana_timers.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleScenePaula_timers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleScenePaula_timers.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleScene_timers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ML-Agents/Timers/SampleScene_timers.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrainingEnvController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrainingEnvController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +34,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Player/AttackAreaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Wraith2Controller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/UIController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EntityStats.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/PlayerAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/AttackAreaController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovingPlatformController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21PkY68nggLrpluLU9aIkFrT8YT" />
@@ -70,6 +71,7 @@
       <workItem from="1638032551863" duration="17563000" />
       <workItem from="1638801961724" duration="6007000" />
       <workItem from="1639420128613" duration="4806000" />
+      <workItem from="1641311365045" duration="1982000" />
     </task>
     <servers />
   </component>
