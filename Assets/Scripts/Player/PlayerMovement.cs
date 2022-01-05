@@ -56,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
     private PurchasedItems purchasedItems;
     private const float speedIncrease = 1.6f;
     private const int damageIncrease = 10;
+    private const int hpIncrease = 200;
+    private const int armorIncrease = 100;
+    private const int hpRegenIncrease = 5;
+
+    private bool canRegenHp = true;
     
     public enum CharacterType
     {
@@ -83,18 +88,64 @@ public class PlayerMovement : MonoBehaviour
         
         purchasedItems = PurchasedItems.getInstance();
         
-        // manage damage
-        if (purchasedItems.damageMaxLevel == 1)
+        // manage armor
+        if (purchasedItems.armorMaxLevel >= 3)
         {
-            playerStats.DMG += damageIncrease;
+            playerStats.maxArmor += 3 * armorIncrease;
         }
-        else if (purchasedItems.damageMaxLevel == 2)
+        else if (purchasedItems.armorMaxLevel >= 2)
+        {
+            playerStats.maxArmor += 2 * armorIncrease;
+        }
+        else if (purchasedItems.armorMaxLevel >= 1)
+        {
+            playerStats.maxArmor += armorIncrease;
+        }
+
+        playerStats.currentArmor = playerStats.maxArmor;
+        
+        // manage hp
+        if (purchasedItems.hpMaxLevel >= 4)
+        {
+            playerStats.maxHP += 3 * hpIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 2)
+        {
+            playerStats.maxHP += 2 * hpIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 1)
+        {
+            playerStats.maxHP += hpIncrease;
+        }
+        
+        InitialValues.remainingHP = playerStats.maxHP; // remove this line when InitialValues.remainingHP is calculated for the first time
+
+        // manage hp regen
+        if (purchasedItems.hpMaxLevel >= 6)
+        {
+            playerStats.hpRegen = 3 * hpRegenIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 5)
+        {
+            playerStats.hpRegen = 2 * hpRegenIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 3)
+        {
+            playerStats.hpRegen = hpRegenIncrease;
+        }
+
+        // manage damage
+        if (purchasedItems.damageMaxLevel >= 4)
+        {
+            playerStats.DMG += 3 * damageIncrease;
+        }
+        else if (purchasedItems.damageMaxLevel >= 2)
         {
             playerStats.DMG += 2 * damageIncrease;
         }
-        else if (purchasedItems.damageMaxLevel == 4)
+        else if (purchasedItems.damageMaxLevel >= 1)
         {
-            playerStats.DMG += 3 * damageIncrease;
+            playerStats.DMG += damageIncrease;
         }
         
         // manage speed and triple jump
@@ -103,17 +154,17 @@ public class PlayerMovement : MonoBehaviour
             maxJumps = 3;
         }
         
-        if (purchasedItems.speedMaxLevel == 1)
+        if (purchasedItems.speedMaxLevel >= 4)
         {
-            playerStats.movementSpeed += speedIncrease;
+            playerStats.movementSpeed += 2.5f * speedIncrease;
         }
-        else if (purchasedItems.speedMaxLevel == 2)
+        else if (purchasedItems.speedMaxLevel >= 2)
         {
             playerStats.movementSpeed += 1.6f * speedIncrease;
         }
-        else if (purchasedItems.speedMaxLevel == 4)
+        else if (purchasedItems.speedMaxLevel >= 1)
         {
-            playerStats.movementSpeed += 2.5f * speedIncrease;
+            playerStats.movementSpeed += speedIncrease;
         }
         
         moveSpeed = playerStats.movementSpeed;
@@ -137,16 +188,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
+        print("ARMOR:::::::::::: " + playerStats.currentArmor);
 
-        print("ARMOR MAX LEVEL:" + purchasedItems.armorMaxLevel);
-        print("HP MAX LEVEL:" + purchasedItems.hpMaxLevel);
-        print("DAMAGE MAX LEVEL:" + purchasedItems.damageMaxLevel);
-        print("SPEED MAX LEVEL:" + purchasedItems.speedMaxLevel);
-        print("REVIVE NR:" + purchasedItems.reviveNr);
-        print("IMMUNITY NR:" + purchasedItems.immunityNr);
-        print("INVISIBILITY NR:" + purchasedItems.invisibilityNr);
-        
-        
+        if (playerStats.currentHP < playerStats.maxHP && canRegenHp)
+        {
+            StartCoroutine(HpRegen());
+        }
         
         //Input handling in Update, force handling in FixedUpdate 
         RunStats.remainingHP = playerStats.currentHP;
@@ -203,6 +250,14 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.EndRun();
                 //animator.SetTrigger("isDying");
         }
+    }
+
+    private IEnumerator HpRegen()
+    {
+        playerStats.Heal(playerStats.hpRegen);
+        canRegenHp = false;
+        yield return new WaitForSeconds(1.0f);
+        canRegenHp = true;
     }
 
     void FixedUpdate()

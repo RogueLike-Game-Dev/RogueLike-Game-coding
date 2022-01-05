@@ -54,6 +54,7 @@ public class UIController : MonoBehaviour
     private void PlayerStats_OnMaxHPChange()
     {
         slider.maxValue = playerStats.maxHP;
+        slider.value = playerStats.currentHP;
         hpDisplay.text = playerStats.currentHP + " / " + playerStats.maxHP;
         fill.color = hpGradient.Evaluate(slider.normalizedValue);  
     }

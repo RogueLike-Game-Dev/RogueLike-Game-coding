@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ButtonsFuntions : MonoBehaviour
 {
@@ -24,7 +21,7 @@ public class ButtonsFuntions : MonoBehaviour
         RunStats.keysCollected = 0;
         RunStats.roomsCleared = 0;
         RunStats.playedTime = 0;
-        RunStats.remainingHP = 10000;
+        RunStats.remainingHP = InitialValues.remainingHP;
         LoadNextRoom.LoadRoom();
     }
 

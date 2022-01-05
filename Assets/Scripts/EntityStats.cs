@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
+    [SerializeField] private int _maxArmor;
+    private int _currentArmor;
+    private int _hpRegen;
     [SerializeField] private int _gold;
     [SerializeField] private int _keys;
     [SerializeField] private int _collectibles;
@@ -25,6 +29,37 @@ public class EntityStats : MonoBehaviour
         {
             if (_currentHP == value) return;
             _currentHP = value;
+            OnHPChange?.Invoke();
+        }
+    }
+    [HideInInspector] public int hpRegen
+    {
+        get { return _hpRegen; }
+        set
+        {
+            if (_hpRegen == value) return;
+            _hpRegen = value;
+            OnHPChange?.Invoke();
+        }
+    }
+    
+    public int maxArmor
+    {
+        get { return _maxArmor; }
+        set
+        {
+            if (_maxArmor == value) return;
+            _maxArmor = value;
+            OnMaxHPChange?.Invoke();
+        }
+    }
+    [HideInInspector] public int currentArmor
+    {
+        get { return _currentArmor; }
+        set
+        {
+            if (_currentArmor == value) return;
+            _currentArmor = value;
             OnHPChange?.Invoke();
         }
     }
@@ -149,7 +184,24 @@ public class EntityStats : MonoBehaviour
             Debug.Log("NU ABUZA DE FUNCTIE");
             return;
         }
-        currentHP -= amount;
+
+        if (currentArmor > 0)
+        {
+            if (currentArmor >= amount)
+            {
+                currentArmor -= amount;
+            }
+            else
+            {
+                currentHP -= (amount - currentArmor) / 2;
+                currentArmor = 0;
+            }
+        }
+        else
+        {
+            currentHP -= amount;
+        }
+
         if (animator != null)
         {
             Debug.Log("Called animator key");
