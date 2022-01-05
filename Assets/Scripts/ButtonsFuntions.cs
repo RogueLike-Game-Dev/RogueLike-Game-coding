@@ -11,7 +11,10 @@ public class ButtonsFuntions : MonoBehaviour
     void Start()
     {
         smallBoard = GameObject.Find("SmallBoard");
-        smallBoard.SetActive(false);
+        if (smallBoard)
+        {
+            smallBoard.SetActive(false);
+        }
     }
 
     public void startGame()

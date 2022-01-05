@@ -52,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
     private string attackingTriggerKey = "isAttacking";
     private string jumpingTriggerKey = "isJumping";
     private string groundedBoolKey = "isGrounded";
+
+    private PurchasedItems purchasedItems;
+    private const float speedIncrease = 1.6f;
+    private const int damageIncrease = 10;
     
     public enum CharacterType
     {
@@ -69,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
     { 
         //Get references
         playerStats = GetComponent<EntityStats>();
-        moveSpeed = playerStats.movementSpeed;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -77,6 +80,43 @@ public class PlayerMovement : MonoBehaviour
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
         playerStats.currentHP = RunStats.remainingHP;
+        
+        purchasedItems = PurchasedItems.getInstance();
+        
+        // manage damage
+        if (purchasedItems.damageMaxLevel == 1)
+        {
+            playerStats.DMG += damageIncrease;
+        }
+        else if (purchasedItems.damageMaxLevel == 2)
+        {
+            playerStats.DMG += 2 * damageIncrease;
+        }
+        else if (purchasedItems.damageMaxLevel == 4)
+        {
+            playerStats.DMG += 3 * damageIncrease;
+        }
+        
+        // manage speed and triple jump
+        if (purchasedItems.speedMaxLevel >= 3)
+        {
+            maxJumps = 3;
+        }
+        
+        if (purchasedItems.speedMaxLevel == 1)
+        {
+            playerStats.movementSpeed += speedIncrease;
+        }
+        else if (purchasedItems.speedMaxLevel == 2)
+        {
+            playerStats.movementSpeed += 1.6f * speedIncrease;
+        }
+        else if (purchasedItems.speedMaxLevel == 4)
+        {
+            playerStats.movementSpeed += 2.5f * speedIncrease;
+        }
+        
+        moveSpeed = playerStats.movementSpeed;
 
         if (characterType.Equals( CharacterType.Esteros))
         {
@@ -97,6 +137,17 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
+
+        print("ARMOR MAX LEVEL:" + purchasedItems.armorMaxLevel);
+        print("HP MAX LEVEL:" + purchasedItems.hpMaxLevel);
+        print("DAMAGE MAX LEVEL:" + purchasedItems.damageMaxLevel);
+        print("SPEED MAX LEVEL:" + purchasedItems.speedMaxLevel);
+        print("REVIVE NR:" + purchasedItems.reviveNr);
+        print("IMMUNITY NR:" + purchasedItems.immunityNr);
+        print("INVISIBILITY NR:" + purchasedItems.invisibilityNr);
+        
+        
+        
         //Input handling in Update, force handling in FixedUpdate 
         RunStats.remainingHP = playerStats.currentHP;
         
