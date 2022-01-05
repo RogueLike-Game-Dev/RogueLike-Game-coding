@@ -11,13 +11,13 @@ public class SkillJSON
     public string[] descriptions;
     public int[] prices;
     public bool[] owned;
+    public int number;
+    public int maxUses;
+    public string type = "skill";
 }
 
 public class SpendGoldController : MonoBehaviour
 {
-    // private const int nrButtons = 18;
-    // [SerializeField] public Button[] buttons = new Button[nrButtons];
-
     private int playerGold = 1000000000;     // must update this when player finished a run (by adding the gold collected in that run)
                                             // OR getting it from the save file (when player loads the game)
 
@@ -47,6 +47,9 @@ public class SpendGoldController : MonoBehaviour
     private SkillJSON magicalDamageSkill;
     private SkillJSON movementSpeedSkill;
     private SkillJSON jumpSkill;
+    private SkillJSON reviveItem;
+    private SkillJSON immunityItem;
+    private SkillJSON invisibilityItem;
     #endregion
 
     // TODO: change the titles and descriptions of each skill
@@ -60,6 +63,11 @@ public class SpendGoldController : MonoBehaviour
         magicalDamageSkill = new SkillJSON();
         movementSpeedSkill = new SkillJSON();
         jumpSkill = new SkillJSON();
+        
+        // initializing items
+        reviveItem = new SkillJSON();
+        immunityItem = new SkillJSON();
+        invisibilityItem = new SkillJSON();
 
         // armor skill info
         armorSkill.maxLevel = 3;
@@ -151,6 +159,36 @@ public class SpendGoldController : MonoBehaviour
         buyInfo.text = "";
         originalTextColor = buyInfo.color;
 
+        reviveItem.title = "Revive!";
+        reviveItem.descriptions = new string[1];
+        reviveItem.descriptions[0] = "Revive item can be used once per run";
+        reviveItem.number = 0;
+        reviveItem.prices = new int[1];
+        reviveItem.prices[0] = 10000;
+        reviveItem.maxUses = 1;
+        reviveItem.owned = new[] {false};
+        reviveItem.type = "item";
+
+        immunityItem.title = "Immune!";
+        immunityItem.descriptions = new string[1];
+        immunityItem.descriptions[0] = "Become immune for a fixed period of time.";
+        immunityItem.number = 0;
+        immunityItem.prices = new int[1];
+        immunityItem.prices[0] = 6000;
+        immunityItem.maxUses = 3;
+        immunityItem.owned = new[] {false};
+        immunityItem.type = "item";
+        
+        invisibilityItem.title = "Invisible!";
+        invisibilityItem.descriptions = new string[1];
+        invisibilityItem.descriptions[0] = "Become invisible for a fixed period of time.";
+        invisibilityItem.number = 0;
+        invisibilityItem.prices = new int[1];
+        invisibilityItem.prices[0] = 14000;
+        invisibilityItem.maxUses = 5;
+        invisibilityItem.owned = new[] {false};
+        invisibilityItem.type = "item";
+
         buttonsContainer = GameObject.Find("BUTTONS");
 
         armorButtonsInOrder = new string[3];
@@ -224,6 +262,17 @@ public class SpendGoldController : MonoBehaviour
                             speedIndex++;
                             UnlockNextSkillLevel(speedButtonsInOrder, speedIndex, "SPEED_JUMP_TREE", 4);
                         }
+                        else if (chosenSkill == reviveItem || chosenSkill == immunityItem ||
+                                 chosenSkill == invisibilityItem)
+                        {
+                            chosenSkill.number++;
+                            chosenSkill.owned[level] = false;
+                            
+                            var levelText = infoCanvas.transform.GetChild(2).gameObject;
+                            var levelValue = infoCanvas.transform.GetChild(3).gameObject;
+                            levelText.GetComponent<Text>().text = "OWNED";
+                            levelValue.GetComponent<Text>().text = chosenSkill.number.ToString();
+                        }
                     }
                     else
                     {
@@ -233,8 +282,11 @@ public class SpendGoldController : MonoBehaviour
             }
             else
             {
-                buyInfo.text = "Owned";
-                buyInfo.color = new Color(0.0f, 0.53f, 0.4f);
+                if (chosenSkill.type != "item")
+                {
+                    buyInfo.text = "Owned";
+                    buyInfo.color = new Color(0.0f, 0.53f, 0.4f);
+                }
             }
         }
     }
@@ -339,6 +391,18 @@ public class SpendGoldController : MonoBehaviour
         {
             chosenSkill = jumpSkill;
         }
+        else if (buttonName.Contains("Revive"))
+        {
+            chosenSkill = reviveItem;
+        }
+        else if (buttonName.Contains("Immunity"))
+        {
+            chosenSkill = immunityItem;
+        }
+        else if (buttonName.Contains("Invisibility"))
+        {
+            chosenSkill = invisibilityItem;
+        } 
 
         if (chosenSkill == null)
         {
@@ -352,9 +416,19 @@ public class SpendGoldController : MonoBehaviour
 
         var desc = infoCanvas.transform.GetChild(1).gameObject;
         desc.GetComponent<Text>().text = chosenSkill.descriptions[level];
-
+        
+        var levelText = infoCanvas.transform.GetChild(2).gameObject;
         var levelValue = infoCanvas.transform.GetChild(3).gameObject;
-        levelValue.GetComponent<Text>().text = level + 1 + " / " + chosenSkill.maxLevel;
+        if (chosenSkill.type == "item")
+        {
+            levelText.GetComponent<Text>().text = "OWNED";
+            levelValue.GetComponent<Text>().text = chosenSkill.number.ToString();
+        }
+        else
+        {
+            levelText.GetComponent<Text>().text = "LEVEL";
+            levelValue.GetComponent<Text>().text = level + 1 + " / " + chosenSkill.maxLevel;
+        }
 
         var priceValue = infoCanvas.transform.GetChild(5).gameObject;
         priceValue.GetComponent<Text>().text = chosenSkill.prices[level].ToString();
