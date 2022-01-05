@@ -1,5 +1,4 @@
 //TODO:
-//2. make projectile prefab
 //3. implement animations
 using System;
 using System.Collections;

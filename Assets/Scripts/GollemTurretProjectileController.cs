@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GollemTurretProjectileController : MonoBehaviour
 {
-
+    public bool facingRightOrUp = true; 
+    public bool invertXY = false;
     public int damage = 10;
     public int bounceTimes = 1;
     public float lifeTime = -1; //-1 for infinite
@@ -17,11 +18,22 @@ public class GollemTurretProjectileController : MonoBehaviour
         animator = GetComponent<Animator>();
         if (animator != null) //resize and reorient the animation, if it exists
         {
-            //TODO: get orientation flags from parent (might need to change Instantiate to make the projectile a child of the turret)
             var scale = transform.localScale;
-            scale.x *= -0.05f;
-            scale.y *= -0.05f;
+            //animation default is moving rightwards
+            if (facingRightOrUp && invertXY) //moving upwards
+            {
+                transform.Rotate(new Vector3 (0f, 0f, 90f));
+            }
+            else if (!facingRightOrUp && !invertXY) //moving leftwards
+            {
+                scale.x *= -1;
+            }
+            else if (!facingRightOrUp && invertXY) //moving downwards
+            {
+                transform.Rotate(new Vector3 (0f, 0f, -90f));
+            }
             transform.localScale = scale;
+            Debug.Log(transform.eulerAngles);
         }
         if (lifeTime != -1)
         {
