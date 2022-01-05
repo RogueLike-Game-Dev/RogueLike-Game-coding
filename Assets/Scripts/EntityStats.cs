@@ -51,6 +51,7 @@ public class EntityStats : MonoBehaviour
             if (_maxArmor == value) return;
             _maxArmor = value;
             OnMaxHPChange?.Invoke();
+            OnArmorChange?.Invoke();
         }
     }
     [HideInInspector] public int currentArmor
@@ -61,6 +62,7 @@ public class EntityStats : MonoBehaviour
             if (_currentArmor == value) return;
             _currentArmor = value;
             OnHPChange?.Invoke();
+            OnArmorChange?.Invoke();
         }
     }
     public int gold //For player: how much gold he has, for enemies, how much gold they drop
@@ -115,9 +117,11 @@ public class EntityStats : MonoBehaviour
     public delegate void OnHPChangeDelegate();
     public delegate void OnMaxHPChangeDelegate();
     public delegate void OnGoldChangeDelegate();
+    public delegate void OnArmorChangeDelegate();
     public event OnHPChangeDelegate OnHPChange;
     public event OnMaxHPChangeDelegate OnMaxHPChange;
     public event OnGoldChangeDelegate OnGoldChange;
+    public event OnArmorChangeDelegate OnArmorChange;
     #endregion
     void Awake()
     {

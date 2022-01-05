@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private Text hpDisplay;
     [SerializeField] private Text goldDisplay;
+    [SerializeField] private Text armorDisplay;
 
     public Gradient hpGradient;
 
@@ -28,6 +29,7 @@ public class UIController : MonoBehaviour
         playerStats.OnHPChange += PlayerStats_OnHPChange;
         playerStats.OnMaxHPChange += PlayerStats_OnMaxHPChange;
         playerStats.OnGoldChange += PlayerStats_OnGoldChange;
+        playerStats.OnArmorChange += PlayerStats_OnArmorChange;
 
     }
     private void Start()
@@ -36,6 +38,7 @@ public class UIController : MonoBehaviour
         slider.value = playerStats.currentHP;
         goldDisplay.text = playerStats.gold.ToString();
         hpDisplay.text = playerStats.currentHP + " / " + playerStats.maxHP;
+        armorDisplay.text = playerStats.currentArmor + " / " + playerStats.maxArmor;
         targetValue = curValue = slider.value;
     }
     private void Update()
@@ -64,6 +67,12 @@ public class UIController : MonoBehaviour
         targetValue = playerStats.currentHP;
         hpDisplay.text = playerStats.currentHP + " / " + playerStats.maxHP;
         fill.color = hpGradient.Evaluate(slider.normalizedValue);
+    }
+
+    private void PlayerStats_OnArmorChange()
+    {
+        print("armor changed");
+        armorDisplay.text = playerStats.currentArmor + " / " + playerStats.maxArmor;
     }
     #endregion
 }
