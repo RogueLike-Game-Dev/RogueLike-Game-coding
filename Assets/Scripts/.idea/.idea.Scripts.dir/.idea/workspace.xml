@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7342ef19-61a8-40a6-a611-ad74d9367d1b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LightningPlantController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LightningPlantController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GolemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GolemController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,16 +16,16 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/AttackAreaController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../LevelVlad.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../LevelVlad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Wraith2Controller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ObjectPooler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/UIController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EntityStats.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/PlayerAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/LevelDiana.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/LevelDiana.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovingPlatformController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/LightningPlantController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/LightningPlantController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21PkY68nggLrpluLU9aIkFrT8YT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -57,7 +56,8 @@
       <workItem from="1638801961724" duration="6007000" />
       <workItem from="1639420128613" duration="4806000" />
       <workItem from="1641311365045" duration="2579000" />
-      <workItem from="1641389840957" duration="5050000" />
+      <workItem from="1641389840957" duration="5861000" />
+      <workItem from="1641466322710" duration="1032000" />
     </task>
     <servers />
   </component>
