@@ -30,13 +30,12 @@ public class WraithController : MonoBehaviour
     void Update()
     {
 
-        if (target != null && targetStats.isInvisible)  // if player is invisible, set target position for wraith
+        if ((target != null && targetStats.isInvisible) || GameManager.isDying)  // if player is invisible, set target position for wraith
         {
             if (transform.position == initialPosition)
             {
                 var random1 = Random.Range(-randomRange, randomRange);
                 var random2 = Random.Range(-randomRange, randomRange);
-                print(random1 + " / " + random2);
                 var newPos = new Vector3(initialPosition.x + random1,
                     initialPosition.y + random2,
                     initialPosition.z);
@@ -50,7 +49,7 @@ public class WraithController : MonoBehaviour
         
         if (target != null) //If player is not dead
         {
-            if (!targetStats.isInvisible)
+            if (!targetStats.isInvisible && !GameManager.isDying)
             {
                 if (transform.position.x < target.position.x &&
                     !facingRight) //Wraith is left to player (so he has to move to right) and is not facingRight => need to flip

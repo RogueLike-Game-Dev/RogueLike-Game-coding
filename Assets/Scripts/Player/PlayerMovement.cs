@@ -62,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
     private const int hpRegenIncrease = 5;
 
     private bool canRegenHp = true;
+    private bool resetAnimation;
+    public Vector3 initialPosition;
     
     public enum CharacterType
     {
@@ -83,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        print("INITIAL ::::::::::: " + rigidBody2D.constraints);
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
         playerStats.currentHP = RunStats.remainingHP;
@@ -184,12 +187,29 @@ public class PlayerMovement : MonoBehaviour
         
         attackArea.SetActive(false);
         tempColor = spriteRenderer.color;
+
+        initialPosition = transform.position;
         
         print("CHARACTER TYPE:" + characterType);
     }
     
     private void Update()
     {
+        if (GameManager.isDying)
+        {
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            GetComponent<Collider2D>().enabled = false;
+            return;
+        }
+        
+        if (GameManager.wasRevived && !resetAnimation)
+        {
+            animator.Play("Idle");
+            GetComponent<Collider2D>().enabled = true;
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            resetAnimation = true;
+        }
+
         if (playerStats.currentHP < playerStats.maxHP && canRegenHp)
         {
             StartCoroutine(HpRegen());
@@ -246,9 +266,11 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger(fallingTriggerKey);
-            if (transform.position.y <= -30.0)
+            if (transform.position.y <= -30.0 && (!GameManager.isDying))// || GameManager.wasRevived))
+            {
+                animator.SetTrigger("isDying");
                 GameManager.EndRun();
-                //animator.SetTrigger("isDying");
+            }
         }
         
         // check if player has Immunity item bought
@@ -271,6 +293,12 @@ public class PlayerMovement : MonoBehaviour
                 purchasedItems.invisibilityNr--;
                 StartCoroutine(WaitForInvisibility());
             }
+        }
+
+        if (GameManager.makeInvulnerableAfterRevive)
+        {
+            StartCoroutine(WaitForImmunity());
+            GameManager.makeInvulnerableAfterRevive = false;
         }
     }
 

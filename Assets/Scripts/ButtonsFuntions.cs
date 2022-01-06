@@ -22,6 +22,9 @@ public class ButtonsFuntions : MonoBehaviour
         RunStats.roomsCleared = 0;
         RunStats.playedTime = 0;
         RunStats.remainingHP = InitialValues.remainingHP;
+        GameManager.isDying = false;
+        GameManager.wasRevived = false;
+        GameManager.pressed = false;
         LoadNextRoom.LoadRoom();
     }
 

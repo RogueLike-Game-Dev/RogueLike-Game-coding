@@ -37,7 +37,7 @@ public class Wraith2Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerStats.isInvisible)
+        if (playerStats.isInvisible || GameManager.isDying)
         {
             return;
         }

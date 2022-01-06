@@ -41,6 +41,13 @@ public class MinotaurController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.isDying)
+        {
+            animator.SetBool(IS_ATTACKING, false);
+            animator.SetBool(IS_WALKING, false);
+            return;
+        }
+        
         if (targetStats && targetStats.isInvisible)
         {
             animator.SetBool(IS_ATTACKING, false);

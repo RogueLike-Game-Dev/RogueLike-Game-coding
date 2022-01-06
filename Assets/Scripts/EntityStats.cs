@@ -142,10 +142,12 @@ public class EntityStats : MonoBehaviour
             }
             else //No animations set, just make it inactive
             {
-                   if (this.gameObject.name == "Player")
-                        GameManager.EndRun();
+                if (gameObject.name == "Player")
+                {
+                    GameManager.EndRun();
+                }
 
-                   this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -204,7 +206,7 @@ public class EntityStats : MonoBehaviour
         }
         else
         {
-            currentHP -= amount;
+            currentHP = Math.Max(0, currentHP - amount);
         }
 
         if (animator != null)

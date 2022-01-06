@@ -42,9 +42,16 @@ public class UIController : MonoBehaviour
         targetValue = curValue = slider.value;
     }
     private void Update()
-    {   
-        // To make HPSlider smooth
-        curValue = Mathf.MoveTowards(curValue, targetValue, Time.deltaTime * fillSpeed);
+    {
+        if (Math.Abs(targetValue - curValue) > 100)
+        {
+            curValue = targetValue;
+        }
+        else
+        {
+            // To make HPSlider smooth
+            curValue = Mathf.MoveTowards(curValue, targetValue, Time.deltaTime * fillSpeed);
+        }
         slider.value = curValue;
     }
     #region Event Delegates
@@ -71,7 +78,6 @@ public class UIController : MonoBehaviour
 
     private void PlayerStats_OnArmorChange()
     {
-        print("armor changed");
         armorDisplay.text = playerStats.currentArmor + " / " + playerStats.maxArmor;
     }
     #endregion

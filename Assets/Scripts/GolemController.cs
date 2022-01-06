@@ -105,7 +105,7 @@ public class GolemController : MonoBehaviour
             Flip();
         }
 
-        if (!playerStats.isInvisible && player.transform.position.x > leftEdge && player.transform.position.x < rightEdge)
+        if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.x > leftEdge && player.transform.position.x < rightEdge)
         {
            SwitchState(State.Running);
         }
@@ -125,18 +125,18 @@ public class GolemController : MonoBehaviour
     
     private void UpdateRunningState()
     {
-        if (!playerStats.isInvisible && (
+        if (!playerStats.isInvisible && !GameManager.isDying && (
             (player.transform.position.x < transform.position.x && facingDirection > 0) ||
             (player.transform.position.x > transform.position.x && facingDirection < 0)))
         {
             Flip();
         }
 
-        if (!(player.transform.position.x > leftEdge && player.transform.position.x < rightEdge) || playerStats.isInvisible)
+        if (!(player.transform.position.x > leftEdge && player.transform.position.x < rightEdge) || playerStats.isInvisible || GameManager.isDying)
         {
             SwitchState(State.Walking);
         }
-		else if (!playerStats.isInvisible && transform.position.x - player.transform.position.x < 1.65 && transform.position.x - player.transform.position.x > -1.65)
+		else if (!playerStats.isInvisible && !GameManager.isDying && transform.position.x - player.transform.position.x < 1.65 && transform.position.x - player.transform.position.x > -1.65)
 		{
 			SwitchState(State.Standing);
 		}
@@ -156,15 +156,15 @@ public class GolemController : MonoBehaviour
     
     private void UpdateStandingState()
     {
-        if (playerStats.isInvisible)
+        if (playerStats.isInvisible || GameManager.isDying)
         {
             SwitchState(State.Walking);
         }
-        else if (!playerStats.isInvisible && !(transform.position.x - player.transform.position.x < 1.75 && transform.position.x - player.transform.position.x > -1.75))
+        else if (!playerStats.isInvisible && !GameManager.isDying && !(transform.position.x - player.transform.position.x < 1.75 && transform.position.x - player.transform.position.x > -1.75))
 		{
 			SwitchState(State.Running);
 		}
-        else if (!playerStats.isInvisible && (
+        else if (!playerStats.isInvisible && !GameManager.isDying && (
             (player.transform.position.x < transform.position.x && facingDirection > 0) ||
             (player.transform.position.x > transform.position.x && facingDirection < 0)))
         {
@@ -174,7 +174,7 @@ public class GolemController : MonoBehaviour
         else
         {
             needFlip = false;
-            if (!playerStats.isInvisible && player.transform.position.y < 0.5 + transform.position.y && player.transform.position.y > transform.position.y - 0.5)
+            if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.y < 0.5 + transform.position.y && player.transform.position.y > transform.position.y - 0.5)
                 StartCoroutine(Attack());
         }
     }
