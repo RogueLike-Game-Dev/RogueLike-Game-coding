@@ -9,7 +9,7 @@ public class PurchasedItems
     public int speedMaxLevel;               // ok
     public int reviveNr;
     public int immunityNr;                  // ok
-    public int invisibilityNr; 
+    public int invisibilityNr;              // condition of invisibility must be used in the enemy's controller 
     private static PurchasedItems instance;
 
     public static PurchasedItems getInstance()

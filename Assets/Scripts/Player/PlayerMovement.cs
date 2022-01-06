@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
     SpriteRenderer spriteRenderer;
+    private Color tempColor;
     #endregion
 
     #region auxVariables
@@ -182,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         attackArea.SetActive(false);
+        tempColor = spriteRenderer.color;
         
         print("CHARACTER TYPE:" + characterType);
     }
@@ -258,6 +260,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 purchasedItems.immunityNr--;
                 StartCoroutine(WaitForImmunity());
+            }
+        }
+
+        // idem immunity
+        if (purchasedItems.invisibilityNr > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !playerStats.isInvisible)
+            {
+                purchasedItems.invisibilityNr--;
+                StartCoroutine(WaitForInvisibility());
             }
         }
     }
@@ -701,9 +713,22 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator WaitForImmunity()
     {
         playerStats.isInvulnerable = true;
-        spriteRenderer.color = new Color(1, 0.92f, 0, 1);
+        tempColor = new Color(1, 0.92f, 0, spriteRenderer.color.a);
+        spriteRenderer.color = tempColor;
         yield return new WaitForSeconds(5.0f);
-        spriteRenderer.color = new Color(1, 1, 1, 1);
+        tempColor = new Color(1, 1, 1, spriteRenderer.color.a);
+        spriteRenderer.color = tempColor;
         playerStats.isInvulnerable = false;
+    }
+
+    private IEnumerator WaitForInvisibility()
+    {
+        playerStats.isInvisible = true;
+        tempColor.a = 0.4f;
+        spriteRenderer.color = tempColor; 
+        yield return new WaitForSeconds(5.0f);
+        tempColor.a = 1.0f;
+        spriteRenderer.color = tempColor; 
+        playerStats.isInvisible = false;
     }
 }

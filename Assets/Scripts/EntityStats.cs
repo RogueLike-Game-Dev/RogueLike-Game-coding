@@ -109,6 +109,7 @@ public class EntityStats : MonoBehaviour
     [Tooltip("How fast does the entity move")] public float movementSpeed;
     [Tooltip("How much should the player get knocked back when colliding with this entity")] public float knockBackStrength; 
     [Tooltip("Whether Player is invulnerable or not")] public bool isInvulnerable;
+    [Tooltip("Whether Player is invisible or not")] public bool isInvisible;
     [Tooltip("How much time Player should be invulnerable for")] public float TimeOfInvulnerability = 2f;
     [SerializeField] private Animator animator;
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";

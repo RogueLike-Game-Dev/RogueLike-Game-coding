@@ -1144,6 +1144,7 @@ MonoBehaviour:
   movementSpeed: 5
   knockBackStrength: 5
   isInvulnerable: 0
+  isInvisible: 0
   TimeOfInvulnerability: 2
   animator: {fileID: 0}
   hurtTriggerKey: isHurt
