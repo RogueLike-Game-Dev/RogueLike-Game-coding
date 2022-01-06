@@ -1,5 +1,5 @@
 //TODO:
-//3. implement animations
+//3. implement Dying and animations
 using System;
 using System.Collections;
 using UnityEngine;

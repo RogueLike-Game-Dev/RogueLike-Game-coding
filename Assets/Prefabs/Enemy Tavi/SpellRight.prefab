@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 306049354144883986}
   - component: {fileID: 3378504328623919815}
   m_Layer: 0
-  m_Name: GollemTurretSpellProjectile
+  m_Name: SpellRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   facingRightOrUp: 1
   invertXY: 0
   damage: 10
-  bounceTimes: 1
+  bounceTimes: 0
   lifeTime: 1
 --- !u!50 &306049354144883987
 Rigidbody2D:
