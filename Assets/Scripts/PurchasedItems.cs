@@ -3,12 +3,12 @@ using System;
 [Serializable]
 public class PurchasedItems
 {
-    public int armorMaxLevel;               // ok, TODO armor UI
+    public int armorMaxLevel;               // ok
     public int hpMaxLevel;                  // ok
     public int damageMaxLevel;              // magical damage must be added where the secondary attack is (eg: for Zhax -> ThrowingObjectController.cs)
     public int speedMaxLevel;               // ok
     public int reviveNr;
-    public int immunityNr;
+    public int immunityNr;                  // ok
     public int invisibilityNr; 
     private static PurchasedItems instance;
 

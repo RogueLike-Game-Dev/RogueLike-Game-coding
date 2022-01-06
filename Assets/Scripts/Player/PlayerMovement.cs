@@ -188,8 +188,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        print("ARMOR:::::::::::: " + playerStats.currentArmor);
-
         if (playerStats.currentHP < playerStats.maxHP && canRegenHp)
         {
             StartCoroutine(HpRegen());
@@ -250,14 +248,29 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.EndRun();
                 //animator.SetTrigger("isDying");
         }
+        
+        // check if player has Immunity item bought
+        // if yes, then check if the user activates it (presses a numeric key)
+        // then playerStats.isInvulnerable = true and decrement the number of immunity items
+        if (purchasedItems.immunityNr > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !playerStats.isInvulnerable)
+            {
+                purchasedItems.immunityNr--;
+                StartCoroutine(WaitForImmunity());
+            }
+        }
     }
 
     private IEnumerator HpRegen()
     {
-        playerStats.Heal(playerStats.hpRegen);
-        canRegenHp = false;
-        yield return new WaitForSeconds(1.0f);
-        canRegenHp = true;
+        if (playerStats.currentHP > 0)
+        {
+            playerStats.Heal(playerStats.hpRegen);
+            canRegenHp = false;
+            yield return new WaitForSeconds(1.0f);
+            canRegenHp = true;
+        }
     }
 
     void FixedUpdate()
@@ -338,11 +351,13 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator AttackEsteros()
     {
+        playerStats.isInvulnerable = true;
         bubbleShield.SetActive(true);
         bubbleShieldActive = true;
         yield return new WaitForSeconds(3f);
         bubbleShield.SetActive(false);
         bubbleShieldActive = false;
+        playerStats.isInvulnerable = false;
     }
 
     private IEnumerator AttackZhax()
@@ -478,7 +493,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 dir = contactPoint.point - playerPosition;
         
         if (collisionStats != null && playerStats.isInvulnerable)
-        { 
+        {
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
                 if (!collision.gameObject.CompareTag("Enemy"))
@@ -618,8 +633,9 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Maximised HP");
             }
         }
-        else if (collision.gameObject.CompareTag("Lava")) 
+        else if (collision.gameObject.CompareTag("Lava"))
         {
+            playerStats.currentArmor = 0;   // the armor melts and then the player dies
             playerStats.Damage(playerStats.currentHP);
             Debug.Log("You have died!");
         }
@@ -680,5 +696,14 @@ public class PlayerMovement : MonoBehaviour
     public void SetDoubleHeal(bool val)
     {
         doubleHeal = val;
+    }
+
+    private IEnumerator WaitForImmunity()
+    {
+        playerStats.isInvulnerable = true;
+        spriteRenderer.color = new Color(1, 0.92f, 0, 1);
+        yield return new WaitForSeconds(5.0f);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+        playerStats.isInvulnerable = false;
     }
 }
