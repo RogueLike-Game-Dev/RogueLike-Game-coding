@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ButtonsFuntions : MonoBehaviour
 {
@@ -11,7 +8,10 @@ public class ButtonsFuntions : MonoBehaviour
     void Start()
     {
         smallBoard = GameObject.Find("SmallBoard");
-        smallBoard.SetActive(false);
+        if (smallBoard)
+        {
+            smallBoard.SetActive(false);
+        }
     }
 
     public void startGame()
@@ -21,7 +21,10 @@ public class ButtonsFuntions : MonoBehaviour
         RunStats.keysCollected = 0;
         RunStats.roomsCleared = 0;
         RunStats.playedTime = 0;
-        RunStats.remainingHP = 10000;
+        RunStats.remainingHP = InitialValues.remainingHP;
+        GameManager.isDying = false;
+        GameManager.wasRevived = false;
+        GameManager.pressed = false;
         LoadNextRoom.LoadRoom();
     }
 

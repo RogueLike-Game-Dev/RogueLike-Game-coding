@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
     SpriteRenderer spriteRenderer;
+    private Color tempColor;
     #endregion
 
     #region auxVariables
@@ -52,6 +53,17 @@ public class PlayerMovement : MonoBehaviour
     private string attackingTriggerKey = "isAttacking";
     private string jumpingTriggerKey = "isJumping";
     private string groundedBoolKey = "isGrounded";
+
+    private PurchasedItems purchasedItems;
+    private const float speedIncrease = 1.6f;
+    private const int damageIncrease = 10;
+    private const int hpIncrease = 200;
+    private const int armorIncrease = 100;
+    private const int hpRegenIncrease = 5;
+
+    private bool canRegenHp = true;
+    private bool resetAnimation;
+    public Vector3 initialPosition;
     
     public enum CharacterType
     {
@@ -69,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     { 
         //Get references
         playerStats = GetComponent<EntityStats>();
-        moveSpeed = playerStats.movementSpeed;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -77,6 +88,89 @@ public class PlayerMovement : MonoBehaviour
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
         playerStats.currentHP = RunStats.remainingHP;
+        
+        purchasedItems = PurchasedItems.getInstance();
+        
+        // manage armor
+        if (purchasedItems.armorMaxLevel >= 3)
+        {
+            playerStats.maxArmor += 3 * armorIncrease;
+        }
+        else if (purchasedItems.armorMaxLevel >= 2)
+        {
+            playerStats.maxArmor += 2 * armorIncrease;
+        }
+        else if (purchasedItems.armorMaxLevel >= 1)
+        {
+            playerStats.maxArmor += armorIncrease;
+        }
+
+        playerStats.currentArmor = playerStats.maxArmor;
+        
+        // manage hp
+        if (purchasedItems.hpMaxLevel >= 4)
+        {
+            playerStats.maxHP += 3 * hpIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 2)
+        {
+            playerStats.maxHP += 2 * hpIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 1)
+        {
+            playerStats.maxHP += hpIncrease;
+        }
+        
+        InitialValues.remainingHP = playerStats.maxHP; // remove this line when InitialValues.remainingHP is calculated for the first time
+
+        // manage hp regen
+        if (purchasedItems.hpMaxLevel >= 6)
+        {
+            playerStats.hpRegen = 3 * hpRegenIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 5)
+        {
+            playerStats.hpRegen = 2 * hpRegenIncrease;
+        }
+        else if (purchasedItems.hpMaxLevel >= 3)
+        {
+            playerStats.hpRegen = hpRegenIncrease;
+        }
+
+        // manage damage
+        if (purchasedItems.damageMaxLevel >= 4)
+        {
+            playerStats.DMG += 3 * damageIncrease;
+        }
+        else if (purchasedItems.damageMaxLevel >= 2)
+        {
+            playerStats.DMG += 2 * damageIncrease;
+        }
+        else if (purchasedItems.damageMaxLevel >= 1)
+        {
+            playerStats.DMG += damageIncrease;
+        }
+        
+        // manage speed and triple jump
+        if (purchasedItems.speedMaxLevel >= 3)
+        {
+            maxJumps = 3;
+        }
+        
+        if (purchasedItems.speedMaxLevel >= 4)
+        {
+            playerStats.movementSpeed += 2.5f * speedIncrease;
+        }
+        else if (purchasedItems.speedMaxLevel >= 2)
+        {
+            playerStats.movementSpeed += 1.6f * speedIncrease;
+        }
+        else if (purchasedItems.speedMaxLevel >= 1)
+        {
+            playerStats.movementSpeed += speedIncrease;
+        }
+        
+        moveSpeed = playerStats.movementSpeed;
 
         if (characterType.Equals( CharacterType.Esteros))
         {
@@ -91,12 +185,35 @@ public class PlayerMovement : MonoBehaviour
         }
         
         attackArea.SetActive(false);
+        tempColor = spriteRenderer.color;
+
+        initialPosition = transform.position;
         
         print("CHARACTER TYPE:" + characterType);
     }
     
     private void Update()
     {
+        if (GameManager.isDying)
+        {
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            GetComponent<Collider2D>().enabled = false;
+            return;
+        }
+        
+        if (GameManager.wasRevived && !resetAnimation)
+        {
+            animator.Play("Idle");
+            GetComponent<Collider2D>().enabled = true;
+            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            resetAnimation = true;
+        }
+
+        if (playerStats.currentHP < playerStats.maxHP && canRegenHp)
+        {
+            StartCoroutine(HpRegen());
+        }
+        
         //Input handling in Update, force handling in FixedUpdate 
         RunStats.remainingHP = playerStats.currentHP;
         
@@ -148,9 +265,50 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger(fallingTriggerKey);
-            if (transform.position.y <= -30.0)
+            if (transform.position.y <= -30.0 && (!GameManager.isDying))// || GameManager.wasRevived))
+            {
+                animator.SetTrigger("isDying");
                 GameManager.EndRun();
-                //animator.SetTrigger("isDying");
+            }
+        }
+        
+        // check if player has Immunity item bought
+        // if yes, then check if the user activates it (presses a numeric key)
+        // then playerStats.isInvulnerable = true and decrement the number of immunity items
+        if (purchasedItems.immunityNr > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && !playerStats.isInvulnerable)
+            {
+                purchasedItems.immunityNr--;
+                StartCoroutine(WaitForImmunity());
+            }
+        }
+
+        // idem immunity
+        if (purchasedItems.invisibilityNr > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !playerStats.isInvisible)
+            {
+                purchasedItems.invisibilityNr--;
+                StartCoroutine(WaitForInvisibility());
+            }
+        }
+
+        if (GameManager.makeInvulnerableAfterRevive)
+        {
+            StartCoroutine(WaitForImmunity());
+            GameManager.makeInvulnerableAfterRevive = false;
+        }
+    }
+
+    private IEnumerator HpRegen()
+    {
+        if (playerStats.currentHP > 0)
+        {
+            playerStats.Heal(playerStats.hpRegen);
+            canRegenHp = false;
+            yield return new WaitForSeconds(1.0f);
+            canRegenHp = true;
         }
     }
 
@@ -232,11 +390,13 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator AttackEsteros()
     {
+        playerStats.isInvulnerable = true;
         bubbleShield.SetActive(true);
         bubbleShieldActive = true;
         yield return new WaitForSeconds(3f);
         bubbleShield.SetActive(false);
         bubbleShieldActive = false;
+        playerStats.isInvulnerable = false;
     }
 
     private IEnumerator AttackZhax()
@@ -372,7 +532,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 dir = contactPoint.point - playerPosition;
         
         if (collisionStats != null && playerStats.isInvulnerable)
-        { 
+        {
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
                 if (!collision.gameObject.CompareTag("Enemy"))
@@ -512,8 +672,9 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Maximised HP");
             }
         }
-        else if (collision.gameObject.CompareTag("Lava")) 
+        else if (collision.gameObject.CompareTag("Lava"))
         {
+            playerStats.currentArmor = 0;   // the armor melts and then the player dies
             playerStats.Damage(playerStats.currentHP);
             Debug.Log("You have died!");
         }
@@ -574,5 +735,27 @@ public class PlayerMovement : MonoBehaviour
     public void SetDoubleHeal(bool val)
     {
         doubleHeal = val;
+    }
+
+    private IEnumerator WaitForImmunity()
+    {
+        playerStats.isInvulnerable = true;
+        tempColor = new Color(1, 0.92f, 0, spriteRenderer.color.a);
+        spriteRenderer.color = tempColor;
+        yield return new WaitForSeconds(5.0f);
+        tempColor = new Color(1, 1, 1, spriteRenderer.color.a);
+        spriteRenderer.color = tempColor;
+        playerStats.isInvulnerable = false;
+    }
+
+    private IEnumerator WaitForInvisibility()
+    {
+        playerStats.isInvisible = true;
+        tempColor.a = 0.4f;
+        spriteRenderer.color = tempColor; 
+        yield return new WaitForSeconds(5.0f);
+        tempColor.a = 1.0f;
+        spriteRenderer.color = tempColor; 
+        playerStats.isInvisible = false;
     }
 }
