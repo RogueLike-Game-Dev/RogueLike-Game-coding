@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
             playerPrefab = zhaxPrefab;
         }
 
-        if (SceneManager.GetActiveScene().name != "EndGameScene")
+        if (SceneManager.GetActiveScene().name != "EndGameScene" && GameObject.FindWithTag("Player") == null)
         {
             var playerInstance = Instantiate(playerPrefab);
             playerInstance.transform.position = Vector3.zero;
