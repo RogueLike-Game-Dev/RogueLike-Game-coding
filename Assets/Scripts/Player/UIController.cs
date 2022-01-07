@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +9,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text hpDisplay;
     [SerializeField] private Text goldDisplay;
     [SerializeField] private Text armorDisplay;
+    [SerializeField] private Text immunityDisplay;
+    [SerializeField] private Text invisibilityDisplay;
 
     public Gradient hpGradient;
 
@@ -18,6 +18,8 @@ public class UIController : MonoBehaviour
     private float curValue;
     private float targetValue;
     private float fillSpeed = 40f;
+
+    private PurchasedItems purchasedItems;
 
     // Start is called before the first frame update
     private void Awake()
@@ -30,15 +32,19 @@ public class UIController : MonoBehaviour
         playerStats.OnMaxHPChange += PlayerStats_OnMaxHPChange;
         playerStats.OnGoldChange += PlayerStats_OnGoldChange;
         playerStats.OnArmorChange += PlayerStats_OnArmorChange;
-
     }
+    
     private void Start()
     {
+        purchasedItems = PurchasedItems.getInstance();
+        
         slider.maxValue = playerStats.maxHP;
         slider.value = playerStats.currentHP;
         goldDisplay.text = playerStats.gold.ToString();
         hpDisplay.text = playerStats.currentHP + " / " + playerStats.maxHP;
         armorDisplay.text = playerStats.currentArmor + " / " + playerStats.maxArmor;
+        immunityDisplay.text = purchasedItems.immunityNr.ToString();
+        invisibilityDisplay.text = purchasedItems.invisibilityNr.ToString();
         targetValue = curValue = slider.value;
     }
     private void Update()
@@ -53,9 +59,12 @@ public class UIController : MonoBehaviour
             curValue = Mathf.MoveTowards(curValue, targetValue, Time.deltaTime * fillSpeed);
         }
         slider.value = curValue;
-    }
-    #region Event Delegates
 
+        immunityDisplay.text = purchasedItems.immunityNr.ToString();
+        invisibilityDisplay.text = purchasedItems.invisibilityNr.ToString();
+    }
+    
+    #region Event Delegates
     private void PlayerStats_OnGoldChange() 
     {
         goldDisplay.text = playerStats.gold.ToString();

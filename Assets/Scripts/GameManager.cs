@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
 
                 playerStats.currentHP = playerStats.maxHP / 2;
 
+                PurchasedItems.getInstance().reviveNr--;
+
                 // relocate the player:
                 // - at the beginning of the room, if he died by falling
                 // - at the death position, being invulnerable, if he died in fight

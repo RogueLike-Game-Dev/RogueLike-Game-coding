@@ -53,6 +53,8 @@ public class SpendGoldController : MonoBehaviour
     private SkillJSON invisibilityItem;
     #endregion
 
+    private bool buying;
+
     void Start()
     {
         // initializing skill objects
@@ -214,6 +216,8 @@ public class SpendGoldController : MonoBehaviour
 
     private void Update()
     {
+        GameObject.Find("Coins").GetComponent<Text>().text = playerGold.ToString();
+        
         if (chosenSkill != null) // if a skill has been selected
         {
             var level = Int32.Parse(buttonName.Substring(buttonName.Length - 1)) - 1;
@@ -226,7 +230,12 @@ public class SpendGoldController : MonoBehaviour
                     buyInfo.text = "Not enough gold";
                     canBuy = false;
                 }
-                else
+                else if (chosenSkill.number >= 100)
+                {
+                    buyInfo.text = "Maximum number";
+                    canBuy = false;
+                }
+                else if (!buying)
                 {
                     buyInfo.text = "Press Enter to buy";
                     canBuy = true;
@@ -291,11 +300,13 @@ public class SpendGoldController : MonoBehaviour
                             var levelValue = infoCanvas.transform.GetChild(3).gameObject;
                             levelText.GetComponent<Text>().text = "OWNED";
                             levelValue.GetComponent<Text>().text = chosenSkill.number.ToString();
+                            
+                            StartCoroutine(ChangeInfoStyle(new Color(0.0f, 0.53f, 0.4f), "Bought"));
                         }
                     }
                     else
                     {
-                        StartCoroutine(ChangeInfoStyle());
+                        StartCoroutine(ChangeInfoStyle(new Color(0.72f, 0.0f, 0.0f)));
                     }
                 }
             }
@@ -310,19 +321,28 @@ public class SpendGoldController : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeInfoStyle()
+    private IEnumerator ChangeInfoStyle(Color color, string text = "")
     {
         var oldFont = buyInfo.fontSize;
+        var oldText = buyInfo.text;
+
+        if (text != "")
+        {
+            buyInfo.text = text;
+            buying = true;
+        }
         
         buyInfo.fontSize = oldFont + 3;
-        buyInfo.color = new Color(0.72f, 0.0f, 0.0f);
+        buyInfo.color = color;
         canPress = false;
 
         yield return new WaitForSeconds(0.7f);
         
         buyInfo.fontSize = oldFont;
         buyInfo.color = originalTextColor;
+        buyInfo.text = oldText;
         canPress = true;
+        buying = false;
     }
 
     private void UnlockNextSkillLevel(string[] buttons, int index, string treeName, int maxIndex)

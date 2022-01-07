@@ -85,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        print("INITIAL ::::::::::: " + rigidBody2D.constraints);
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
         playerStats.currentHP = RunStats.remainingHP;
