@@ -7,12 +7,11 @@ using UnityEngine.UI;
 public class SkillJSON
 {
     public int maxLevel;
-    public string title;
+    public string[] titles;
     public string[] descriptions;
     public int[] prices;
     public bool[] owned;
     public int number;
-    public int maxUses;
     public string type = "skill";
 }
 
@@ -54,7 +53,6 @@ public class SpendGoldController : MonoBehaviour
     private SkillJSON invisibilityItem;
     #endregion
 
-    // TODO: change the titles and descriptions of each skill
     void Start()
     {
         // initializing skill objects
@@ -73,87 +71,86 @@ public class SpendGoldController : MonoBehaviour
 
         // armor skill info
         armorSkill.maxLevel = 3;
-        armorSkill.title = "Armor";
-        armorSkill.descriptions = new string[armorSkill.maxLevel];
-        armorSkill.descriptions[0] = "armor 1";
-        armorSkill.descriptions[1] = "armor 2";
-        armorSkill.descriptions[2] = "armor 3";
-        armorSkill.prices = new int[armorSkill.maxLevel];
-        armorSkill.prices[0] = 1000;
-        armorSkill.prices[1] = 5000;
-        armorSkill.prices[2] = 15000;
+        armorSkill.titles = new[] {"Chainmail", "Cuirass", "Full Suit"};
+        armorSkill.descriptions = new[]
+        {
+            "Put on some armor to better protect yourself from foes and the damage they deal to you. " +
+            "Armor does not regenerate, but if it breaks, you will recieve half the damage from that hit.", 
+            "Put on some MORE armor to better protect yourself from stronger enemies. " +
+            "Armor does not regenerate, but if it breaks, you will recieve half the damage from that hit.", 
+            "Put on ALL OF THE armor to protect yourself from the strongest enemies you will encounter. " +
+            "Armor does not regenerate, but if it breaks, you will recieve half the damage from that hit."
+        };
+        armorSkill.prices = new[] {1000, 5000, 15000};
         armorSkill.owned = new[] {false, false, false};
 
         // hp regen skill info
         hpRegenSkill.maxLevel = 3;
-        hpRegenSkill.title = "Health Regeneration";
-        hpRegenSkill.descriptions = new string[hpRegenSkill.maxLevel];
-        hpRegenSkill.descriptions[0] = "hpRegenSkill 1";
-        hpRegenSkill.descriptions[1] = "hpRegenSkill 2";
-        hpRegenSkill.descriptions[2] = "hpRegenSkill 3";
-        hpRegenSkill.prices = new int[hpRegenSkill.maxLevel];
-        hpRegenSkill.prices[0] = 2000;
-        hpRegenSkill.prices[1] = 10000;
-        hpRegenSkill.prices[2] = 20000;
+        hpRegenSkill.titles = new[] {"Earth", "Moon", "Sun"};
+        hpRegenSkill.descriptions = new[]
+        {
+            "Discover the secrets of the EARTH to be able to regenerate lost health and extend your longevity in adventuring.", 
+            "Discover the secrets of the MOON to be able to regenerate lost health and extend your longevity in adventuring.", 
+            "Discover the secrets of the SUN to be able to regenerate lost health and extend your longevity in adventuring."
+        };
+        hpRegenSkill.prices = new[] {2000, 10000, 20000};
         hpRegenSkill.owned = new[] {false, false, false};
 
         // hp skill info
         hpSkill.maxLevel = 3;
-        hpSkill.title = "Health Booster";
-        hpSkill.descriptions = new string[hpSkill.maxLevel];
-        hpSkill.descriptions[0] = "hpSkill 1";
-        hpSkill.descriptions[1] = "hpSkill 2";
-        hpSkill.descriptions[2] = "hpSkill 3";
-        hpSkill.prices = new int[hpSkill.maxLevel];
-        hpSkill.prices[0] = 1500;
-        hpSkill.prices[1] = 5000;
-        hpSkill.prices[2] = 12000;
+        hpSkill.titles = new[] {"Exercise", "Sports", "Athletics"};
+        hpSkill.descriptions = new[]
+        {
+            "Start moving your body to become HEALTHY, to be able to withstand more damage from your enemies and to survive longer.",
+            "Start moving your body to become HEALTHIER, to be able to withstand more damage from your enemies and to survive longer.",
+            "Start moving your body to become THE HEALTIEST, to be able to withstand more damage from your enemies and to survive longer."
+        };
+        hpSkill.prices = new[] {1500, 5000, 12000};
         hpSkill.owned = new[] {false, false, false};
 
         // damage skill info
         damageSkill.maxLevel = 3;
-        damageSkill.title = "Damage Booster";
-        damageSkill.descriptions = new string[damageSkill.maxLevel];
-        damageSkill.descriptions[0] = "damageSkill 1";
-        damageSkill.descriptions[1] = "damageSkill 2";
-        damageSkill.descriptions[2] = "damageSkill 3";
-        damageSkill.prices = new int[damageSkill.maxLevel];
-        damageSkill.prices[0] = 1800;
-        damageSkill.prices[1] = 5600;
-        damageSkill.prices[2] = 11000;
+        damageSkill.titles = new[] {"Knife", "Sword", "Zweihander"};
+        damageSkill.descriptions = new[]
+        {
+            "Upgrade your weapon so that your attacks deal MORE damage and your enemies fall faster.",
+            "Upgrade your weapon so that your attacks deal EVEN MORE damage and your enemies fall faster.",
+            "Upgrade your weapon so that your attacks deal THE MOST damage and your enemies fall faster."
+        };
+        damageSkill.prices = new[] {1800, 5600, 11000};
         damageSkill.owned = new[] {false, false, false};
 
         // magical damage skill info
         magicalDamageSkill.maxLevel = 2;
-        magicalDamageSkill.title = "Magical Damage Booster";
-        magicalDamageSkill.descriptions = new string[magicalDamageSkill.maxLevel];
-        magicalDamageSkill.descriptions[0] = "magicalDamageSkill 1";
-        magicalDamageSkill.descriptions[1] = "magicalDamageSkill 2";
-        magicalDamageSkill.prices = new int[magicalDamageSkill.maxLevel];
-        magicalDamageSkill.prices[0] = 4000;
-        magicalDamageSkill.prices[1] = 16000;
+        magicalDamageSkill.titles = new[] {"Better Abilities", "Awesome Abilities"};
+        magicalDamageSkill.descriptions = new[]
+        {
+            "The magic of the stars imbudes you. With their help, now, your special attacks deal MORE damage to help you defeat strong foes.",
+            "The magic of the stars imbudes you. With their help, now, your special attacks deal THE MOST damage to help you defeat the strongest foes."
+        };
+        magicalDamageSkill.prices = new[] {4000, 16000};
         magicalDamageSkill.owned = new[] {false, false};
 
         // movement speed skill info
         movementSpeedSkill.maxLevel = 3;
-        movementSpeedSkill.title = "Movement Speed Booster";
-        movementSpeedSkill.descriptions = new string[movementSpeedSkill.maxLevel];
-        movementSpeedSkill.descriptions[0] = "movementSpeedSkill 1";
-        movementSpeedSkill.descriptions[1] = "movementSpeedSkill 2";
-        movementSpeedSkill.descriptions[2] = "movementSpeedSkill 3";
-        movementSpeedSkill.prices = new int[movementSpeedSkill.maxLevel];
-        movementSpeedSkill.prices[0] = 2000;
-        movementSpeedSkill.prices[1] = 8000;
-        movementSpeedSkill.prices[2] = 19000;
+        movementSpeedSkill.titles = new[] {"Socks", "Shoes", "Boots"};
+        movementSpeedSkill.descriptions = new[]
+        {
+            "Upgrade your footware to be able to move FASTER to take your enemies by surprise and escape their attacks.",
+            "Upgrade your footware to be able to move THE FASTEST to take your enemies by surprise and escape their attacks.",
+            "Upgrade your footware to be able to move LIKE A LIGHTNING to take your enemies by surprise and escape their attacks."
+        };
+        movementSpeedSkill.prices = new[] {2000, 8000, 19000};
         movementSpeedSkill.owned = new[] {false, false, false};
 
         // jump skill info
         jumpSkill.maxLevel = 1;
-        jumpSkill.title = "Triple Jump";
-        jumpSkill.descriptions = new string[jumpSkill.maxLevel];
-        jumpSkill.descriptions[0] = "jumpSkill 1";
-        jumpSkill.prices = new int[jumpSkill.maxLevel];
-        jumpSkill.prices[0] = 20000;
+        jumpSkill.titles = new[] {"Triple Jump"};
+        jumpSkill.descriptions = new[]
+        {
+            "After years of trainning, you will now be able to jump EVEN HIGHER, letting you reach higher places."
+        };
+        jumpSkill.prices = new[] {20000};
         jumpSkill.owned = new[] {false};
 
         infoCanvas = GameObject.Find("Info").transform.GetChild(2).gameObject;
@@ -161,33 +158,34 @@ public class SpendGoldController : MonoBehaviour
         buyInfo.text = "";
         originalTextColor = buyInfo.color;
 
-        reviveItem.title = "Revive!";
-        reviveItem.descriptions = new string[1];
-        reviveItem.descriptions[0] = "Revive item can be used once per run";
+        reviveItem.titles = new [] {"Revive!"};
+        reviveItem.descriptions = new[]
+        {
+            "Just like the legendary bird, the Phoenix, you can revive yourself once, so that your adventure is never cut short."
+        };
         reviveItem.number = 0;
-        reviveItem.prices = new int[1];
-        reviveItem.prices[0] = 10000;
-        reviveItem.maxUses = 1;
+        reviveItem.prices = new[] {10000};
         reviveItem.owned = new[] {false};
         reviveItem.type = "item";
 
-        immunityItem.title = "Immune!";
-        immunityItem.descriptions = new string[1];
-        immunityItem.descriptions[0] = "Become immune for a fixed period of time.";
+        immunityItem.titles = new [] {"Invulnerability!"};
+        immunityItem.descriptions = new[]
+        {
+            "For a short time, the Gods smile on you and protect you from any type of harm. But don't count too much on their help, " +
+            "they quit helping very fast."
+        };
         immunityItem.number = 0;
-        immunityItem.prices = new int[1];
-        immunityItem.prices[0] = 6000;
-        immunityItem.maxUses = 3;
+        immunityItem.prices = new[] {6000};
         immunityItem.owned = new[] {false};
         immunityItem.type = "item";
         
-        invisibilityItem.title = "Invisible!";
-        invisibilityItem.descriptions = new string[1];
-        invisibilityItem.descriptions[0] = "Become invisible for a fixed period of time.";
+        invisibilityItem.titles = new [] {"Invisibility!"};
+        invisibilityItem.descriptions = new[]
+        {
+            "Learn the ways of the shadows and turn yourself invisible for a short amount of time, evading enemies and attacks."
+        };
         invisibilityItem.number = 0;
-        invisibilityItem.prices = new int[1];
-        invisibilityItem.prices[0] = 14000;
-        invisibilityItem.maxUses = 5;
+        invisibilityItem.prices = new[] {14000};
         invisibilityItem.owned = new[] {false};
         invisibilityItem.type = "item";
 
@@ -433,7 +431,7 @@ public class SpendGoldController : MonoBehaviour
 
         // setting information in the panel according to the selected type of skill
         var title = infoCanvas.transform.GetChild(0).gameObject;
-        title.GetComponent<Text>().text = chosenSkill.title;
+        title.GetComponent<Text>().text = chosenSkill.titles[level];
 
         var desc = infoCanvas.transform.GetChild(1).gameObject;
         desc.GetComponent<Text>().text = chosenSkill.descriptions[level];
