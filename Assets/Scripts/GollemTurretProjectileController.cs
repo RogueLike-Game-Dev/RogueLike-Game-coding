@@ -8,12 +8,14 @@ public class GollemTurretProjectileController : MonoBehaviour
     public int bounceTimes = 1; //-1 for inifinite bounces
     public float lifeTime = -1; //-1 for infinite life-time
     public bool ignoreEnemyCollisions = true;
+    private bool isActive; //for ignoring damage to player once it has stopped moving
     private int hasBounced = 0;
     private Rigidbody2D rigidBody2D;
     private Animator animator;
 
     void Start() 
     {
+        isActive = true;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         if (animator != null) //resize and reorient the animation, if it exists
@@ -51,9 +53,21 @@ public class GollemTurretProjectileController : MonoBehaviour
             
     }
 
+    private bool movingVerySlowly(Rigidbody2D rigidBody2D)
+    {
+        if (rigidBody2D.velocity.x < 5f && 
+            rigidBody2D.velocity.y < 5f &&
+            rigidBody2D.velocity.x > -5f && 
+            rigidBody2D.velocity.y > -5f)
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isActive)
         {
             var playerStats = collision.gameObject.GetComponent<EntityStats>();
             playerStats.Damage(damage);
@@ -63,6 +77,14 @@ public class GollemTurretProjectileController : MonoBehaviour
             Destroy(this.gameObject);
         }
         hasBounced++;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (movingVerySlowly(rigidBody2D))
+        {
+            isActive = false;
+        }
     }
 
     private IEnumerator DestroyAfterTime(float time)

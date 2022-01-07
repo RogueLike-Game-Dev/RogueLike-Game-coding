@@ -36,11 +36,9 @@ public class GollemTurretController : MonoBehaviour
 
     void Update()
     {
-
         if (!isFiring && isActive){
             StartCoroutine(Fire(facingRightOrUp, projectileNumber, fan, timeBetweenAttacks));
         }
-
     }
     
     private void Flip()
