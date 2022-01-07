@@ -265,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger(fallingTriggerKey);
-            if (transform.position.y <= -30.0 && (!GameManager.isDying))// || GameManager.wasRevived))
+            if (transform.position.y <= -60.0 && !GameManager.isDying)
             {
                 animator.SetTrigger("isDying");
                 GameManager.EndRun();

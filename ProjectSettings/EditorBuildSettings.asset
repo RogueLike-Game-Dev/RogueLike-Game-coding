@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneVlad.unity
     guid: 8dfc30353a5f9084c990fea5046de29a
   - enabled: 1
+    path: Assets/Scenes/SceneTavi.unity
+    guid: 1b3d55926d272e448b777c815a4e622c
+  - enabled: 0
     path: Assets/Scenes/SampleSceneTavi.unity
     guid: 4cabb54172b1ba345ba473fa0717a4d8
   - enabled: 1
