@@ -22,6 +22,7 @@ TagManager:
   - NPC
   - EnemyAttackArea
   - NextRoomDoor
+  - Lightning
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - Player
   - Minimap
   - BothCameras
-  - 
+  - Tilemap_background
   - 
   - 
   - 
@@ -58,6 +59,12 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 3278312665
+    locked: 0
+  - name: Tilemap_background
+    uniqueID: 312207415
+    locked: 0
+  - name: Tilemap
+    uniqueID: 4044926725
     locked: 0
   - name: Default
     uniqueID: 0

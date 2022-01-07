@@ -27,4 +27,5 @@ public class MovingPlatformController : MonoBehaviour
                 Vector2.MoveTowards(platform.transform.position, targetPoints[currentTargetIndex], moveSpeed);
         }
     }
+
 }
