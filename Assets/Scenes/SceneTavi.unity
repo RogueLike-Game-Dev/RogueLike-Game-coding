@@ -30759,11 +30759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96.57
+      value: 30.67
       objectReference: {fileID: 0}
     - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.74
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32634,6 +32634,10 @@ PrefabInstance:
       propertyPath: facingRightOrUp
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (2)
@@ -34091,6 +34095,10 @@ PrefabInstance:
       propertyPath: facingRightOrUp
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (4)
@@ -34346,6 +34354,10 @@ PrefabInstance:
       propertyPath: facingRightOrUp
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (3)
@@ -34745,6 +34757,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2355151553259897000, guid: f7de9a88e23c2c94cb06d758c3cd6293, type: 3}
   m_PrefabInstance: {fileID: 1630222509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1647454476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647454477}
+  - component: {fileID: 1647454478}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1647454477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647454476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2131237515}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647454478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647454476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad8cdd51947dab4f8997fd30c0e1dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1652631742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37122,6 +37177,7 @@ Transform:
   m_Children:
   - {fileID: 781643101}
   - {fileID: 638163850}
+  - {fileID: 1647454477}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

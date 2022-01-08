@@ -405,7 +405,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 // Add a very small amount of knockBack on collision with walls.
                 else
-                    StartCoroutine(KnockBack(dir, 2f, 0.2f));
+                    StartCoroutine(KnockBack(new Vector2(0, -dir.y), 13f, 0.005f));
                 
         }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
