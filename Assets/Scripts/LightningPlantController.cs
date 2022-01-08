@@ -32,10 +32,11 @@ public class LightningPlantController : MonoBehaviour
 
         float timer = 0f;
         float lightningCooldownTimer = lightningCooldown + 1f;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
         
         while (timer < duration)
         {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             
             if(lightningCooldownTimer > lightningCooldown)
             {

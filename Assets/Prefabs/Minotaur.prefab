@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: -8299727337823726054}
   m_Layer: 0
   m_Name: Minotaur
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,6 +247,8 @@ MonoBehaviour:
   DMG: 50
   movementSpeed: 2
   knockBackStrength: 0
+  isInvulnerable: 0
+  TimeOfInvulnerability: 2
   animator: {fileID: 173927917150296269}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying

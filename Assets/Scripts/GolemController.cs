@@ -258,25 +258,32 @@ public class GolemController : MonoBehaviour
     
     private async void Flip()
     {
-        if (!flipWaiting && currentState == State.Standing) //if enemy is in standing state delay the flip
-        {
-            flipWaiting = true;
-            exitStandingState = false;
-            await Task.Delay(1200);
-            if (needFlip) //  flip only if enemy didn't exit standing state
-            {
-                facingDirection *= -1;
-                transform.Rotate(0.0f, 180.0f, 0.0f);
-            }
+		try
+		{
+        	if (!flipWaiting && currentState == State.Standing) //if enemy is in standing state delay the flip
+        	{
+            	flipWaiting = true;
+            	exitStandingState = false;
+            	await Task.Delay(1200);
+            	if (needFlip) //  flip only if enemy didn't exit standing state
+            	{
+                	facingDirection *= -1;
+                	transform.Rotate(0.0f, 180.0f, 0.0f);
+            	}
 
-            flipWaiting = false;
-        }
+           		flipWaiting = false;
+        	}
         
-        else if (!(currentState == State.Standing)) //if enemy is not in standing state flip instanly
-        {
-            facingDirection *= -1;
-            transform.Rotate(0.0f, 180.0f, 0.0f);
-        }
+        	else if (!(currentState == State.Standing)) //if enemy is not in standing state flip instanly
+        	{
+            	facingDirection *= -1;
+            	transform.Rotate(0.0f, 180.0f, 0.0f);
+        	}
+		}
+		catch(MissingReferenceException e)
+		{
+			Debug.Log("exceptie golem");
+		}
 
         
     }

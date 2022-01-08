@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8853719286322005917}
   m_Layer: 10
   m_Name: Wraith2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,10 +167,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHP: 100
   _gold: 50
+  _keys: 0
+  _collectibles: 0
+  _enemiesKilled: 0
   timeBetweenAttacks: 3
   DMG: 50
   movementSpeed: 2
   knockBackStrength: 50
+  isInvulnerable: 0
+  TimeOfInvulnerability: 2
   animator: {fileID: 8853719286322005919}
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
