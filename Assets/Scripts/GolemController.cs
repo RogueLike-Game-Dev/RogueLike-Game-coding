@@ -23,7 +23,7 @@ public class GolemController : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private bool groundDetected, wallDetected;
     private bool flipWaiting = false;
-    private bool exitStandingState, needFlip;
+    private bool needFlip;
     
     private int facingDirection;
     
@@ -42,7 +42,7 @@ public class GolemController : MonoBehaviour
         player = GameObject.Find("Player");
         rightEdge = Math.Round(transform.parent.Find("RightEdge").transform.position.x);
         leftEdge = Math.Round(transform.parent.Find("LeftEdge").transform.position.x);
-        Debug.Log(transform.parent.gameObject);
+        
         currentState = State.Walking;
         facingDirection = 1;
         attackArea.SetActive(false);
@@ -174,7 +174,7 @@ public class GolemController : MonoBehaviour
         else
         {
             needFlip = false;
-            if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.y < 0.5 + transform.position.y && player.transform.position.y > transform.position.y - 0.5)
+            if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.y < 0.8 + transform.position.y && player.transform.position.y > transform.position.y - 0.8)
                 StartCoroutine(Attack());
         }
     }
@@ -182,7 +182,6 @@ public class GolemController : MonoBehaviour
     private void ExitStandingState()
     {
         animator.SetBool("Standing", false);
-        exitStandingState = true;
     }
 
     // Dead State
@@ -250,8 +249,7 @@ public class GolemController : MonoBehaviour
         	if (!flipWaiting && currentState == State.Standing) //if enemy is in standing state delay the flip
         	{
             	flipWaiting = true;
-            	exitStandingState = false;
-            	await Task.Delay(1200);
+                await Task.Delay(1200);
             	if (needFlip) //  flip only if enemy didn't exit standing state
             	{
                 	facingDirection *= -1;
