@@ -232,7 +232,7 @@ public class GolemController : MonoBehaviour
         {
             Debug.Log("Golem Attacking");
             attackArea.SetActive(true);
-
+            attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
             animator.SetTrigger("isAttacking");
             attackCooldown = true;
             yield return new WaitForSeconds(0.3f);

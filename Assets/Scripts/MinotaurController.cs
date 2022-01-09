@@ -115,6 +115,7 @@ public class MinotaurController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         attackArea.SetActive(true);
+        attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
         yield return new WaitForSeconds(0.2f);
         attackArea.SetActive(false);
     }
