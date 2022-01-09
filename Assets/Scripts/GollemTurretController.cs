@@ -29,8 +29,7 @@ public class GollemTurretController : MonoBehaviour
         animator = GetComponent<Animator>();
         gollemTurretStats = GetComponent<EntityStats>();
         gollemSprite = GetComponent<SpriteRenderer>();
-
-        facingRightOrUp = !gollemSprite.flipX; 
+ 
         isFiring = false;
     }
 
