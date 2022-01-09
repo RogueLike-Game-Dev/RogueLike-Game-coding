@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canRegenHp = true;
     private bool resetAnimation;
     public Vector3 initialPosition;
-    
+
     public enum CharacterType
     {
         Zhax,       // Diana's player
@@ -377,6 +377,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Attacking");
             attackArea.SetActive(true);
+            attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
 
             animator.SetTrigger(attackingTriggerKey);
             attackCooldown = true;
