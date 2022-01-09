@@ -36,6 +36,8 @@ public class AttackAreaController : MonoBehaviour
             collision.rigidbody.inertia = 0;
             collision.rigidbody.AddForce(dir *playerStats.knockBackStrength, ForceMode2D.Impulse);
         }
+        
+        
 
     }
 
