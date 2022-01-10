@@ -1,4 +1,4 @@
-# RogueLike-Game-coding
+# Rogue World
 
 ## Mod de lucru
 
