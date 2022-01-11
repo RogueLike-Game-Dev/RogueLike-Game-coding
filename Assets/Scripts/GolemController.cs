@@ -191,6 +191,7 @@ public class GolemController : MonoBehaviour
         currentState = State.Dead;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sortingOrder = 4;
+		golemStats.isInvulnerable = true;
     }
     
     // other

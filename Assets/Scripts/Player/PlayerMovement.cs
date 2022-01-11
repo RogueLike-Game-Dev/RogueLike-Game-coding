@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 3)] public int maxDashes = 2;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
+	[SerializeField] private GameObject lightningEffect; 
     SpriteRenderer spriteRenderer;
     private Color tempColor;
     #endregion
@@ -47,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     private const float throwingCooldownTime = 10.0f;
     private bool throwingCooldown;
 
+	private const float lightningCooldownTime = 10.0f;
+    private bool lightningCooldown;
+
     private string fallingTriggerKey = "isFalling";
     private string movingBoolKey = "isMoving";
     private string throwingTriggerKey = "isThrowing";
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         Zhax,       // Diana's player
         Demetria,   // Radu's player
         Esteros,    // Paula's player
+        Lyn,		// Vlad's player
     }
 
     public static CharacterType characterType;
@@ -351,6 +356,10 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(AttackZhax());
         }
+		else if (characterType.Equals(CharacterType.Lyn))
+        {
+            StartCoroutine(SpecialAbilityLyn());
+        }
     }
     private IEnumerator Throw()
     {
@@ -435,6 +444,56 @@ public class PlayerMovement : MonoBehaviour
             print("Throwing on cooldown");
         }
     }
+
+  private IEnumerator SpecialAbilityLyn()
+    {
+        if (!lightningCooldown)
+        {
+            
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			bool ok = false;		 
+			foreach (GameObject enemy in enemies)
+            {
+                   if (isNear(gameObject, enemy))
+                   {
+                        	Debug.Log(enemy.name + " is struck by lightning");
+                        	Instantiate(lightningEffect, enemy.transform.position, enemy.transform.rotation).transform.SetParent(enemy.transform);
+                        	enemy.GetComponent<EntityStats>().Damage(2*playerStats.DMG);
+							ok = true;
+                        
+                    }
+             } 
+			if (!ok)
+			{	
+			 	if (!isKnockedback && !isDashing)
+				{
+				
+				
+					rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
+            		rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            		animator.SetTrigger(jumpingTriggerKey);
+            		isGrounded = false;
+            		animator.SetBool(groundedBoolKey, isGrounded);
+				
+				}
+				else 
+				{
+					yield return null;
+				}
+			}
+
+            lightningCooldown = true;
+            yield return new WaitForSeconds(lightningCooldownTime);
+            lightningCooldown = false;
+            
+        }
+        else
+        {
+            print("Special ability on cooldown");
+        }
+    }
+
+	
 
     private void Jump()
     {
@@ -736,6 +795,14 @@ public class PlayerMovement : MonoBehaviour
     public void SetDoubleHeal(bool val)
     {
         doubleHeal = val;
+    }
+
+	private bool isNear(GameObject player, GameObject ob)
+    {
+        return ((player.transform.position.x + 7 > ob.transform.position.x) &&
+                (player.transform.position.x - 7 < ob.transform.position.x) &&
+                (player.transform.position.y + 7 > ob.transform.position.y) &&
+                (player.transform.position.y - 7 < ob.transform.position.y));
     }
 
     private IEnumerator WaitForImmunity()
