@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject esterosPrefab;
     [SerializeField] private GameObject demetriaPrefab;
     [SerializeField] private GameObject zhaxPrefab;
+    [SerializeField] private GameObject lynPrefab;
     private static GameObject playerPrefab;
     private static int count = 5;
     public static bool pressed;
@@ -116,6 +117,11 @@ public class GameManager : MonoBehaviour
         {
             playerPrefab = zhaxPrefab;
         }
+        else if (type.Equals(PlayerMovement.CharacterType.Lyn))
+        {
+            playerPrefab = lynPrefab;
+        }
+        
 
         if (SceneManager.GetActiveScene().name != "EndGameScene" && GameObject.FindWithTag("Player") == null)
         {
