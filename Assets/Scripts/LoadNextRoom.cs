@@ -14,6 +14,10 @@ public class LoadNextRoom : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerStats = GameObject.Find("Player").GetComponent<EntityStats>();
+        if (playerStats != null)
+        {
+            RunStats.remainingHP = playerStats.maxHP;
+        }
     }
 
     private void Update()

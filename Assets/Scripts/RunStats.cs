@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public static class RunStats
 {
+    //selected save slot
+    public static string selectedSlot = null;
+    
     // played time
     public static string playedTime = "";
     public static string startTime = "";
@@ -36,5 +40,6 @@ public static class RunStats
     public static int reviveNr;
     public static int immunityNr;             
     public static int invisibilityNr;  
+    
     
 }

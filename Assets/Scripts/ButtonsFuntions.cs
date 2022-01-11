@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonsFuntions : MonoBehaviour
 {
@@ -10,6 +14,8 @@ public class ButtonsFuntions : MonoBehaviour
     private GameObject keybindingsBoard;
     private GameObject creditsBoard;
     private GameObject saveSlot;
+    private GameObject continueGameButton;
+    private List<GameObject> saveSlots;
 
     void Start()
     {
@@ -19,10 +25,27 @@ public class ButtonsFuntions : MonoBehaviour
         keybindingsBoard = GameObject.Find("KeyBindings");
         creditsBoard = GameObject.Find("CreditsBoard");
         saveSlot = GameObject.Find("SaveSlotBoard");
+        continueGameButton =  GameObject.Find("ContinueGame");
+        saveSlots = new List<GameObject>();
+        
+        for (int i = 1; i <= 5; i++)
+        {
+            GameObject slot = GameObject.Find("SaveRun" + i);
+            if (slot)
+            {
+                slot.SetActive(false);
+                saveSlots.Add(slot);
+            }
+        }
         
         if (smallBoard)
         {
             smallBoard.SetActive(false);
+        }
+        
+        if (continueGameButton)
+        {
+            continueGameButton.SetActive(false);
         }
         
         if (settingsBoard != null && volumeBoard != null && keybindingsBoard != null 
@@ -36,7 +59,7 @@ public class ButtonsFuntions : MonoBehaviour
         }
     }
 
-    public void startGame()
+    public void startGame()  //start new game
     {
         DateTime startPlayingTime = System.DateTime.Now;
         RunStats.startTime = startPlayingTime.ToString();
@@ -50,6 +73,18 @@ public class ButtonsFuntions : MonoBehaviour
         GameManager.wasRevived = false;
         GameManager.pressed = false;
         LoadNextRoom.LoadRoom();
+    }
+    
+    public void startGameAfterDying()
+    {
+        SaveLoadSystem.SaveRun(); //save previous run
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void LoadShop()
+    {
+        SceneManager.LoadScene("ShopScene");
+        
     }
 
     public void CancelBanner()
@@ -65,6 +100,32 @@ public class ButtonsFuntions : MonoBehaviour
     public void OpenSaveSlotBoard()
     {
         saveSlot.SetActive(true);
+        List<SaveData> savedRuns = SaveLoadSystem.LoadRuns();
+        int slotNo = 0;
+        foreach (SaveData run in savedRuns)
+        {
+            string text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " gold collected";
+            GameObject slot = saveSlots[slotNo];
+            slot.SetActive(true);
+            slot.GetComponentInChildren<Text>().text = text;
+            slotNo++;
+        }
+    }
+
+    public void selectSlot()
+    {
+        string saveLotName = EventSystem.current.currentSelectedGameObject.name;
+        SaveData runData = SaveLoadSystem.LoadRun(saveLotName);
+        RunStats.selectedSlot = saveLotName;
+        RunStats.enemiesKilled = runData.enemiesKilled;
+        RunStats.goldCollected = runData.goldCollected;
+        RunStats.keysCollected = runData.keysCollected;
+        Music gameMusic = GameObject.Find("Background").GetComponent<Music>();
+        if (gameMusic)
+        {
+            gameMusic.ChangeVolume(runData.volume);
+        }
+
     }
 
     public void OpenVolumeBoard()

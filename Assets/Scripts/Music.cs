@@ -27,7 +27,7 @@ public class Music : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(delegate { ChangeVolume(volumeSlider.value); });
     }
 
-    void ChangeVolume(float sliderValue)
+    public void ChangeVolume(float sliderValue)
     {
         audioSource.volume = sliderValue;
         RunStats.volume = sliderValue;
