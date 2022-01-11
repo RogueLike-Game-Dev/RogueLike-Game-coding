@@ -91,14 +91,14 @@ public static class SaveLoadSystem
                 return savedRuns;
 
         }
-        
+
         public static SaveData LoadRun(string selectedSlot)
         {
-               
-                foreach (string fileName in Directory.GetFiles(runsFolderPath))
+
+                if (File.Exists(runsFolderPath + "/" + selectedSlot))
                 {
                         BinaryFormatter formatter = new BinaryFormatter();
-                        FileStream stream = new FileStream(runsFolderPath + "/" + fileName, FileMode.Open);
+                        FileStream stream = new FileStream(runsFolderPath + "/" + selectedSlot, FileMode.Open);
                         SaveData data = formatter.Deserialize(stream) as SaveData;
                         stream.Close();
                         return data;

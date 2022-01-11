@@ -116,14 +116,17 @@ public class ButtonsFuntions : MonoBehaviour
     {
         string saveLotName = EventSystem.current.currentSelectedGameObject.name;
         SaveData runData = SaveLoadSystem.LoadRun(saveLotName);
-        RunStats.selectedSlot = saveLotName;
-        RunStats.enemiesKilled = runData.enemiesKilled;
-        RunStats.goldCollected = runData.goldCollected;
-        RunStats.keysCollected = runData.keysCollected;
-        Music gameMusic = GameObject.Find("Background").GetComponent<Music>();
-        if (gameMusic)
+        if (runData != null) 
         {
-            gameMusic.ChangeVolume(runData.volume);
+            RunStats.selectedSlot = saveLotName;
+            RunStats.enemiesKilled = runData.enemiesKilled;
+            RunStats.goldCollected = runData.goldCollected;
+            RunStats.keysCollected = runData.keysCollected;
+            Music gameMusic = GameObject.Find("Background").GetComponent<Music>();
+            if (gameMusic)
+            {
+                gameMusic.ChangeVolume(runData.volume);
+            }
         }
 
     }
