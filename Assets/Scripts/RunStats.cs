@@ -12,7 +12,7 @@ public static class RunStats
     
     //settings
         //volume
-        public static float volume = 0f;
+        public static float volume = 1f;
         //keybindings single keys
         public static string jumpKey = KeyCode.W.ToString();
         public static string specialAttackKey = KeyCode.Mouse1.ToString();

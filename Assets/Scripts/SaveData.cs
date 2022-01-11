@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public class SaveData
 {
-
    public string playedTime;
    public string startTime;
    public float volume;
@@ -21,14 +20,14 @@ public class SaveData
    public int enemiesKilled;
    public int remainingHP;
    public string characters;
-   public int armorMaxLevel;            
-   public int hpMaxLevel;                  
-   public int damageMaxLevel;              
+   public int armorMaxLevel;
+   public int hpMaxLevel;
+   public int damageMaxLevel;
    public int speedMaxLevel;
    public int reviveNr;
    public int immunityNr;
-   public int invisibilityNr;  
-   
+   public int invisibilityNr;
+
    public SaveData()
    {
       playedTime = RunStats.playedTime;
@@ -47,13 +46,13 @@ public class SaveData
       enemiesKilled = RunStats.enemiesKilled;
       remainingHP = RunStats.remainingHP;
       characters = "Zhax"; 
-      armorMaxLevel =  RunStats.armorMaxLevel;              
-      hpMaxLevel = RunStats.hpMaxLevel;                  
-      damageMaxLevel = RunStats.damageMaxLevel;              
-      speedMaxLevel = RunStats.speedMaxLevel;            
+      armorMaxLevel =  RunStats.armorMaxLevel;
+      hpMaxLevel = RunStats.hpMaxLevel;
+      damageMaxLevel = RunStats.damageMaxLevel;
+      speedMaxLevel = RunStats.speedMaxLevel;
       reviveNr = RunStats.reviveNr;
-      immunityNr = RunStats.immunityNr;             
-      invisibilityNr = RunStats.invisibilityNr;  
+      immunityNr = RunStats.immunityNr;
+      invisibilityNr = RunStats.invisibilityNr;
       
    }
 }

@@ -8,56 +8,20 @@ using UnityEngine.UI;
 
 public class ButtonsFuntions : MonoBehaviour
 {
-    private GameObject smallBoard;
-    private GameObject settingsBoard;
-    private GameObject volumeBoard;
-    private GameObject keybindingsBoard;
-    private GameObject creditsBoard;
-    private GameObject saveSlot;
-    private GameObject continueGameButton;
-    private List<GameObject> saveSlots;
+    [SerializeField] private GameObject smallBoard;
+    [SerializeField] private GameObject settingsBoard;
+    [SerializeField] private GameObject volumeBoard;
+    [SerializeField] private GameObject keybindingsBoard;
+    [SerializeField] private GameObject creditsBoard;
+    [SerializeField] private GameObject saveSlot;
+    [SerializeField] private GameObject continueGameButton;
+    [SerializeField] private List<GameObject> saveSlots = new List<GameObject>();
     public Slider mSlider;
 
     void Start()
     {
-        smallBoard = GameObject.Find("SmallBoard");
-        settingsBoard = GameObject.Find("SettingsBoard");
-        volumeBoard = GameObject.Find("VolumeBoard");
-        keybindingsBoard = GameObject.Find("KeyBindings");
-        creditsBoard = GameObject.Find("CreditsBoard");
-        saveSlot = GameObject.Find("SaveSlotBoard");
-        continueGameButton =  GameObject.Find("ContinueGame");
-        saveSlots = new List<GameObject>();
-        
-        for (int i = 1; i <= 5; i++)
-        {
-            GameObject slot = GameObject.Find("SaveRun" + i);
-            if (slot)
-            {
-                slot.SetActive(false);
-                saveSlots.Add(slot);
-            }
-        }
-        
-        if (smallBoard)
-        {
-            smallBoard.SetActive(false);
-        }
-        
-        if (continueGameButton)
-        {
-            continueGameButton.SetActive(false);
-        }
-        
-        if (settingsBoard != null && volumeBoard != null && keybindingsBoard != null 
-            && creditsBoard != null && saveSlot != null)
-        {
-            settingsBoard.SetActive(false);
-            volumeBoard.SetActive(false);
-            keybindingsBoard.SetActive(false);
-            creditsBoard.SetActive(false);
-            saveSlot.SetActive(false);
-        }
+
+       
     }
 
     public void startGame()  //start new game
@@ -79,7 +43,7 @@ public class ButtonsFuntions : MonoBehaviour
     public void startGameAfterDying()
     {
         SaveLoadSystem.SaveRun(); //save previous run
-        SceneManager.LoadScene("StartScene");
+        LoadNextRoom.LoadRoom();
     }
 
     public void LoadShop()
@@ -102,9 +66,11 @@ public class ButtonsFuntions : MonoBehaviour
     {
         saveSlot.SetActive(true);
         List<SaveData> savedRuns = SaveLoadSystem.LoadRuns();
+        Debug.Log("Runs found:" + savedRuns.Count);
         int slotNo = 0;
         foreach (SaveData run in savedRuns)
         {
+            
             string text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " pesos collected";
             GameObject slot = saveSlots[slotNo];
             slot.SetActive(true);
@@ -113,10 +79,12 @@ public class ButtonsFuntions : MonoBehaviour
         }
     }
 
-    public void selectSlot()
+    public void selectSlot(int i)
     {
+        Debug.Log("Selected Slot");
         string saveLotName = EventSystem.current.currentSelectedGameObject.name;
-        SaveData runData = SaveLoadSystem.LoadRun(saveLotName);
+        Debug.Log(saveLotName);
+        SaveData runData = SaveLoadSystem.LoadRun("SaveRun" + i);
         if (runData != null)
         {
             Debug.Log("Continue Run");
@@ -124,7 +92,7 @@ public class ButtonsFuntions : MonoBehaviour
             RunStats.enemiesKilled = runData.enemiesKilled;
             RunStats.goldCollected = runData.goldCollected;
             RunStats.keysCollected = runData.keysCollected;
-            Music gameMusic = GameObject.Find("Background").GetComponent<Music>();
+            Music gameMusic = GameObject.Find("AudioSource").GetComponent<Music>();
             if (gameMusic)
             {
                 gameMusic.ChangeVolume((float)runData.volume);
@@ -138,7 +106,7 @@ public class ButtonsFuntions : MonoBehaviour
             {
                 newGameButton.SetActive(false);
             }
-            
+
             CloseSaveSlotBanner();
         }
 

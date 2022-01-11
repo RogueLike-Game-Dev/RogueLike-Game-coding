@@ -7,7 +7,7 @@ public class LoadNextRoom : MonoBehaviour
     private bool triggered;
     private static int currentSceneIndex;
     private const int minIndex = 1;     // TODO: also include the Boss Scene (minIndex = 0) 
-    private const int maxIndex = 6; 
+    private const int maxIndex = 5; 
     private EntityStats playerStats;
 
     private void Start()

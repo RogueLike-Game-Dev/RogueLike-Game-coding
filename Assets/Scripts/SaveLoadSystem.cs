@@ -8,8 +8,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveLoadSystem
 {
         private static string runsFolderPath = Application.persistentDataPath + "/runs";
-        private static int nrRun = 0;
-        
         public static void SaveRun() //save a run in a different binary file
         {
                 
@@ -34,7 +32,7 @@ public static class SaveLoadSystem
                         if (noFilesSaved < 5) //if there are less than 5 saved files, create a new one
                         {
                                 Debug.Log("No runs saved create a new file");
-                                FileStream stream = new FileStream(runsFolderPath + "/" + "SaveRun" + (noFilesSaved +1), FileMode.Append);
+                                FileStream stream = new FileStream(runsFolderPath + "/" + "SaveRun" + (noFilesSaved + 1), FileMode.Append);
                                 SaveData data = new SaveData();
                                 formatter.Serialize(stream, data);
                                 stream.Close();
@@ -55,8 +53,8 @@ public static class SaveLoadSystem
 
                                 if (olderFileName != "")
                                 {
-                                       File.Delete(runsFolderPath+ "/" +olderFileName); 
-                                       FileStream stream = new FileStream(runsFolderPath+ "/" +olderFileName, FileMode.Append);
+                                       File.Delete(runsFolderPath + "/" + olderFileName); 
+                                       FileStream stream = new FileStream(runsFolderPath + "/" + olderFileName, FileMode.Append);
                                        SaveData data = new SaveData();
                                        formatter.Serialize(stream, data);
                                        stream.Close();
@@ -66,8 +64,8 @@ public static class SaveLoadSystem
                 }
                 else //if user selected a save slot we should override it
                 {
-                        File.Delete(runsFolderPath+ "/" +RunStats.selectedSlot); 
-                        FileStream stream = new FileStream(runsFolderPath+ "/" +RunStats.selectedSlot, FileMode.Append);
+                        File.Delete(runsFolderPath + "/" + RunStats.selectedSlot); 
+                        FileStream stream = new FileStream(runsFolderPath + "/" + RunStats.selectedSlot, FileMode.Append);
                         SaveData data = new SaveData();
                         formatter.Serialize(stream, data);
                         stream.Close();
@@ -78,15 +76,17 @@ public static class SaveLoadSystem
 
         public static List<SaveData> LoadRuns()
         {
-                List <SaveData> savedRuns = new List<SaveData>();
-                foreach (string fileName in Directory.GetFiles(runsFolderPath))
-                {
-                        BinaryFormatter formatter = new BinaryFormatter();
-                        FileStream stream = new FileStream(fileName, FileMode.Open);
-                        SaveData data = formatter.Deserialize(stream) as SaveData;
-                        savedRuns.Add(data);
-                        stream.Close();
-                }
+       
+            List <SaveData> savedRuns = new List<SaveData>();
+            if (!Directory.Exists(runsFolderPath))
+                return savedRuns;
+            foreach (string fileName in Directory.GetFiles(runsFolderPath)) {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(fileName, FileMode.Open);
+                SaveData data = formatter.Deserialize(stream) as SaveData;
+                savedRuns.Add(data);
+                stream.Close();
+            }
 
                 return savedRuns;
 
