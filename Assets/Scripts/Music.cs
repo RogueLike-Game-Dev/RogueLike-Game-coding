@@ -30,5 +30,7 @@ public class Music : MonoBehaviour
     void ChangeVolume(float sliderValue)
     {
         audioSource.volume = sliderValue;
+        RunStats.volume = sliderValue;
+        
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -37,11 +38,13 @@ public class ButtonsFuntions : MonoBehaviour
 
     public void startGame()
     {
+        DateTime startPlayingTime = System.DateTime.Now;
+        RunStats.startTime = startPlayingTime.ToString();
+        Debug.Log("Starting game at: " + RunStats.startTime);
+        
         RunStats.enemiesKilled = 0;
         RunStats.goldCollected = 0;
         RunStats.keysCollected = 0;
-        RunStats.roomsCleared = 0;
-        RunStats.playedTime = 0;
         RunStats.remainingHP = InitialValues.remainingHP;
         GameManager.isDying = false;
         GameManager.wasRevived = false;

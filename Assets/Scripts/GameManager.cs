@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,7 +42,6 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        RunStats.playedTime += Time.deltaTime;
 
         if (isDying)
         {
@@ -171,6 +172,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player died, move to end screen");
         RunStats.enemiesKilled = playerStats.enemiesKilled;
         RunStats.goldCollected = playerStats.gold;
+        
+        DateTime endGameTime = System.DateTime.Now;
+        DateTime startGame =  DateTime.Parse(RunStats.startTime);
+        TimeSpan span = endGameTime - startGame;
+        RunStats.playedTime = String.Format("{0} h: {1} min: {2} sec", span.Hours, span.Minutes, span.Seconds);
+        Debug.Log("Played Time " + RunStats.playedTime);
+        
 
         SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
     }

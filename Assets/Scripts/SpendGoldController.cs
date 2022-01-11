@@ -19,7 +19,7 @@ public class SpendGoldController : MonoBehaviour
 {
     private PurchasedItems purchasedItems;
     
-    private int playerGold = 1000000000;     // must update this when player finished a run (by adding the gold collected in that run)
+    private int playerGold = RunStats.goldCollected;     // must update this when player finished a run (by adding the gold collected in that run)
                                             // OR getting it from the save file (when player loads the game)
 
     private GameObject infoCanvas;
@@ -256,24 +256,28 @@ public class SpendGoldController : MonoBehaviour
                         if (chosenSkill == armorSkill)
                         {
                             armorIndex++;
+                            RunStats.armorMaxLevel = armorIndex;
                             purchasedItems.armorMaxLevel = armorIndex;
                             UnlockNextSkillLevel(armorButtonsInOrder, armorIndex, "ARMOR_TREE", 3);
                         }
                         else if (chosenSkill == hpSkill || chosenSkill == hpRegenSkill)
                         {
                             hpIndex++;
+                            RunStats.hpMaxLevel = hpIndex;
                             purchasedItems.hpMaxLevel = hpIndex;
                             UnlockNextSkillLevel(hpButtonsInOrder, hpIndex, "HP_TREE", 6);
                         }
                         else if (chosenSkill == damageSkill || chosenSkill == magicalDamageSkill)
                         {
                             damageIndex++;
+                            RunStats.damageMaxLevel = damageIndex;
                             purchasedItems.damageMaxLevel = damageIndex;
                             UnlockNextSkillLevel(damageButtonsInOrder, damageIndex, "DAMAGE_TREE", 5);
                         }
                         else if (chosenSkill == movementSpeedSkill || chosenSkill == jumpSkill)
                         {
                             speedIndex++;
+                            RunStats.speedMaxLevel = speedIndex;
                             purchasedItems.speedMaxLevel = speedIndex;
                             UnlockNextSkillLevel(speedButtonsInOrder, speedIndex, "SPEED_JUMP_TREE", 4);
                         }
@@ -285,14 +289,17 @@ public class SpendGoldController : MonoBehaviour
 
                             if (chosenSkill == reviveItem)
                             {
+                                RunStats.reviveNr = chosenSkill.number;
                                 purchasedItems.reviveNr = chosenSkill.number;
                             }
                             else if (chosenSkill == immunityItem)
                             {
+                                RunStats.immunityNr = chosenSkill.number;
                                 purchasedItems.immunityNr = chosenSkill.number;
                             }
                             else if (chosenSkill == invisibilityItem)
                             {
+                                RunStats.invisibilityNr = chosenSkill.number;
                                 purchasedItems.invisibilityNr = chosenSkill.number;
                             }
                             

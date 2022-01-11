@@ -19,9 +19,7 @@ public class AlterGameStats : MonoBehaviour
         
         enemiesKilled.text = RunStats.enemiesKilled + enemyText;
         gold.text = RunStats.goldCollected + " pesos";
-        
-        var minutes = Mathf.Floor(RunStats.playedTime / 60).ToString("00");
-        var seconds = (RunStats.playedTime % 60).ToString("00");
-        time.text = string.Format("{0} : {1}", minutes, seconds);
+
+        time.text = RunStats.playedTime;
     }
 }
