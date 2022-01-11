@@ -26,7 +26,7 @@ public static class SaveLoadSystem
                         //otherwise if we don't have 5 files we should create one new
 
                         int noFilesSaved = 0;
-                        foreach (string fileName in Directory.GetFiles(runsFolderPath)) //verify number of saved files
+                        foreach (string _ in Directory.GetFiles(runsFolderPath)) //verify number of saved files
                         {
                                 noFilesSaved++;
                         }
@@ -82,7 +82,7 @@ public static class SaveLoadSystem
                 foreach (string fileName in Directory.GetFiles(runsFolderPath))
                 {
                         BinaryFormatter formatter = new BinaryFormatter();
-                        FileStream stream = new FileStream(runsFolderPath + "/" + fileName, FileMode.Open);
+                        FileStream stream = new FileStream(fileName, FileMode.Open);
                         SaveData data = formatter.Deserialize(stream) as SaveData;
                         savedRuns.Add(data);
                         stream.Close();

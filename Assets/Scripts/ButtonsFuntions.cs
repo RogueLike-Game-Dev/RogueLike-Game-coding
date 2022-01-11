@@ -16,6 +16,7 @@ public class ButtonsFuntions : MonoBehaviour
     private GameObject saveSlot;
     private GameObject continueGameButton;
     private List<GameObject> saveSlots;
+    public Slider mSlider;
 
     void Start()
     {
@@ -104,7 +105,7 @@ public class ButtonsFuntions : MonoBehaviour
         int slotNo = 0;
         foreach (SaveData run in savedRuns)
         {
-            string text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " gold collected";
+            string text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " pesos collected";
             GameObject slot = saveSlots[slotNo];
             slot.SetActive(true);
             slot.GetComponentInChildren<Text>().text = text;
@@ -116,8 +117,9 @@ public class ButtonsFuntions : MonoBehaviour
     {
         string saveLotName = EventSystem.current.currentSelectedGameObject.name;
         SaveData runData = SaveLoadSystem.LoadRun(saveLotName);
-        if (runData != null) 
+        if (runData != null)
         {
+            Debug.Log("Continue Run");
             RunStats.selectedSlot = saveLotName;
             RunStats.enemiesKilled = runData.enemiesKilled;
             RunStats.goldCollected = runData.goldCollected;
@@ -125,8 +127,19 @@ public class ButtonsFuntions : MonoBehaviour
             Music gameMusic = GameObject.Find("Background").GetComponent<Music>();
             if (gameMusic)
             {
-                gameMusic.ChangeVolume(runData.volume);
+                gameMusic.ChangeVolume((float)runData.volume);
+                mSlider.value = runData.volume;
+                Debug.Log("Game music volume: " + runData.volume);
             }
+            
+            continueGameButton.SetActive(true);
+            GameObject newGameButton = GameObject.Find("NewStart");
+            if (newGameButton)
+            {
+                newGameButton.SetActive(false);
+            }
+            
+            CloseSaveSlotBanner();
         }
 
     }
