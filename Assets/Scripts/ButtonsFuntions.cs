@@ -15,6 +15,7 @@ public class ButtonsFuntions : MonoBehaviour
     [SerializeField] private GameObject creditsBoard;
     [SerializeField] private GameObject saveSlot;
     [SerializeField] private GameObject continueGameButton;
+    [SerializeField] private GameObject emptySlots;
     [SerializeField] private List<GameObject> saveSlots = new List<GameObject>();
     public Slider mSlider;
 
@@ -29,10 +30,6 @@ public class ButtonsFuntions : MonoBehaviour
         DateTime startPlayingTime = System.DateTime.Now;
         RunStats.startTime = startPlayingTime.ToString();
         Debug.Log("Starting game at: " + RunStats.startTime);
-        
-        RunStats.enemiesKilled = 0;
-        RunStats.goldCollected = 0;
-        RunStats.keysCollected = 0;
         RunStats.remainingHP = InitialValues.remainingHP;
         GameManager.isDying = false;
         GameManager.wasRevived = false;
@@ -54,6 +51,10 @@ public class ButtonsFuntions : MonoBehaviour
 
     public void CancelBanner()
     {
+        if (RunStats.selectedSlot != null)
+        {
+            SaveLoadSystem.SaveRun();
+        }
         smallBoard.SetActive(true);
     }
 
@@ -67,6 +68,14 @@ public class ButtonsFuntions : MonoBehaviour
         saveSlot.SetActive(true);
         List<SaveData> savedRuns = SaveLoadSystem.LoadRuns();
         Debug.Log("Runs found:" + savedRuns.Count);
+        if (savedRuns.Count == 0)
+        {
+            emptySlots.SetActive(true);
+            return; 
+        }
+        
+        //order runs by date played
+        savedRuns.Sort((a, b) => - a.startTime.CompareTo(b.startTime));
         int slotNo = 0;
         foreach (SaveData run in savedRuns)
         {
@@ -82,15 +91,17 @@ public class ButtonsFuntions : MonoBehaviour
     public void selectSlot(int i)
     {
         Debug.Log("Selected Slot");
-        string saveLotName = EventSystem.current.currentSelectedGameObject.name;
-        Debug.Log(saveLotName);
-        SaveData runData = SaveLoadSystem.LoadRun("SaveRun" + i);
+        string saveSlotName = "SaveRun" + i;
+        RunStats.selectedSlot = saveSlotName;
+        SaveData runData = SaveLoadSystem.LoadRun(saveSlotName);
         if (runData != null)
         {
             Debug.Log("Continue Run");
-            RunStats.selectedSlot = saveLotName;
+            RunStats.selectedSlot = saveSlotName;
             RunStats.enemiesKilled = runData.enemiesKilled;
             RunStats.goldCollected = runData.goldCollected;
+            RunStats.playedTime = runData.playedTime;
+            Debug.Log("Previous Gold collected:" + RunStats.goldCollected);
             RunStats.keysCollected = runData.keysCollected;
             Music gameMusic = GameObject.Find("AudioSource").GetComponent<Music>();
             if (gameMusic)

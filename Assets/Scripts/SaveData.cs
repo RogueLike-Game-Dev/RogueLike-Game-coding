@@ -55,4 +55,5 @@ public class SaveData
       invisibilityNr = RunStats.invisibilityNr;
       
    }
+
 }

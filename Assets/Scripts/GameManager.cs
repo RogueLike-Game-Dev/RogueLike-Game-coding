@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TreeEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             playerStats = player.GetComponent<EntityStats>();
+            playerStats.gold = RunStats.goldCollected;
+            Debug.Log("gold" + playerStats.gold);
+            Debug.Log("gold" + RunStats.goldCollected);
         }
     }
     
@@ -176,9 +180,31 @@ public class GameManager : MonoBehaviour
         DateTime endGameTime = System.DateTime.Now;
         DateTime startGame =  DateTime.Parse(RunStats.startTime);
         TimeSpan span = endGameTime - startGame;
-        RunStats.playedTime = String.Format("{0} h: {1} min: {2} sec", span.Hours, span.Minutes, span.Seconds);
-        Debug.Log("Played Time " + RunStats.playedTime);
-        
+        if (RunStats.playedTime != "")
+        {
+            string[] subs  = RunStats.playedTime.Split(' ');
+            List <int> time = new List<int>(); //h min sec
+            foreach (string str in subs)
+            {
+                int nr = 0;
+                if (int.TryParse(str, out nr))
+                {
+                    time.Add(nr);
+                }
+            }
+            DateTime alreadyPlayedTime = new DateTime(endGameTime.Year, endGameTime.Month, endGameTime.Day, time[0], time[1], time[2]);
+            DateTime newPlayedTime = alreadyPlayedTime.AddHours(span.Hours).AddMinutes(span.Minutes).AddSeconds(span.Seconds);
+
+            RunStats.playedTime = String.Format("{0} h: {1} min: {2} sec", newPlayedTime.Hour, newPlayedTime.Minute, newPlayedTime.Second);
+            Debug.Log("New played Time " + RunStats.playedTime);
+
+        }
+        else
+        {
+            RunStats.playedTime = String.Format("{0} h: {1} min: {2} sec", span.Hours, span.Minutes, span.Seconds);
+            Debug.Log("Played Time " + RunStats.playedTime);
+        }
+
 
         SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
     }
