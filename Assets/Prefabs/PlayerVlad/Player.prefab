@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ce2a615888de34eb18805635f34772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: 10000
+  _maxHP: 100
   _maxArmor: 0
   _gold: 0
   _keys: 0

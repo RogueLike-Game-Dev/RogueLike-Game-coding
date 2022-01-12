@@ -405,6 +405,7 @@ MonoBehaviour:
   maxDashes: 2
   attackArea: {fileID: 3662216567159904533}
   feetPosition: {fileID: 3662216567404652574}
+  lightningEffect: {fileID: 0}
   facingRight: 1
   bubbleShieldActive: 0
   zhaxThrowingObjects:
@@ -415,6 +416,7 @@ MonoBehaviour:
   - {fileID: 6351342098725113452, guid: f5e81400dbfd21e44be26527e4a034b4, type: 3}
   - {fileID: 1389746574483878712, guid: 87f9fc5592d2d0c4e92d5e39980b26ac, type: 3}
   - {fileID: 3197263978505919128, guid: 740b31b7840c9d946b78d5c7a0e04079, type: 3}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3662216568215184600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ce2a615888de34eb18805635f34772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: 10000
+  _maxHP: 100
+  _maxArmor: 0
   _gold: 0
   _keys: 0
   _collectibles: 0
@@ -437,6 +440,7 @@ MonoBehaviour:
   movementSpeed: 5
   knockBackStrength: 5
   isInvulnerable: 0
+  isInvisible: 0
   TimeOfInvulnerability: 2
   animator: {fileID: 0}
   hurtTriggerKey: isHurt

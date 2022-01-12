@@ -14,21 +14,20 @@ public class LoadNextRoom : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerStats = GameObject.Find("Player").GetComponent<EntityStats>();
-        if (playerStats != null)
-        {
-            RunStats.remainingHP = playerStats.maxHP;
-        }
+   
     }
 
     private void Update()
     {
         if (triggered)
         {
+            Debug.Log("Player is at next level door");
             if (Input.GetKey(KeyCode.G))
             {
-                LoadRoom();
+                Debug.Log("Loading next room");
                 playerStats.gold = RunStats.goldCollected;
-                RunStats.remainingHP = playerStats.currentHP;
+                LoadRoom();
+              
             }
         }
     }
@@ -37,6 +36,7 @@ public class LoadNextRoom : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Player entered next level door trigger");
             triggered = true;
         }
     }

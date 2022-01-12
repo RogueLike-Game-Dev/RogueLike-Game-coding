@@ -30,7 +30,7 @@ public class ButtonsFuntions : MonoBehaviour
         DateTime startPlayingTime = System.DateTime.Now;
         RunStats.startTime = startPlayingTime.ToString();
         Debug.Log("Starting game at: " + RunStats.startTime);
-        RunStats.remainingHP = InitialValues.remainingHP;
+      
         GameManager.isDying = false;
         GameManager.wasRevived = false;
         GameManager.pressed = false;

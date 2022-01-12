@@ -83,7 +83,7 @@ public class SpendGoldController : MonoBehaviour
             "Put on ALL OF THE armor to protect yourself from the strongest enemies you will encounter. " +
             "Armor does not regenerate, but if it breaks, you will recieve half the damage from that hit."
         };
-        armorSkill.prices = new[] {1000, 5000, 15000};
+        armorSkill.prices = new[] {10, 50, 150};
         armorSkill.owned = new[] {false, false, false};
 
         // hp regen skill info
@@ -95,7 +95,7 @@ public class SpendGoldController : MonoBehaviour
             "Discover the secrets of the MOON to be able to regenerate lost health and extend your longevity in adventuring.", 
             "Discover the secrets of the SUN to be able to regenerate lost health and extend your longevity in adventuring."
         };
-        hpRegenSkill.prices = new[] {2000, 10000, 20000};
+        hpRegenSkill.prices = new[] {20, 100, 200};
         hpRegenSkill.owned = new[] {false, false, false};
 
         // hp skill info
@@ -107,7 +107,7 @@ public class SpendGoldController : MonoBehaviour
             "Start moving your body to become HEALTHIER, to be able to withstand more damage from your enemies and to survive longer.",
             "Start moving your body to become THE HEALTIEST, to be able to withstand more damage from your enemies and to survive longer."
         };
-        hpSkill.prices = new[] {1500, 5000, 12000};
+        hpSkill.prices = new[] {15, 50, 120};
         hpSkill.owned = new[] {false, false, false};
 
         // damage skill info
@@ -119,7 +119,7 @@ public class SpendGoldController : MonoBehaviour
             "Upgrade your weapon so that your attacks deal EVEN MORE damage and your enemies fall faster.",
             "Upgrade your weapon so that your attacks deal THE MOST damage and your enemies fall faster."
         };
-        damageSkill.prices = new[] {1800, 5600, 11000};
+        damageSkill.prices = new[] {18, 56, 110};
         damageSkill.owned = new[] {false, false, false};
 
         // magical damage skill info
@@ -130,7 +130,7 @@ public class SpendGoldController : MonoBehaviour
             "The magic of the stars imbudes you. With their help, now, your special attacks deal MORE damage to help you defeat strong foes.",
             "The magic of the stars imbudes you. With their help, now, your special attacks deal THE MOST damage to help you defeat the strongest foes."
         };
-        magicalDamageSkill.prices = new[] {4000, 16000};
+        magicalDamageSkill.prices = new[] {40, 160};
         magicalDamageSkill.owned = new[] {false, false};
 
         // movement speed skill info
@@ -142,7 +142,7 @@ public class SpendGoldController : MonoBehaviour
             "Upgrade your footware to be able to move THE FASTEST to take your enemies by surprise and escape their attacks.",
             "Upgrade your footware to be able to move LIKE A LIGHTNING to take your enemies by surprise and escape their attacks."
         };
-        movementSpeedSkill.prices = new[] {2000, 8000, 19000};
+        movementSpeedSkill.prices = new[] {20, 80, 190};
         movementSpeedSkill.owned = new[] {false, false, false};
 
         // jump skill info
@@ -152,7 +152,7 @@ public class SpendGoldController : MonoBehaviour
         {
             "After years of trainning, you will now be able to jump EVEN HIGHER, letting you reach higher places."
         };
-        jumpSkill.prices = new[] {20000};
+        jumpSkill.prices = new[] {20};
         jumpSkill.owned = new[] {false};
 
         infoCanvas = GameObject.Find("Info").transform.GetChild(2).gameObject;
@@ -166,7 +166,7 @@ public class SpendGoldController : MonoBehaviour
             "Just like the legendary bird, the Phoenix, you can revive yourself once, so that your adventure is never cut short."
         };
         reviveItem.number = 0;
-        reviveItem.prices = new[] {10000};
+        reviveItem.prices = new[] {100};
         reviveItem.owned = new[] {false};
         reviveItem.type = "item";
 
@@ -177,7 +177,7 @@ public class SpendGoldController : MonoBehaviour
             "they quit helping very fast."
         };
         immunityItem.number = 0;
-        immunityItem.prices = new[] {6000};
+        immunityItem.prices = new[] {60};
         immunityItem.owned = new[] {false};
         immunityItem.type = "item";
         
@@ -187,7 +187,7 @@ public class SpendGoldController : MonoBehaviour
             "Learn the ways of the shadows and turn yourself invisible for a short amount of time, evading enemies and attacks."
         };
         invisibilityItem.number = 0;
-        invisibilityItem.prices = new[] {14000};
+        invisibilityItem.prices = new[] {60};
         invisibilityItem.owned = new[] {false};
         invisibilityItem.type = "item";
 

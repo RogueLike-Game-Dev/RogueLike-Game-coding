@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
-        playerStats.currentHP = RunStats.remainingHP;
+       
         
         purchasedItems = PurchasedItems.getInstance();
         
@@ -194,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
 
         initialPosition = transform.position;
         
-        print("CHARACTER TYPE:" + characterType);
+        print("CHARACTER TYPE: " + characterType);
     }
     
     private void Update()
@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //Input handling in Update, force handling in FixedUpdate 
-        RunStats.remainingHP = playerStats.currentHP;
+      
         
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
@@ -601,10 +601,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collisionStats != null)
         {
-            if (collision.gameObject.name.Contains("Wraith"))
-            {
+            
                 playerStats.Damage(collisionStats.DMG);
-            }
+            
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;

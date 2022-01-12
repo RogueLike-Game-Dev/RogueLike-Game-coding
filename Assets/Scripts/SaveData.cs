@@ -44,7 +44,6 @@ public class SaveData
       goldCollected = RunStats.goldCollected;
       keysCollected = RunStats.keysCollected;
       enemiesKilled = RunStats.enemiesKilled;
-      remainingHP = RunStats.remainingHP;
       characters = "Zhax"; 
       armorMaxLevel =  RunStats.armorMaxLevel;
       hpMaxLevel = RunStats.hpMaxLevel;

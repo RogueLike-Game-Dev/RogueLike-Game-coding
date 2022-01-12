@@ -139,6 +139,14 @@ public class EntityStats : MonoBehaviour
         {
             if (animator != null && AnimatorHasParameter(animator, deathTriggerKey)) //And has animations + death animation
             {
+                if (gameObject.name == "Player")
+                {
+                    if (TryGetComponent(out Rigidbody2D rigidBody2D))
+                    {
+                        rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+                        GetComponent<Collider2D>().enabled = false;
+                    }
+                }
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
             }
             else //No animations set, just make it inactive

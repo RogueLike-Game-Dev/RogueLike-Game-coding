@@ -28,7 +28,6 @@ public static class RunStats
     public static int goldCollected = 0;
     public static int keysCollected = 0;
     public static int enemiesKilled = 0;
-    public static int remainingHP = 10000;
     
     //what user unlocks
     public static string characters = "Zhax";  //add characters with space after, tried to avoid arrays
