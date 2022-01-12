@@ -69,14 +69,13 @@ public static class SaveLoadSystem
                         SaveData data = new SaveData();
                         formatter.Serialize(stream, data);
                         stream.Close();
-                        
+                        Debug.Log("*Override existing run*");
                 }
 
         }
 
         public static List<SaveData> LoadRuns()
-        {
-       
+        { 
             List <SaveData> savedRuns = new List<SaveData>();
             if (!Directory.Exists(runsFolderPath))
                 return savedRuns;
@@ -103,7 +102,8 @@ public static class SaveLoadSystem
                         stream.Close();
                         return data;
                 }
-
+                
+                Debug.Log("File " + selectedSlot + " doesn't exist ");
                 return null;
 
         }

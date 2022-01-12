@@ -26,7 +26,7 @@ public static class RunStats
    //what user did in the run
     public static RoomType currentRoom;
     public static int goldCollected = 0;
-    public static int keysCollected;
+    public static int keysCollected = 0;
     public static int enemiesKilled = 0;
     public static int remainingHP = 10000;
     
