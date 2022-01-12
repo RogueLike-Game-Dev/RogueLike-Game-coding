@@ -82,6 +82,7 @@ public class EntityStats : MonoBehaviour
         set {
             if (_keys == value) return;
             _keys = value;
+            RunStats.keysCollected = keys;
         }
     }
     
