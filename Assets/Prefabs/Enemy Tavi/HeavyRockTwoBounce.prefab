@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 4688059783838437568}
   - component: {fileID: 2576332220929199801}
   m_Layer: 0
+<<<<<<< HEAD:Assets/Prefabs/Skills/Locked.prefab
   m_Name: Bonus
+=======
+  m_Name: HeavyRockTwoBounce
+>>>>>>> 0a9681c (Finished custom level and added fallTrap prefab):Assets/Prefabs/Enemy Tavi/HeavyRockTwoBounce.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,8 +86,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD:Assets/Prefabs/Skills/Locked.prefab
 --- !u!1 &3553451449815372230
 GameObject:
+=======
+--- !u!114 &306049354144883984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211254968754323071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51644b62c8485e14e85b6a2167b6339e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRightOrUp: 1
+  invertXY: 0
+  damage: 10
+  bounceTimes: 2
+  lifeTime: 10
+  ignoreEnemyCollisions: 1
+  ignoreCoinCollisions: 1
+--- !u!50 &306049354144883987
+Rigidbody2D:
+  serializedVersion: 4
+>>>>>>> 0a9681c (Finished custom level and added fallTrap prefab):Assets/Prefabs/Enemy Tavi/HeavyRockTwoBounce.prefab
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
