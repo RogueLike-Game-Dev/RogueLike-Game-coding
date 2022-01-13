@@ -43,7 +43,7 @@ public class FireballController : MonoBehaviour
         if ( collision.gameObject.name!= caster)
         {
             var collisionStats = collision.gameObject.GetComponent<EntityStats>();
-            if (collisionStats != null)
+            if (collisionStats != null && collision.name != "Player")
             {
                 collisionStats.Damage(fireballStats.DMG);
                 Debug.Log("Fireball collided with entity " + collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
