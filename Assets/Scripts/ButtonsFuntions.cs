@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -140,7 +139,9 @@ public class ButtonsFuntions : MonoBehaviour
 
     public void GameQuit()
     {
+#if UNITY_EDITOR
         EditorApplication.isPlaying = false;
+#endif
         Application.Quit();
     }
 
