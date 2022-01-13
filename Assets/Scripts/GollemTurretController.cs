@@ -104,7 +104,7 @@ public class GollemTurretController : MonoBehaviour
                               invertXY);
 
                 myInstantiate(projectilePrefab, 
-                              transform.position, 
+                              new Vector3(transform.position.x, transform.position.y-1, transform.position.z), 
                               new Vector2(projectileSpeed, -projectileSpeed/2), 
                               !facingRightOrUp, 
                               invertXY);
@@ -114,7 +114,7 @@ public class GollemTurretController : MonoBehaviour
                 for (int i = 0; i < projectileNumber; i++)
                 {
                     myInstantiate(projectilePrefab, 
-                                  transform.position, 
+                                  new Vector3(transform.position.x-i, transform.position.y, transform.position.z), 
                                   new Vector2(projectileSpeed, projectileSpeed-(i*projectileSpeed/projectileNumber*2)), 
                                   !facingRightOrUp, 
                                   invertXY);
