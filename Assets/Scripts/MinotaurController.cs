@@ -17,6 +17,7 @@ public class MinotaurController : MonoBehaviour
     private EntityStats minotaurStats;
     private GameObject attackArea;
     private DateTime lastAttackTime;
+    private EntityStats targetStats;
 
     void Start()
     {
@@ -31,10 +32,29 @@ public class MinotaurController : MonoBehaviour
         speed = minotaurStats.movementSpeed;
         isWalking = false;
         lastAttackTime = DateTime.Now;
+
+        if (target)
+        {
+            targetStats = target.GetComponent<EntityStats>();
+        }
     }
 
     void Update()
     {
+        if (GameManager.isDying)
+        {
+            animator.SetBool(IS_ATTACKING, false);
+            animator.SetBool(IS_WALKING, false);
+            return;
+        }
+        
+        if (targetStats && targetStats.isInvisible)
+        {
+            animator.SetBool(IS_ATTACKING, false);
+            animator.SetBool(IS_WALKING, false);
+            return;
+        }
+        
         var targetPos = target.transform.position;
         var minotaurPos = transform.position;
         distanceX = Mathf.Abs(targetPos.x - minotaurPos.x);
@@ -95,6 +115,7 @@ public class MinotaurController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         attackArea.SetActive(true);
+        attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
         yield return new WaitForSeconds(0.2f);
         attackArea.SetActive(false);
     }

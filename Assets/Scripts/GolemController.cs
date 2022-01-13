@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
-
 
 public class GolemController : MonoBehaviour
 {
@@ -16,8 +14,6 @@ public class GolemController : MonoBehaviour
         Dead
     }
     
-    
-
     private State currentState;
     private GameObject player;
     private double rightEdge, leftEdge; 
@@ -27,13 +23,14 @@ public class GolemController : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private bool groundDetected, wallDetected;
     private bool flipWaiting = false;
-    private bool exitStandingState, needFlip;
+    private bool needFlip;
     
     private int facingDirection;
     
     private bool attackCooldown = false;
     
     [SerializeField] private GameObject attackArea;
+    private EntityStats playerStats;
     
     
     // Start is called before the first frame update
@@ -45,10 +42,15 @@ public class GolemController : MonoBehaviour
         player = GameObject.Find("Player");
         rightEdge = Math.Round(transform.parent.Find("RightEdge").transform.position.x);
         leftEdge = Math.Round(transform.parent.Find("LeftEdge").transform.position.x);
-        Debug.Log(transform.parent.gameObject);
+        
         currentState = State.Walking;
         facingDirection = 1;
         attackArea.SetActive(false);
+
+        if (player)
+        {
+            playerStats = player.GetComponent<EntityStats>();
+        }
         
     }
 
@@ -98,19 +100,15 @@ public class GolemController : MonoBehaviour
     
     private void UpdateWalkingState()
     {
-
         if ((transform.position.x <= leftEdge && facingDirection<0) || (transform.position.x >= rightEdge  && facingDirection>0))
         {
             Flip();
         }
 
-
-        if (player.transform.position.x > leftEdge && player.transform.position.x < rightEdge)
+        if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.x > leftEdge && player.transform.position.x < rightEdge)
         {
            SwitchState(State.Running);
         }
-        
-        
     }
     
     private void ExitWalkingState()
@@ -127,30 +125,27 @@ public class GolemController : MonoBehaviour
     
     private void UpdateRunningState()
     {
-        if ((player.transform.position.x < transform.position.x && facingDirection > 0) ||
-            (player.transform.position.x > transform.position.x && facingDirection < 0))
+        if (!playerStats.isInvisible && !GameManager.isDying && (
+            (player.transform.position.x < transform.position.x && facingDirection > 0) ||
+            (player.transform.position.x > transform.position.x && facingDirection < 0)))
         {
             Flip();
         }
 
-        if (!(player.transform.position.x > leftEdge && player.transform.position.x < rightEdge))
+        if (!(player.transform.position.x > leftEdge && player.transform.position.x < rightEdge) || playerStats.isInvisible || GameManager.isDying)
         {
             SwitchState(State.Walking);
         }
-		else if (transform.position.x - player.transform.position.x < 1.65 && transform.position.x - player.transform.position.x > -1.65)
+		else if (!playerStats.isInvisible && !GameManager.isDying && transform.position.x - player.transform.position.x < 1.65 && transform.position.x - player.transform.position.x > -1.65)
 		{
 			SwitchState(State.Standing);
 		}
-
-        
-        
     }
     
     private void ExitRunningState()
     {
         animator.SetBool("Running", false);
     }
-
     
     // Standing State
 
@@ -161,13 +156,17 @@ public class GolemController : MonoBehaviour
     
     private void UpdateStandingState()
     {
-        if (!(transform.position.x - player.transform.position.x < 1.75 && transform.position.x - player.transform.position.x > -1.75))
+        if (playerStats.isInvisible || GameManager.isDying)
+        {
+            SwitchState(State.Walking);
+        }
+        else if (!playerStats.isInvisible && !GameManager.isDying && !(transform.position.x - player.transform.position.x < 1.75 && transform.position.x - player.transform.position.x > -1.75))
 		{
 			SwitchState(State.Running);
 		}
-		
-		else if ((player.transform.position.x < transform.position.x && facingDirection > 0) ||
-            (player.transform.position.x > transform.position.x && facingDirection < 0))
+        else if (!playerStats.isInvisible && !GameManager.isDying && (
+            (player.transform.position.x < transform.position.x && facingDirection > 0) ||
+            (player.transform.position.x > transform.position.x && facingDirection < 0)))
         {
             needFlip = true;
             Flip();
@@ -175,7 +174,7 @@ public class GolemController : MonoBehaviour
         else
         {
             needFlip = false;
-            if (player.transform.position.y < 0.5 + transform.position.y && player.transform.position.y > transform.position.y - 0.5)
+            if (!playerStats.isInvisible && !GameManager.isDying && player.transform.position.y < 0.8 + transform.position.y && player.transform.position.y > transform.position.y - 0.8)
                 StartCoroutine(Attack());
         }
     }
@@ -183,11 +182,8 @@ public class GolemController : MonoBehaviour
     private void ExitStandingState()
     {
         animator.SetBool("Standing", false);
-        exitStandingState = true;
     }
-    
 
-    
     // Dead State
 
     private void EnterDeadState()
@@ -195,9 +191,8 @@ public class GolemController : MonoBehaviour
         currentState = State.Dead;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sortingOrder = 4;
-
+		golemStats.isInvulnerable = true;
     }
-    
     
     // other
 
@@ -214,8 +209,6 @@ public class GolemController : MonoBehaviour
             case State.Standing:
                 ExitStandingState();
                 break;
-            default:
-                break;
         }
         
         switch (state)
@@ -229,8 +222,6 @@ public class GolemController : MonoBehaviour
             case State.Standing:
                 EnterStandingState();
                 break;
-            default:
-                break;
         }
 
         currentState = state;
@@ -242,20 +233,16 @@ public class GolemController : MonoBehaviour
         {
             Debug.Log("Golem Attacking");
             attackArea.SetActive(true);
-
-
+            attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
             animator.SetTrigger("isAttacking");
             attackCooldown = true;
             yield return new WaitForSeconds(0.3f);
             attackArea.SetActive(false);
             yield return new WaitForSeconds(golemStats.timeBetweenAttacks);
             attackCooldown = false;
-
         }
-        
     }
 
-    
     private async void Flip()
     {
 		try
@@ -263,8 +250,7 @@ public class GolemController : MonoBehaviour
         	if (!flipWaiting && currentState == State.Standing) //if enemy is in standing state delay the flip
         	{
             	flipWaiting = true;
-            	exitStandingState = false;
-            	await Task.Delay(1200);
+                await Task.Delay(1200);
             	if (needFlip) //  flip only if enemy didn't exit standing state
             	{
                 	facingDirection *= -1;
@@ -272,8 +258,7 @@ public class GolemController : MonoBehaviour
             	}
 
            		flipWaiting = false;
-        	}
-        
+        	}        
         	else if (!(currentState == State.Standing)) //if enemy is not in standing state flip instanly
         	{
             	facingDirection *= -1;
@@ -283,10 +268,6 @@ public class GolemController : MonoBehaviour
 		catch(MissingReferenceException e)
 		{
 			Debug.Log("exceptie golem");
-		}
-
-        
+        }   
     }
-    
-
 }
