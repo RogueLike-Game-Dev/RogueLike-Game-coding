@@ -18,19 +18,9 @@ public class GollemTurretController : MonoBehaviour
     private bool isFiring;
     [SerializeField]
     private bool facingRightOrUp; 
-    private GameObject target;
-    private Animator animator;
-    private EntityStats gollemTurretStats;
-    private SpriteRenderer gollemSprite;
 
     void Start()
     {
-        target = GameObject.Find("Player");
-        animator = GetComponent<Animator>();
-        gollemTurretStats = GetComponent<EntityStats>();
-        gollemSprite = GetComponent<SpriteRenderer>();
-
-        facingRightOrUp = !gollemSprite.flipX; 
         isFiring = false;
     }
 
@@ -67,11 +57,10 @@ public class GollemTurretController : MonoBehaviour
         }
         projectileInst.velocity = new Vector2(acc.x, acc.y);
     }
-    //TODO: for firing upwards/downwards just use x instead of y and viceversa
+
     private IEnumerator Fire(bool facingRightOrUp, int projectileNumber, bool fan, float timeBetweenAttacks)
     {
         isFiring = true;
-        // animator.SetTrigger(IS_FIRING);
         if (!fan) 
         {
             for (int i = 0; i < projectileNumber; i++)

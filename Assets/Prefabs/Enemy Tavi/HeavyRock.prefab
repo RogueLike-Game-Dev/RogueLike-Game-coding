@@ -101,8 +101,9 @@ MonoBehaviour:
   invertXY: 0
   damage: 10
   bounceTimes: -1
-  lifeTime: 10
+  lifeTime: 5
   ignoreEnemyCollisions: 1
+  ignoreCoinCollisions: 1
 --- !u!50 &306049354144883987
 Rigidbody2D:
   serializedVersion: 4

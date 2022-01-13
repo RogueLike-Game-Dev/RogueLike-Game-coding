@@ -389,7 +389,7 @@ Transform:
   - {fileID: 556298358}
   - {fileID: 1210526664}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &32619191
 PrefabInstance:
@@ -3740,7 +3740,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: 9b3cfc62ca324234b9a8d213e89cf1b1, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 99242681ae166e1459201b88bf7d3aef, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (11)
@@ -70647,7 +70647,7 @@ Transform:
   - {fileID: 613915785}
   - {fileID: 2124768801}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &391916899
 PrefabInstance:
@@ -73164,7 +73164,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: fe3169f820572f64499065ed3992b9a9, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -73617,67 +73617,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3965336956220391839, guid: c578e39298355c64c80aadb8b1ae905f, type: 3}
   m_PrefabInstance: {fileID: 570910598}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &572398512
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3662216568215184603, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: jumpForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 37.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184604, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3662216568215184609, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 327a89a0faf92d2489a6b7a6123f975d, type: 3}
 --- !u!1 &572569278
 GameObject:
   m_ObjectHideFlags: 0
@@ -74806,7 +74745,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 613915784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db94fd342712fd4b9fc2badc8303d37, type: 3}
+  m_Script: {fileID: 11500000, guid: 3855ab3971652ec43af4f792791c0035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   breakables: {fileID: 1618464305}
@@ -76825,8 +76764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358d6f8f24b4b9e4eb9056f7a4e8eaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  resetPosition: {x: -6, y: 0, z: 0}
 --- !u!61 &759224906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -79831,6 +79768,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+--- !u!1 &950661987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7887809697933844369, guid: 12df3c1334385c64da87ee99a18ee690, type: 3}
+  m_PrefabInstance: {fileID: 950661986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &953522230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80732,8 +80674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358d6f8f24b4b9e4eb9056f7a4e8eaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  resetPosition: {x: 32, y: -14.5, z: 0}
 --- !u!61 &1040348608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83499,7 +83439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.81
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83590,7 +83530,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: d5ccb64c2febad146accb691a0f53f16, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 0039332ef9c351349a059152e5620978, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret
@@ -84459,7 +84399,7 @@ Transform:
   - {fileID: 382721345}
   - {fileID: 507514232}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1286591074
 PrefabInstance:
@@ -85284,7 +85224,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: fe3169f820572f64499065ed3992b9a9, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -86085,7 +86025,7 @@ RectTransform:
   - {fileID: 144581615}
   - {fileID: 779367655}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -86142,7 +86082,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: fe3169f820572f64499065ed3992b9a9, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -86542,7 +86482,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: 9b3cfc62ca324234b9a8d213e89cf1b1, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 99242681ae166e1459201b88bf7d3aef, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (10)
@@ -86864,11 +86804,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445041114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 358d6f8f24b4b9e4eb9056f7a4e8eaa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 77a31fda412635642a5e648287bf9954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  resetPosition: {x: 122.66, y: 2.5, z: 0}
+  resetPosition: {x: 122, y: 1.5, z: 0}
 --- !u!61 &1445041117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87700,7 +87640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.85
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -88645,7 +88585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87
+      value: -0.64
       objectReference: {fileID: 0}
     - target: {fileID: 7975462431702057042, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -88974,7 +88914,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: 9b3cfc62ca324234b9a8d213e89cf1b1, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 99242681ae166e1459201b88bf7d3aef, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret_H
@@ -89074,7 +89014,7 @@ Transform:
   - {fileID: 261077008}
   - {fileID: 948003229}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1600041799
 PrefabInstance:
@@ -89765,10 +89705,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1647454476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad8cdd51947dab4f8997fd30c0e1dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 399491fd7fa53f044828092a80f34549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelDoor: {fileID: 0}
+  nextLevelDoor: {fileID: 950661987}
 --- !u!1001 &1652631742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91697,7 +91637,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781400126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a93bf26e25d59a4aa24a6a90e47cea3, type: 3}
+  m_Script: {fileID: 11500000, guid: a2a78a3b596c27b49b0ae1c320bc683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TOMController: {fileID: 613915784}
@@ -92463,7 +92403,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: fe3169f820572f64499065ed3992b9a9, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -93179,7 +93119,7 @@ Transform:
   - {fileID: 329410018}
   - {fileID: 412201778}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1864194888
 PrefabInstance:
@@ -93605,7 +93545,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: 9b3cfc62ca324234b9a8d213e89cf1b1, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 99242681ae166e1459201b88bf7d3aef, type: 3}
     - target: {fileID: 7697908248864629773, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: m_Name
       value: GollemTurret (9)
@@ -95726,7 +95666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1993869444 stripped
 Transform:
@@ -96050,7 +95990,7 @@ PrefabInstance:
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 306049354144883987, guid: fe3169f820572f64499065ed3992b9a9, type: 3}
+      objectReference: {fileID: 306049354144883987, guid: 76ae217aeb2492f47994ded652ad5114, type: 3}
     - target: {fileID: 1275876315, guid: 62c7595152cee104591d438e0a88667a, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -97240,7 +97180,7 @@ Transform:
   - {fileID: 200770194}
   - {fileID: 1910705336}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2135903697
 PrefabInstance:
