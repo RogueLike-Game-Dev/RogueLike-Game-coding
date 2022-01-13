@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player; // Need to know if it's facing right or not
-    [SerializeField] private BoxCollider2D boxBounds; // Getting bounds from a square gameObject
+    public BoxCollider2D boxBounds; // Getting bounds from a square gameObject
     private Vector3 smoothPos;
     public float smoothSpeed = 0.5f;
     private Camera mainCamera;

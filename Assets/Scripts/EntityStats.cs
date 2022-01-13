@@ -1,13 +1,9 @@
-using System;
 using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
-    [SerializeField] private int _maxArmor;
-    private int _currentArmor;
-    private int _hpRegen;
     [SerializeField] private int _gold;
     [SerializeField] private int _keys;
     [SerializeField] private int _collectibles;
@@ -32,39 +28,6 @@ public class EntityStats : MonoBehaviour
             OnHPChange?.Invoke();
         }
     }
-    [HideInInspector] public int hpRegen
-    {
-        get { return _hpRegen; }
-        set
-        {
-            if (_hpRegen == value) return;
-            _hpRegen = value;
-            OnHPChange?.Invoke();
-        }
-    }
-    
-    public int maxArmor
-    {
-        get { return _maxArmor; }
-        set
-        {
-            if (_maxArmor == value) return;
-            _maxArmor = value;
-            OnMaxHPChange?.Invoke();
-            OnArmorChange?.Invoke();
-        }
-    }
-    [HideInInspector] public int currentArmor
-    {
-        get { return _currentArmor; }
-        set
-        {
-            if (_currentArmor == value) return;
-            _currentArmor = value;
-            OnHPChange?.Invoke();
-            OnArmorChange?.Invoke();
-        }
-    }
     public int gold //For player: how much gold he has, for enemies, how much gold they drop
     {
         get { return _gold; }
@@ -82,7 +45,6 @@ public class EntityStats : MonoBehaviour
         set {
             if (_keys == value) return;
             _keys = value;
-            RunStats.keysCollected = keys;
         }
     }
     
@@ -110,7 +72,6 @@ public class EntityStats : MonoBehaviour
     [Tooltip("How fast does the entity move")] public float movementSpeed;
     [Tooltip("How much should the player get knocked back when colliding with this entity")] public float knockBackStrength; 
     [Tooltip("Whether Player is invulnerable or not")] public bool isInvulnerable;
-    [Tooltip("Whether Player is invisible or not")] public bool isInvisible;
     [Tooltip("How much time Player should be invulnerable for")] public float TimeOfInvulnerability = 2f;
     [SerializeField] private Animator animator;
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";
@@ -119,11 +80,9 @@ public class EntityStats : MonoBehaviour
     public delegate void OnHPChangeDelegate();
     public delegate void OnMaxHPChangeDelegate();
     public delegate void OnGoldChangeDelegate();
-    public delegate void OnArmorChangeDelegate();
     public event OnHPChangeDelegate OnHPChange;
     public event OnMaxHPChangeDelegate OnMaxHPChange;
     public event OnGoldChangeDelegate OnGoldChange;
-    public event OnArmorChangeDelegate OnArmorChange;
     #endregion
     void Awake()
     {
@@ -139,24 +98,14 @@ public class EntityStats : MonoBehaviour
         {
             if (animator != null && AnimatorHasParameter(animator, deathTriggerKey)) //And has animations + death animation
             {
-                if (gameObject.name == "Player")
-                {
-                    if (TryGetComponent(out Rigidbody2D rigidBody2D))
-                    {
-                        rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-                        GetComponent<Collider2D>().enabled = false;
-                    }
-                }
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
             }
             else //No animations set, just make it inactive
             {
-                if (gameObject.name == "Player")
-                {
-                    GameManager.EndRun();
-                }
+                   if (this.gameObject.name == "Player")
+                        GameManager.EndRun();
 
-                gameObject.SetActive(false);
+                   this.gameObject.SetActive(false);
             }
         }
     }
@@ -200,24 +149,7 @@ public class EntityStats : MonoBehaviour
             Debug.Log("NU ABUZA DE FUNCTIE");
             return;
         }
-
-        if (currentArmor > 0)
-        {
-            if (currentArmor >= amount)
-            {
-                currentArmor -= amount;
-            }
-            else
-            {
-                currentHP -= (amount - currentArmor) / 2;
-                currentArmor = 0;
-            }
-        }
-        else
-        {
-            currentHP = Math.Max(0, currentHP - amount);
-        }
-
+        currentHP -= amount;
         if (animator != null)
         {
             Debug.Log("Called animator key");

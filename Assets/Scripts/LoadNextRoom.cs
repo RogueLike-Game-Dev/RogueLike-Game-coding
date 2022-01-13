@@ -7,27 +7,24 @@ public class LoadNextRoom : MonoBehaviour
     private bool triggered;
     private static int currentSceneIndex;
     private const int minIndex = 1;     // TODO: also include the Boss Scene (minIndex = 0) 
-    private const int maxIndex = 5; 
+    private const int maxIndex = 6; 
     private EntityStats playerStats;
 
     private void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerStats = GameObject.Find("Player").GetComponent<EntityStats>();
-   
     }
 
     private void Update()
     {
         if (triggered)
         {
-            Debug.Log("Player is at next level door");
             if (Input.GetKey(KeyCode.G))
             {
-                Debug.Log("Loading next room");
-                playerStats.gold = RunStats.goldCollected;
                 LoadRoom();
-              
+                playerStats.gold = RunStats.goldCollected;
+                RunStats.remainingHP = playerStats.currentHP;
             }
         }
     }
@@ -36,7 +33,6 @@ public class LoadNextRoom : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player entered next level door trigger");
             triggered = true;
         }
     }

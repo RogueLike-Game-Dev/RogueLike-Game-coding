@@ -8,6 +8,7 @@ public class GollemTurretProjectileController : MonoBehaviour
     public int bounceTimes = 1; //-1 for inifinite bounces
     public float lifeTime = -1; //-1 for infinite life-time
     public bool ignoreEnemyCollisions = true;
+    public bool ignoreCoinCollisions = true;
     private bool isActive; //for ignoring damage to player once it has stopped moving
     private int hasBounced = 0;
     private Rigidbody2D rigidBody2D;
@@ -48,6 +49,14 @@ public class GollemTurretProjectileController : MonoBehaviour
             foreach (GameObject enemy in enemies)
             {
                 Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }  
+        }
+        if (ignoreCoinCollisions)
+        {
+            var coins = GameObject.FindGameObjectsWithTag("Coin");
+            foreach (GameObject coin in coins)
+            {
+                Physics2D.IgnoreCollision(coin.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }  
         }
             

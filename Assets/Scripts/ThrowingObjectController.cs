@@ -4,25 +4,6 @@ using UnityEngine;
 public class ThrowingObjectController : MonoBehaviour
 {
     private bool hitGround;
-    private PurchasedItems purchasedItems;
-    private int damageIncrease;
-
-    private void Start()
-    {
-        purchasedItems = PurchasedItems.getInstance();
-        if (purchasedItems.damageMaxLevel >= 5) // second level of magical damage
-        {
-            damageIncrease = 4;
-        }
-        else if (purchasedItems.damageMaxLevel >= 3)    // first level of magical damage
-        {
-            damageIncrease = 2;
-        }
-        else
-        {
-            damageIncrease = 0;
-        }
-    }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -54,8 +35,6 @@ public class ThrowingObjectController : MonoBehaviour
         {
             damage = 2;
         }
-        
-        damage += damageIncrease;
             
         enemyStats.Damage(damage);
 
