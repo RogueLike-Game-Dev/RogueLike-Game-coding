@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 306049354144883987}
   - component: {fileID: 306049354144883986}
   m_Layer: 0
-  m_Name: HeavyRockNoBounce
+  m_Name: HeavyRockTwoBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,9 +100,10 @@ MonoBehaviour:
   facingRightOrUp: 1
   invertXY: 0
   damage: 10
-  bounceTimes: 0
+  bounceTimes: 2
   lifeTime: 10
   ignoreEnemyCollisions: 1
+  ignoreCoinCollisions: 1
 --- !u!50 &306049354144883987
 Rigidbody2D:
   serializedVersion: 4

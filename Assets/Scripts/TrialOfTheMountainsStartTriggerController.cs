@@ -18,6 +18,7 @@ public class TrialOfTheMountainsStartTriggerController : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             TOMScript.StartTrial();
+            Destroy(transform.gameObject);
         }
     }
 
