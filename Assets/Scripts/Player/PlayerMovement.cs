@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -78,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public static CharacterType characterType;
+
+    private Dictionary<string, KeyCode> keybindDict;
     
     #endregion
     
@@ -195,6 +198,20 @@ public class PlayerMovement : MonoBehaviour
         initialPosition = transform.position;
         
         print("CHARACTER TYPE: " + characterType);
+
+        //manage keybinds
+        keybindDict = new Dictionary<string, KeyCode>();
+
+        keybindDict.Add("Up", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Up", "W")));
+        keybindDict.Add("Left", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "A")));
+        keybindDict.Add("Down", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Down", "S")));
+        keybindDict.Add("Right", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Right", "D")));
+        keybindDict.Add("Attack", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Attack", "Mouse0")));
+        keybindDict.Add("Special Attack", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Special Attack", "Mouse1")));
+        keybindDict.Add("Dash", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Dash", "E")));
+        keybindDict.Add("Interact", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Interact", "G")));
+        keybindDict.Add("Item1", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Item1", "Alpha1")));
+        keybindDict.Add("Item2", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Item2", "Alpha2")));
     }
     
     private void Update()
@@ -238,19 +255,19 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(keybindDict["Special Attack"]))
             SpecialAttack();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(keybindDict["Attack"]))
             StartCoroutine(Attack());
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(keybindDict["Up"]))
         {
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(keybindDict["Dash"]))
         {
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(keybindDict["Down"]))
                 Stomp();
             else
             {
@@ -261,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        if (isOnCollectible && Input.GetKeyDown(KeyCode.G)) 
+        if (isOnCollectible && Input.GetKeyDown(keybindDict["Interact"])) 
         {
             Destroy(collectible);
             playerStats.collectibles++;
@@ -282,7 +299,7 @@ public class PlayerMovement : MonoBehaviour
         // then playerStats.isInvulnerable = true and decrement the number of immunity items
         if (purchasedItems.immunityNr > 0)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && !playerStats.isInvulnerable)
+            if (Input.GetKeyDown(keybindDict["Item1"]) && !playerStats.isInvulnerable)
             {
                 purchasedItems.immunityNr--;
                 StartCoroutine(WaitForImmunity());
@@ -292,7 +309,7 @@ public class PlayerMovement : MonoBehaviour
         // idem immunity
         if (purchasedItems.invisibilityNr > 0)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2) && !playerStats.isInvisible)
+            if (Input.GetKeyDown(keybindDict["Item2"]) && !playerStats.isInvisible)
             {
                 purchasedItems.invisibilityNr--;
                 StartCoroutine(WaitForInvisibility());
