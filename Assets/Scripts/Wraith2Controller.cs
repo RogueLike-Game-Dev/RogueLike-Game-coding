@@ -14,8 +14,8 @@ public class Wraith2Controller : MonoBehaviour
     private float delay = 0.3f;
     SpriteRenderer spriteRenderer;
     [HideInInspector] public bool facingRight = true;
-    private GameObject player;
-    private EntityStats playerStats;
+    GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,22 +27,12 @@ public class Wraith2Controller : MonoBehaviour
         {
             animator = wraith2.GetComponent<Animator>();
         }
-
-        if (player)
-        {
-            playerStats = player.GetComponent<EntityStats>();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerStats.isInvisible || GameManager.isDying)
-        {
-            return;
-        }
-        
-        distance = Mathf.Abs(player.transform.position.x - wraith2.transform.position.x);
+        distance = Mathf.Abs(GameObject.Find("Player").transform.position.x - wraith2.transform.position.x);
         //Debug.Log(distance);
         if (distance < 7f)
         {
