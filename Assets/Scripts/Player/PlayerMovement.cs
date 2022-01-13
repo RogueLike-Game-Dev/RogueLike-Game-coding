@@ -15,9 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 3)] public int maxDashes = 2;
     [SerializeField] private GameObject attackArea;
     [SerializeField] private Transform feetPosition;
-	[SerializeField] private GameObject lightningEffect; 
     SpriteRenderer spriteRenderer;
-    private Color tempColor;
     #endregion
 
     #region auxVariables
@@ -48,33 +46,18 @@ public class PlayerMovement : MonoBehaviour
     private const float throwingCooldownTime = 10.0f;
     private bool throwingCooldown;
 
-	private const float lightningCooldownTime = 10.0f;
-    private bool lightningCooldown;
-
     private string fallingTriggerKey = "isFalling";
     private string movingBoolKey = "isMoving";
     private string throwingTriggerKey = "isThrowing";
     private string attackingTriggerKey = "isAttacking";
     private string jumpingTriggerKey = "isJumping";
     private string groundedBoolKey = "isGrounded";
-
-    private PurchasedItems purchasedItems;
-    private const float speedIncrease = 1.6f;
-    private const int damageIncrease = 10;
-    private const int hpIncrease = 200;
-    private const int armorIncrease = 100;
-    private const int hpRegenIncrease = 5;
-
-    private bool canRegenHp = true;
-    private bool resetAnimation;
-    public Vector3 initialPosition;
-
+    
     public enum CharacterType
     {
         Zhax,       // Diana's player
         Demetria,   // Radu's player
         Esteros,    // Paula's player
-        Lyn,		// Vlad's player
     }
 
     public static CharacterType characterType;
@@ -86,96 +69,14 @@ public class PlayerMovement : MonoBehaviour
     { 
         //Get references
         playerStats = GetComponent<EntityStats>();
+        moveSpeed = playerStats.movementSpeed;
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerStats.gold = RunStats.goldCollected;
         playerStats.enemiesKilled = RunStats.enemiesKilled;
-       
-        
-        purchasedItems = PurchasedItems.getInstance();
-        
-        // manage armor
-        if (purchasedItems.armorMaxLevel >= 3)
-        {
-            playerStats.maxArmor += 3 * armorIncrease;
-        }
-        else if (purchasedItems.armorMaxLevel >= 2)
-        {
-            playerStats.maxArmor += 2 * armorIncrease;
-        }
-        else if (purchasedItems.armorMaxLevel >= 1)
-        {
-            playerStats.maxArmor += armorIncrease;
-        }
-
-        playerStats.currentArmor = playerStats.maxArmor;
-        
-        // manage hp
-        if (purchasedItems.hpMaxLevel >= 4)
-        {
-            playerStats.maxHP += 3 * hpIncrease;
-        }
-        else if (purchasedItems.hpMaxLevel >= 2)
-        {
-            playerStats.maxHP += 2 * hpIncrease;
-        }
-        else if (purchasedItems.hpMaxLevel >= 1)
-        {
-            playerStats.maxHP += hpIncrease;
-        }
-        
-        InitialValues.remainingHP = playerStats.maxHP; // remove this line when InitialValues.remainingHP is calculated for the first time
-
-        // manage hp regen
-        if (purchasedItems.hpMaxLevel >= 6)
-        {
-            playerStats.hpRegen = 3 * hpRegenIncrease;
-        }
-        else if (purchasedItems.hpMaxLevel >= 5)
-        {
-            playerStats.hpRegen = 2 * hpRegenIncrease;
-        }
-        else if (purchasedItems.hpMaxLevel >= 3)
-        {
-            playerStats.hpRegen = hpRegenIncrease;
-        }
-
-        // manage damage
-        if (purchasedItems.damageMaxLevel >= 4)
-        {
-            playerStats.DMG += 3 * damageIncrease;
-        }
-        else if (purchasedItems.damageMaxLevel >= 2)
-        {
-            playerStats.DMG += 2 * damageIncrease;
-        }
-        else if (purchasedItems.damageMaxLevel >= 1)
-        {
-            playerStats.DMG += damageIncrease;
-        }
-        
-        // manage speed and triple jump
-        if (purchasedItems.speedMaxLevel >= 3)
-        {
-            maxJumps = 3;
-        }
-        
-        if (purchasedItems.speedMaxLevel >= 4)
-        {
-            playerStats.movementSpeed += 2.5f * speedIncrease;
-        }
-        else if (purchasedItems.speedMaxLevel >= 2)
-        {
-            playerStats.movementSpeed += 1.6f * speedIncrease;
-        }
-        else if (purchasedItems.speedMaxLevel >= 1)
-        {
-            playerStats.movementSpeed += speedIncrease;
-        }
-        
-        moveSpeed = playerStats.movementSpeed;
+        playerStats.currentHP = RunStats.remainingHP;
 
         if (characterType.Equals( CharacterType.Esteros))
         {
@@ -190,37 +91,14 @@ public class PlayerMovement : MonoBehaviour
         }
         
         attackArea.SetActive(false);
-        tempColor = spriteRenderer.color;
-
-        initialPosition = transform.position;
         
-        print("CHARACTER TYPE: " + characterType);
+        print("CHARACTER TYPE:" + characterType);
     }
     
     private void Update()
     {
-        if (GameManager.isDying)
-        {
-            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            GetComponent<Collider2D>().enabled = false;
-            return;
-        }
-        
-        if (GameManager.wasRevived && !resetAnimation)
-        {
-            animator.Play("Idle");
-            GetComponent<Collider2D>().enabled = true;
-            rigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-            resetAnimation = true;
-        }
-
-        if (playerStats.currentHP < playerStats.maxHP && canRegenHp)
-        {
-            StartCoroutine(HpRegen());
-        }
-        
         //Input handling in Update, force handling in FixedUpdate 
-      
+        RunStats.remainingHP = playerStats.currentHP;
         
         moveDirection = Input.GetAxis("Horizontal");
         if (moveDirection > 0 && !facingRight)
@@ -270,50 +148,9 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody2D.velocity.y < 0)
         {
             animator.SetTrigger(fallingTriggerKey);
-            if (transform.position.y <= -60.0 && !GameManager.isDying)
-            {
-                animator.SetTrigger("isDying");
+            if (transform.position.y <= -30.0)
                 GameManager.EndRun();
-            }
-        }
-        
-        // check if player has Immunity item bought
-        // if yes, then check if the user activates it (presses a numeric key)
-        // then playerStats.isInvulnerable = true and decrement the number of immunity items
-        if (purchasedItems.immunityNr > 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && !playerStats.isInvulnerable)
-            {
-                purchasedItems.immunityNr--;
-                StartCoroutine(WaitForImmunity());
-            }
-        }
-
-        // idem immunity
-        if (purchasedItems.invisibilityNr > 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha2) && !playerStats.isInvisible)
-            {
-                purchasedItems.invisibilityNr--;
-                StartCoroutine(WaitForInvisibility());
-            }
-        }
-
-        if (GameManager.makeInvulnerableAfterRevive)
-        {
-            StartCoroutine(WaitForImmunity());
-            GameManager.makeInvulnerableAfterRevive = false;
-        }
-    }
-
-    private IEnumerator HpRegen()
-    {
-        if (playerStats.currentHP > 0)
-        {
-            playerStats.Heal(playerStats.hpRegen);
-            canRegenHp = false;
-            yield return new WaitForSeconds(1.0f);
-            canRegenHp = true;
+                //animator.SetTrigger("isDying");
         }
     }
 
@@ -356,10 +193,6 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(AttackZhax());
         }
-		else if (characterType.Equals(CharacterType.Lyn))
-        {
-            StartCoroutine(SpecialAbilityLyn());
-        }
     }
     private IEnumerator Throw()
     {
@@ -386,7 +219,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Attacking");
             attackArea.SetActive(true);
-            attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
 
             animator.SetTrigger(attackingTriggerKey);
             attackCooldown = true;
@@ -400,13 +232,11 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator AttackEsteros()
     {
-        playerStats.isInvulnerable = true;
         bubbleShield.SetActive(true);
         bubbleShieldActive = true;
         yield return new WaitForSeconds(3f);
         bubbleShield.SetActive(false);
         bubbleShieldActive = false;
-        playerStats.isInvulnerable = false;
     }
 
     private IEnumerator AttackZhax()
@@ -444,56 +274,6 @@ public class PlayerMovement : MonoBehaviour
             print("Throwing on cooldown");
         }
     }
-
-  private IEnumerator SpecialAbilityLyn()
-    {
-        if (!lightningCooldown)
-        {
-            
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			bool ok = false;		 
-			foreach (GameObject enemy in enemies)
-            {
-                   if (isNear(gameObject, enemy))
-                   {
-                        	Debug.Log(enemy.name + " is struck by lightning");
-                        	Instantiate(lightningEffect, enemy.transform.position, enemy.transform.rotation).transform.SetParent(enemy.transform);
-                        	enemy.GetComponent<EntityStats>().Damage(2*playerStats.DMG);
-							ok = true;
-                        
-                    }
-             } 
-			if (!ok)
-			{	
-			 	if (!isKnockedback && !isDashing)
-				{
-				
-				
-					rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
-            		rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            		animator.SetTrigger(jumpingTriggerKey);
-            		isGrounded = false;
-            		animator.SetBool(groundedBoolKey, isGrounded);
-				
-				}
-				else 
-				{
-					yield return null;
-				}
-			}
-
-            lightningCooldown = true;
-            yield return new WaitForSeconds(lightningCooldownTime);
-            lightningCooldown = false;
-            
-        }
-        else
-        {
-            print("Special ability on cooldown");
-        }
-    }
-
-	
 
     private void Jump()
     {
@@ -592,7 +372,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 dir = contactPoint.point - playerPosition;
         
         if (collisionStats != null && playerStats.isInvulnerable)
-        {
+        { 
             if (characterType.Equals(CharacterType.Esteros) && bubbleShieldActive)
             {
                 if (!collision.gameObject.CompareTag("Enemy"))
@@ -601,9 +381,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collisionStats != null)
         {
-            
+            if (collision.gameObject.name.Contains("Wraith"))
+            {
                 playerStats.Damage(collisionStats.DMG);
-            
+            }
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
@@ -623,8 +404,8 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool(groundedBoolKey, isGrounded); 
                 }
                 // Add a very small amount of knockBack on collision with walls.
-                else
-                    StartCoroutine(KnockBack(dir, 2f, 0.2f));
+                //else
+                    //StartCoroutine(KnockBack(new Vector2(0, -dir.y), 13f, 0.005f));
                 
         }
         else Debug.Log("Player collided with: "+collision.gameObject.name); 
@@ -731,9 +512,8 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Maximised HP");
             }
         }
-        else if (collision.gameObject.CompareTag("Lava"))
+        else if (collision.gameObject.CompareTag("Lava")) 
         {
-            playerStats.currentArmor = 0;   // the armor melts and then the player dies
             playerStats.Damage(playerStats.currentHP);
             Debug.Log("You have died!");
         }
@@ -794,35 +574,5 @@ public class PlayerMovement : MonoBehaviour
     public void SetDoubleHeal(bool val)
     {
         doubleHeal = val;
-    }
-
-	private bool isNear(GameObject player, GameObject ob)
-    {
-        return ((player.transform.position.x + 7 > ob.transform.position.x) &&
-                (player.transform.position.x - 7 < ob.transform.position.x) &&
-                (player.transform.position.y + 7 > ob.transform.position.y) &&
-                (player.transform.position.y - 7 < ob.transform.position.y));
-    }
-
-    private IEnumerator WaitForImmunity()
-    {
-        playerStats.isInvulnerable = true;
-        tempColor = new Color(1, 0.92f, 0, spriteRenderer.color.a);
-        spriteRenderer.color = tempColor;
-        yield return new WaitForSeconds(5.0f);
-        tempColor = new Color(1, 1, 1, spriteRenderer.color.a);
-        spriteRenderer.color = tempColor;
-        playerStats.isInvulnerable = false;
-    }
-
-    private IEnumerator WaitForInvisibility()
-    {
-        playerStats.isInvisible = true;
-        tempColor.a = 0.4f;
-        spriteRenderer.color = tempColor; 
-        yield return new WaitForSeconds(5.0f);
-        tempColor.a = 1.0f;
-        spriteRenderer.color = tempColor; 
-        playerStats.isInvisible = false;
     }
 }

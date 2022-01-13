@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 8479930070870104175}
   m_Layer: 0
   m_Name: PatrollingGolem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHP: 100
-  _maxArmor: 0
   _gold: 0
   _keys: 0
   _collectibles: 0
@@ -249,7 +248,6 @@ MonoBehaviour:
   movementSpeed: 1
   knockBackStrength: 0
   isInvulnerable: 0
-  isInvisible: 0
   TimeOfInvulnerability: 2
   animator: {fileID: 8479930071973681135}
   hurtTriggerKey: isHurt
