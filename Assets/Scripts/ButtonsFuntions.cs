@@ -38,6 +38,8 @@ public class ButtonsFuntions : MonoBehaviour
     
     public void startGameAfterDying()
     {
+        DateTime startPlayingTime = System.DateTime.Now;
+        RunStats.startTime = startPlayingTime.ToString();
         SaveLoadSystem.SaveRun(); //save previous run
         LoadNextRoom.LoadRoom();
     }
@@ -45,7 +47,16 @@ public class ButtonsFuntions : MonoBehaviour
     public void LoadShop()
     {
         SceneManager.LoadScene("ShopScene");
-        
+    }
+    
+    public void LoadChooseCharacterScene()
+    {
+        SceneManager.LoadScene("ChooseCharacterScene");
+    }
+    
+    public void LoadStartScene()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 
     public void CancelBanner()

@@ -466,43 +466,37 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!lightningCooldown)
         {
-            
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			bool ok = false;		 
 			foreach (GameObject enemy in enemies)
             {
-                   if (isNear(gameObject, enemy))
-                   {
-                        	Debug.Log(enemy.name + " is struck by lightning");
-                        	Instantiate(lightningEffect, enemy.transform.position, enemy.transform.rotation).transform.SetParent(enemy.transform);
-                        	enemy.GetComponent<EntityStats>().Damage(2*playerStats.DMG);
-							ok = true;
-                        
-                    }
-             } 
+                if (isNear(gameObject, enemy))
+                {
+                    Debug.Log(enemy.name + " is struck by lightning");
+                    Instantiate(lightningEffect, enemy.transform.position, enemy.transform.rotation).transform.SetParent(enemy.transform);
+                    enemy.GetComponent<EntityStats>().Damage(2*playerStats.DMG);
+                    ok = true;
+                }
+            } 
 			if (!ok)
 			{	
 			 	if (!isKnockedback && !isDashing)
 				{
-				
-				
-					rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
+                    rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             		rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             		animator.SetTrigger(jumpingTriggerKey);
             		isGrounded = false;
             		animator.SetBool(groundedBoolKey, isGrounded);
-				
-				}
+                }
 				else 
 				{
 					yield return null;
 				}
 			}
-
+            
             lightningCooldown = true;
             yield return new WaitForSeconds(lightningCooldownTime);
             lightningCooldown = false;
-            
         }
         else
         {
