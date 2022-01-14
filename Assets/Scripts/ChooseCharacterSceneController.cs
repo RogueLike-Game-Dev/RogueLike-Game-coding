@@ -11,6 +11,8 @@ public class ChooseCharacterSceneController : MonoBehaviour
     private Text descriptionText;
     private int index;
 
+    private int chosenCharacterIndex = -1;
+
     private void Start()
     {
         nameText = GameObject.Find("Name").GetComponent<Text>();
@@ -49,5 +51,38 @@ public class ChooseCharacterSceneController : MonoBehaviour
         //     nameText.text = "Choose";
         //     
         // }
+    }
+
+    public void UpdateChosenCharacter()
+    {
+        if (index == 4)
+        {
+            chosenCharacterIndex = Random.Range(0, 4);
+        }
+        else
+        {
+            chosenCharacterIndex = index;
+        }
+
+        SetChosenCharacter(chosenCharacterIndex);
+    }
+
+    private void SetChosenCharacter(int idx)
+    {
+        switch (idx)
+        {
+            case 0:
+                PlayerMovement.characterType = PlayerMovement.CharacterType.Zhax;
+                break;
+            case 1:
+                PlayerMovement.characterType = PlayerMovement.CharacterType.Demetria;
+                break;
+            case 2:
+                PlayerMovement.characterType = PlayerMovement.CharacterType.Esteros;
+                break;
+            case 3:
+                PlayerMovement.characterType = PlayerMovement.CharacterType.Lyn;
+                break;
+        }
     }
 }
