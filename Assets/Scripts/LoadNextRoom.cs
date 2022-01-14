@@ -6,6 +6,7 @@ public class LoadNextRoom : MonoBehaviour
 {
     private bool triggered;
     private static int currentSceneIndex;
+    private static int roomsCreated = 0;
     private const int minIndex = 1;     // TODO: also include the Boss Scene (minIndex = 0) 
     private const int maxIndex = 5; 
     private EntityStats playerStats;
@@ -51,6 +52,10 @@ public class LoadNextRoom : MonoBehaviour
 
     public static void LoadRoom()
     {
+        roomsCreated += 1;
+        if (Random.Range(0, 1) > (1f / roomsCreated))
+        { SceneManager.LoadScene("BossScene");
+        return; }
         var sceneIndex = Random.Range(minIndex, maxIndex);
         while (sceneIndex == currentSceneIndex)
         {

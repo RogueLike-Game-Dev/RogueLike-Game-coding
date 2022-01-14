@@ -43,6 +43,7 @@ public class BossAgent : Agent
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         attackArea.SetActive(false);
+        enemyTransform = GameObject.Find("Player").transform;
     }
 
     public override void CollectObservations(VectorSensor sensor)
