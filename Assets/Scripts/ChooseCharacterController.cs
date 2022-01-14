@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChooseCharacterController : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class ChooseCharacterController : MonoBehaviour
     private bool mouseOnCharacter;
     private Animator animator;
 
-    // Update is called once per frame
+    public static int index = -1;
+
     void Update()
     {
         if (player != null && !isBackToInitialPosition && !mouseOnCharacter)
@@ -66,7 +68,9 @@ public class ChooseCharacterController : MonoBehaviour
         var playerPosition = Vector3.MoveTowards(currentPlayerPosition, targetPosition, speed * Time.deltaTime);
 
         player.transform.localPosition = playerPosition;
-
+        
+        var podiumName = transform.GetChild(1).gameObject.name;
+        index = Int32.Parse(podiumName.Substring(podiumName.Length - 1)) - 1;
     }
 
     private void OnMouseExit()
@@ -76,5 +80,7 @@ public class ChooseCharacterController : MonoBehaviour
         
         mouseOnCharacter = false;
         transform.GetChild(2).gameObject.SetActive(false);
+
+        index = -1;
     }
 }
