@@ -11,7 +11,8 @@ public class ChooseCharacterSceneController : MonoBehaviour
     private Text descriptionText;
     private int index;
 
-    private int chosenCharacterIndex = -1;
+    private int chosenCharacterIndex;
+    private bool randomSelected;
 
     private void Start()
     {
@@ -46,11 +47,19 @@ public class ChooseCharacterSceneController : MonoBehaviour
             nameText.text = characterNames[index];
             descriptionText.text = characterDescriptions[index];
         }
-        // else
-        // {
-        //     nameText.text = "Choose";
-        //     
-        // }
+        else
+        {
+            if (!randomSelected)
+            {
+                nameText.text = characterNames[chosenCharacterIndex];
+                descriptionText.text = characterDescriptions[chosenCharacterIndex];
+            }
+            else
+            {
+                nameText.text = characterNames[4];
+                descriptionText.text = characterDescriptions[4];
+            }
+        }
     }
 
     public void UpdateChosenCharacter()
@@ -58,13 +67,16 @@ public class ChooseCharacterSceneController : MonoBehaviour
         if (index == 4)
         {
             chosenCharacterIndex = Random.Range(0, 4);
+            randomSelected = true;
         }
         else
         {
             chosenCharacterIndex = index;
+            randomSelected = false;
         }
 
         SetChosenCharacter(chosenCharacterIndex);
+        UpdatePodiumOutline(index);
     }
 
     private void SetChosenCharacter(int idx)
@@ -84,5 +96,17 @@ public class ChooseCharacterSceneController : MonoBehaviour
                 PlayerMovement.characterType = PlayerMovement.CharacterType.Lyn;
                 break;
         }
+    }
+
+    private void UpdatePodiumOutline(int idx)
+    {
+        var parentObject = GameObject.Find("Podium_Outlines");
+
+        for (int i = 0; i < parentObject.transform.childCount; i++)
+        {
+            parentObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        
+        parentObject.transform.GetChild(idx).gameObject.SetActive(true);
     }
 }
