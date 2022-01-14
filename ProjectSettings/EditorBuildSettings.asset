@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneTavi.unity
     guid: 1b3d55926d272e448b777c815a4e622c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SampleScenePaula.unity
     guid: 855a49a7c4cd5e94f91550a30edd26a1
@@ -35,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: c070ad754dc39f94b8b4954bfda137b2
+  - enabled: 1
+    path: Assets/Scenes/ChooseCharacterScene.unity
+    guid: f0614965623ff414da6d83f8b049ea94
   m_configObjects: {}

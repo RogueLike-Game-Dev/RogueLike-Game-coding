@@ -27,13 +27,12 @@ public class ChooseCharacterSceneController : MonoBehaviour
 
         characterDescriptions = new[]
         {
-            "Zhax description",
-            "Demetria description",
-            "Esteros description",
-            "Lyn description",
-            "Random description"
+            "Don't be fooled by the small size Zhax the Satyr, because he can, and will, use everything in his power to destroy his enemies. They should watch out for object flying towards them, they may have angered him.",
+            "Although Demetria might still be a rookie in the arts of the arcane, her powerful fireball assures she won't go down without a fight.",
+            "Esteros the Mage is a powerful being which can manipulate object around him. He can destroy objects on a whim for his safety.",
+            "Lyn wields the power of lighting to bring down on his enemies. Although it may seem underwhelming, I wouldn't like to be on the receiving end of the lighting strike.",
+            "If you cannot decide between this amazing choice of heroes, or simply want to test your luck, this option is just for you!"
         };
-
     }
 
     void Update()
