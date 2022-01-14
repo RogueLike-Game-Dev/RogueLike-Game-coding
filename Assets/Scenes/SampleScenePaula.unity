@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 27.119019, y: -71.81903}
-  m_SizeDelta: {x: 25, y: 30}
+  m_AnchoredPosition: {x: 44.14096, y: -71.81903}
+  m_SizeDelta: {x: 140.2918, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &45586455
 MonoBehaviour:
@@ -5881,8 +5881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -69.599976, y: -72.20001}
-  m_SizeDelta: {x: 25, y: 30}
+  m_AnchoredPosition: {x: -42.422028, y: -72.20001}
+  m_SizeDelta: {x: 134.2843, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1130192727
 MonoBehaviour:
@@ -8107,6 +8107,8 @@ MonoBehaviour:
   armorDisplay: {fileID: 1997686786}
   immunityDisplay: {fileID: 1501456440}
   invisibilityDisplay: {fileID: 1071470359}
+  immunityKey: {fileID: 45586455}
+  invisibilityKey: {fileID: 1130192727}
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.9538552, g: 0.12905669, b: 0.008546092, a: 1}

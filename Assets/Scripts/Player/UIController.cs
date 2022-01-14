@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text armorDisplay;
     [SerializeField] private Text immunityDisplay;
     [SerializeField] private Text invisibilityDisplay;
+    [SerializeField] private Text immunityKey;
+    [SerializeField] private Text invisibilityKey;
 
     public Gradient hpGradient;
 
@@ -32,6 +34,9 @@ public class UIController : MonoBehaviour
         playerStats.OnMaxHPChange += PlayerStats_OnMaxHPChange;
         playerStats.OnGoldChange += PlayerStats_OnGoldChange;
         playerStats.OnArmorChange += PlayerStats_OnArmorChange;
+
+        immunityKey.text = System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Item1", "Alpha1")).ToString();
+        invisibilityKey.text = System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Item2", "Alpha2")).ToString();
     }
     
     private void Start()
