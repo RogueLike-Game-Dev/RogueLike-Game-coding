@@ -52,6 +52,7 @@ public class LoadNextRoom : MonoBehaviour
 
     public static void LoadRoom()
     {
+      
         roomsCreated += 1;
         if (Random.Range(0, 1) > (1f / roomsCreated))
         { SceneManager.LoadScene("BossScene");

@@ -93,7 +93,7 @@ public static class SaveLoadSystem
 
         public static SaveData LoadRun(string selectedSlot)
         {
-
+        Debug.Log(runsFolderPath);
                 if (File.Exists(runsFolderPath + "/" + selectedSlot))
                 {
                         BinaryFormatter formatter = new BinaryFormatter();

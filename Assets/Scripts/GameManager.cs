@@ -182,8 +182,10 @@ public class GameManager : MonoBehaviour
         {
             string[] subs  = RunStats.playedTime.Split(' ');
             List <int> time = new List<int>(); //h min sec
+            Debug.Log("GAME MANAGER SAVING TIME 1");
             foreach (string str in subs)
             {
+                Debug.Log(str);
                 int nr = 0;
                 if (int.TryParse(str, out nr))
                 {
@@ -203,7 +205,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Played Time " + RunStats.playedTime);
         }
 
-
+        DateTime startPlayingTime = System.DateTime.Now;
+        RunStats.startTime = startPlayingTime.ToString();
+        SaveLoadSystem.SaveRun(); //save previous run
         SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
     }
 

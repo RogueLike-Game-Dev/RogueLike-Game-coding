@@ -89,8 +89,11 @@ public class ButtonsFuntions : MonoBehaviour
         int slotNo = 0;
         foreach (SaveData run in savedRuns)
         {
-            
-            string text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " pesos collected";
+            string text;
+            if (run.playedTime != "")
+                text = run.startTime + ", " + run.playedTime + " played, " + run.goldCollected + " pesos collected";
+            else
+                text = run.startTime + ", " + "not played, " + run.goldCollected + " pesos collected";
             GameObject slot = saveSlots[slotNo];
             slot.SetActive(true);
             slot.GetComponentInChildren<Text>().text = text;

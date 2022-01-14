@@ -22,7 +22,12 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region auxVariables
-
+    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip dashClip;
+    [SerializeField] private AudioClip attackClip;
+    [SerializeField] private AudioClip damaged;
+    [SerializeField] private AudioClip coinCollected;
+    private AudioSource source;
     private Rigidbody2D rigidBody2D;
 	private bool doubleCoins;
 
@@ -86,8 +91,9 @@ public class PlayerMovement : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         //Get references
+        source = GetComponent<AudioSource>();
         playerStats = GetComponent<EntityStats>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -361,6 +367,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpecialAttack()
     {
+        source.PlayOneShot(attackClip);
         if (characterType.Equals(CharacterType.Demetria))
         {
             StartCoroutine(Throw());
@@ -401,6 +408,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!attackCooldown && !dialogueActive)
         {
+            source.PlayOneShot(attackClip);
             Debug.Log("Attacking");
             attackArea.SetActive(true);
             attackArea.GetComponent<AttackAreaController>().SetFirstAttack(true);
@@ -512,6 +520,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         if (isGrounded || jumpCount < maxJumps)
         {
+            source.PlayOneShot(jump);
             rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
             rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetTrigger(jumpingTriggerKey);
@@ -554,6 +563,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator Dash()
     {
+        source.PlayOneShot(dashClip);
         isDashing = true;
         rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
 
@@ -612,7 +622,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collisionStats != null)
         {
-            
+            source.PlayOneShot(damaged);
                 playerStats.Damage(collisionStats.DMG);
             
 
@@ -645,6 +655,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin")) //Picked up a coin
         {
+            source.PlayOneShot(coinCollected);
             collision.gameObject.SetActive(false);
             RunStats.goldCollected++;
             playerStats.gold++;

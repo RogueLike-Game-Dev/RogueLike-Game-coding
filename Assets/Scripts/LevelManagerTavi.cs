@@ -15,7 +15,7 @@ public class LevelManagerTavi : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<EntityStats>();
-        player.transform.position = new Vector3(0f, -1.44f, 0.0f);
+        player.transform.position = new Vector3(0f, 0, 0.0f);
         player.GetComponent<PlayerMovement>().jumpForce = 16;
 
         mainCamera = player.transform.GetChild(0).gameObject;
