@@ -2,6 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7342ef19-61a8-40a6-a611-ad74d9367d1b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_1/Unity Package.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_1/Unity Package/Golem.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_2/Unity Package.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_2/Unity Package/Golem.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_3/Unity Package.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Characters/Golem_3/Unity Package/Golem.unitypackage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Animations/SatyrAnimations/Satyr.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Animations/SatyrAnimations/Satyr.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_1/Animations/Dying.anim" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_1/Animations/Dying.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_1/Animations/PlayerAnimation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_1/Animations/PlayerAnimation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_2/Animations/0_Fallen_Angels_Dying_000.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_2/Animations/0_Fallen_Angels_Dying_000.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_2/Animations/Dying.anim" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_2/Animations/Dying.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/Dying.anim" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/Dying.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/Hurt.anim" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/Hurt.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/PlayerVladAnimationController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/../Characters/Fallen_Angels_3/Animations/PlayerVladAnimationController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/SceneVlad.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EntityStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EntityStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player/AttackAreaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/AttackAreaController.cs" afterDir="false" />
@@ -66,7 +81,7 @@
       <workItem from="1641389840957" duration="5861000" />
       <workItem from="1641466322710" duration="1032000" />
       <workItem from="1641828813131" duration="13460000" />
-      <workItem from="1642197570369" duration="9879000" />
+      <workItem from="1642197570369" duration="10475000" />
     </task>
     <servers />
   </component>
