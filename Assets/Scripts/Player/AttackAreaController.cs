@@ -11,7 +11,7 @@ public class AttackAreaController : MonoBehaviour
     private bool firstAttack = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("okokokokkkkokokokokoko---------------------");
+        
         if (firstAttack)
         {
             firstAttack = false;

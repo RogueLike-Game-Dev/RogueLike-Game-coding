@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7342ef19-61a8-40a6-a611-ad74d9367d1b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Scripts.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GolemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GolemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LevelControllerVlad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LevelControllerVlad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EntityStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EntityStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player/AttackAreaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/AttackAreaController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
@@ -18,16 +17,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/DefencePlantController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Wraith2Controller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/UIController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EntityStats.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GolemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Player/UIController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EntityStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/PlayerAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/AttackAreaController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Player/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Player/AttackAreaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ObjectPooler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LavaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LevelControllerVlad.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MinotaurController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LevelDiana.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MovingPlatformController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LightningPlantController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,6 +66,7 @@
       <workItem from="1641389840957" duration="5861000" />
       <workItem from="1641466322710" duration="1032000" />
       <workItem from="1641828813131" duration="13460000" />
+      <workItem from="1642197570369" duration="9879000" />
     </task>
     <servers />
   </component>
