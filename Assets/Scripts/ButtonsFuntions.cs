@@ -23,6 +23,11 @@ public class ButtonsFuntions : MonoBehaviour
 
        
     }
+    
+    private void Awake() 
+    {
+        DontDestroyOnLoad(this.gameObject);
+    } 
 
     public void startGame()  //start new game
     {

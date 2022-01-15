@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private static GameObject player;
+    private static GameObject closeBanner;
     private static EntityStats playerStats;
     [SerializeField] private GameObject esterosPrefab;
     [SerializeField] private GameObject demetriaPrefab;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
+        closeBanner = GameObject.Find("CanvasCloseBanner");
         if (player != null)
         {
             playerStats = player.GetComponent<EntityStats>();
@@ -44,6 +46,12 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameObject closeBoard = closeBanner.transform.GetChild(0).gameObject;
+            if(closeBoard) closeBoard.SetActive(true);
+            else Application.Quit();
+        }
 
         if (isDying)
         {
