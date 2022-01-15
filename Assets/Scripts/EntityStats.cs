@@ -115,6 +115,7 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";
     [SerializeField] [Tooltip("Name of the Animator Trigger for Dying animation")] private string deathTriggerKey = "isDying";
+    [SerializeField] [Tooltip("Name of the Animator Trigger for Dying animation")] private string aliveBoolKey = "isAlive";
     #region Events and Delegates
     public delegate void OnHPChangeDelegate();
     public delegate void OnMaxHPChangeDelegate();
@@ -125,6 +126,19 @@ public class EntityStats : MonoBehaviour
     public event OnGoldChangeDelegate OnGoldChange;
     public event OnArmorChangeDelegate OnArmorChange;
     #endregion
+
+	void Update()
+	{
+
+		if(GameManager.wasRevived)
+		{
+				if (animator != null && AnimatorHasParameter(animator, aliveBoolKey))
+				{
+					animator.SetBool(aliveBoolKey,true);
+				}
+		}
+	}
+
     void Awake()
     {
         if (animator == null)
@@ -135,10 +149,18 @@ public class EntityStats : MonoBehaviour
 
     private void EntityStats_OnHPChange()
     {
+		
         if (currentHP <= 0) //If it's supposed to die
         {
+			
             if (animator != null && AnimatorHasParameter(animator, deathTriggerKey)) //And has animations + death animation
             {
+				
+				if (AnimatorHasParameter(animator, aliveBoolKey))
+				{
+					animator.SetBool(aliveBoolKey,false);
+				}
+				
                 animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
                 if (gameObject.name == "Player")
                 {

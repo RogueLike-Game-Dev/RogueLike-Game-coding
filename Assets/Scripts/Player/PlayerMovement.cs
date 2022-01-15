@@ -622,9 +622,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collisionStats != null)
         {
-            source.PlayOneShot(damaged);
-                playerStats.Damage(collisionStats.DMG);
             
+            if (collision.otherCollider.name != "AttackArea" && collision.contacts[0].collider.name != "AttackArea")
+            {
+                source.PlayOneShot(damaged);
+                playerStats.Damage(collisionStats.DMG);
+            }
+
 
             // We get the opposite (-Vector3) and normalize it
             dir = -dir.normalized;
