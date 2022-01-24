@@ -3502,9 +3502,9 @@ MonoBehaviour:
   dashCooldown: 0.5
   maxJumps: 2
   maxDashes: 2
-  feetPosition: {fileID: 0}
-  enemyTransform: {fileID: 0}
-  facingRight: 1
+  feetPosition: {fileID: 2875989247852948355}
+  enemyTransform: {fileID: 44769548932737906}
+  facingRight: 0
 --- !u!1 &8384708417944494774
 GameObject:
   m_ObjectHideFlags: 0

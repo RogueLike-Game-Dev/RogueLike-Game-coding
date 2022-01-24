@@ -457,27 +457,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 132184634044613860, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-      propertyPath: feetPosition
-      value: 
-      objectReference: {fileID: 44769549288602450}
-    - target: {fileID: 132184634044613860, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 44769549288602449}
     - target: {fileID: 2875989248789259123, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
       propertyPath: m_BehaviorType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
---- !u!4 &44769549288602449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 44769548932737906, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-  m_PrefabInstance: {fileID: 44769549288602448}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &44769549288602450 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2875989247852948355, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-  m_PrefabInstance: {fileID: 44769549288602448}
-  m_PrefabAsset: {fileID: 0}
