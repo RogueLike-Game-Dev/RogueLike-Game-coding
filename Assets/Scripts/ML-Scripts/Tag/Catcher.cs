@@ -174,6 +174,12 @@ public class Catcher : Agent
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
+
+        if (collision.gameObject.transform == enemyTransform)
+        {
+            AddReward(+2f); // Catched the runner
+        }
+        
         if (collisionStats != null)
         {
             playerStats.Damage(collisionStats.DMG);
