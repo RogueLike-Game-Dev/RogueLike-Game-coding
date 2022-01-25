@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245199204}
   - component: {fileID: 245199205}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FeetPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,8 +187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500412302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.52, y: -8, z: 10}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.8748, y: -8.0831, z: 10}
+  m_LocalScale: {x: 1.1572, y: 1.088, z: 1}
   m_Children:
   - {fileID: 290291666}
   - {fileID: 245199204}
@@ -235,12 +235,12 @@ SpriteRenderer:
   m_SortingLayerID: 1385145095
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a45c38cc7904fb145a15dfec2d9e12bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34231c00130b9694f9bf641c9836707c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8125, y: 2.8125}
+  m_Size: {x: 2.7692308, y: 1.8846154}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -256,7 +256,7 @@ Animator:
   m_GameObject: {fileID: 1500412302}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a9dfd0559a879a84caacf6bee3db7d34, type: 2}
+  m_Controller: {fileID: 9100000, guid: d935638ce7514204ea0bdbfec886332e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -277,7 +277,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2.7727594
+  m_Mass: 3.4909983
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
@@ -303,8 +303,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.8125, y: 2.8125}
-    newSize: {x: 2.8125, y: 2.8125}
+    oldSize: {x: 2.7692308, y: 1.8846154}
+    newSize: {x: 2.7692308, y: 1.8846154}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: a8e2afbc42edab04a8b7f4f33b123c5d, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: BossAgent
@@ -402,7 +402,7 @@ MonoBehaviour:
   feetPosition: {fileID: 245199204}
   envController: {fileID: 903141733}
   enemyTransform: {fileID: 2843633187331027349}
-  facingRight: 0
+  facingRight: 1
 --- !u!114 &1777336590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843633186012986711}
   - component: {fileID: 2843633186012986710}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FeetPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 2843633186443447387}
   - component: {fileID: 2843633186443447386}
   - component: {fileID: 2843633186443447385}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 1359075897}
   - component: {fileID: 1359075899}
   - component: {fileID: 135297960}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
