@@ -461,9 +461,5 @@ PrefabInstance:
       propertyPath: m_BehaviorType
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2875989248789259126, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-      propertyPath: envController
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f599568aa3952ef4293e4c61680f112b, type: 3}

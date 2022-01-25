@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 2875989248789259127}
-  agent: {fileID: 2875989248789259126}
+  agent: {fileID: 0}
 --- !u!1 &2875989247852948356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,8 +3247,8 @@ GameObject:
   - component: {fileID: 2875989248789259127}
   - component: {fileID: 2875989248789259123}
   - component: {fileID: 2875989248789259125}
-  - component: {fileID: 2875989248789259126}
   - component: {fileID: 2875989248512842729}
+  - component: {fileID: 132184634044613860}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -3312,7 +3312,7 @@ SpriteRenderer:
   m_SortingLayerID: 1385145095
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a45c38cc7904fb145a15dfec2d9e12bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 541ceb7ca692bd74e9477edfc57c5a61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3333,7 +3333,7 @@ Animator:
   m_GameObject: {fileID: 2875989248789259113}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a9dfd0559a879a84caacf6bee3db7d34, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7b5307a140fd9344da0c9cf6e8765309, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3454,32 +3454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
---- !u!114 &2875989248789259126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2875989248789259113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11bb41fbc25ef96459ea5439713690e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  jumpForce: 5
-  dashForce: 20
-  dashCooldown: 0.5
-  maxJumps: 2
-  maxDashes: 2
-  attackArea: {fileID: 2875989247579268406}
-  feetPosition: {fileID: 2875989247852948355}
-  envController: {fileID: 0}
-  enemyTransform: {fileID: 44769548932737906}
-  facingRight: 0
 --- !u!114 &2875989248512842729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3507,6 +3481,30 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &132184634044613860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875989248789259113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982a774a7437f2d4c9a3c44bf7db5a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  jumpForce: 2
+  dashForce: 20
+  dashCooldown: 0.5
+  maxJumps: 2
+  maxDashes: 2
+  feetPosition: {fileID: 2875989247852948355}
+  enemyTransform: {fileID: 44769548932737906}
+  facingRight: 0
 --- !u!1 &8384708417944494774
 GameObject:
   m_ObjectHideFlags: 0
