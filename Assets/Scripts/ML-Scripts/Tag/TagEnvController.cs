@@ -14,6 +14,7 @@ public class TagEnvController : MonoBehaviour
     private EntityStats agent2Stats;
     private int maxHp1;
     private int maxHp2;
+    public int runnerThresholdReward = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +26,18 @@ public class TagEnvController : MonoBehaviour
         maxHp2 = agent2Stats.maxHP;
     }
 
-   
     public void ResetEnv(string whoWon)
     {
         Debug.Log("Won:" + whoWon + " Reset episode");
-        if (whoWon == "agent1")
+        catcher.AddReward(1);
+        runner.AddReward(-1);
+        if (runner.GetCumulativeReward() > runnerThresholdReward) // If the runner evaded the catcher long enough, he won
             background.color = Color.green;
         else
             background.color = Color.magenta;
-        agent2Stats.Heal(100000);
-        agent1Stats.Heal(100000);
         var choice = Random.Range(0, 2);
+        catcher.EndEpisode();
+        runner.EndEpisode();
         if (choice == 1)
         {
             runnerAgentObj.transform.localPosition = new Vector2(-(Random.value * 8), -8f);

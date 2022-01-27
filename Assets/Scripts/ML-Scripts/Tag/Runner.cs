@@ -18,6 +18,7 @@ public class Runner : Agent
     #endregion
     #region Training
     [SerializeField] private Transform enemyTransform;
+    [SerializeField] private TagEnvController tagEnvController;
     #endregion
     #region auxVariables
     private Rigidbody2D rigidBody2D;
@@ -51,7 +52,7 @@ public class Runner : Agent
     }
     public override void OnActionReceived(ActionBuffers actions)
     {
-        AddReward(-0.0003f); //Incentivize agents to end episode as quickly as possible
+        AddReward(+0.0003f); //Incentivize runner to live as long as possible
         var discreteActions = actions.DiscreteActions;
         moveDirection = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
         var jump = discreteActions[0]; // 0 = don't jump, 1 = jump
@@ -173,18 +174,20 @@ public class Runner : Agent
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.TryGetComponent(out Agent agent))
+        {
+            tagEnvController.ResetEnv("Catcher");
+            return;
+        }
+      
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
         
-        if (collision.gameObject.transform == enemyTransform)
-        {
-            AddReward(-2f); // Catched by the catcher
-        }
-        
+       
         
         if (collisionStats != null)
         {
             playerStats.Damage(collisionStats.DMG);
-            AddReward(-1f);
+           
 
             //Knockback player
             // Calculate Angle Between the collision point and the player
