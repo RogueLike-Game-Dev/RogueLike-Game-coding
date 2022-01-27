@@ -79,15 +79,15 @@ public class TrainingEnvController : MonoBehaviour
         var choice = Random.Range(0, 2);
         if (choice == 1)
         {
-            agentsGameObjects[0].transform.localPosition = new Vector2(-(Random.value * 8), -8f);
-            agentsGameObjects[1].transform.localPosition = new Vector2(Random.value * 8, -8f);
+            agentsGameObjects[0].transform.localPosition = new Vector3(-(Random.value * 8), -8f, 10);
+            agentsGameObjects[1].transform.localPosition = new Vector3(Random.value * 8, -8f, 10);
 
            
         }
         else
         {
-            agentsGameObjects[1].transform.localPosition = new Vector2(-(Random.value * 8), -8f);
-            agentsGameObjects[0].transform.localPosition = new Vector2(Random.value * 8, -8f);
+            agentsGameObjects[1].transform.localPosition = new Vector3(-(Random.value * 8), -8f, 10);
+            agentsGameObjects[0].transform.localPosition = new Vector3(Random.value * 8, -8f, 10);
 
            
         }

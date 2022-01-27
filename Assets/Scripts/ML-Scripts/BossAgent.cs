@@ -211,11 +211,11 @@ public class BossAgent : Agent
             rigidBody2D.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
 
         //Remember gravity scale so we can set it back later
-        float gravity = rigidBody2D.gravityScale;
+       
         rigidBody2D.gravityScale = 0; //Null gravity to dash on horizontal
         dashCount++;
         yield return new WaitForSeconds(0.4f);
-        rigidBody2D.gravityScale = gravity;
+        rigidBody2D.gravityScale = 1;
         if (dashCount < maxDashes)
         {
             isDashing = false;
@@ -231,24 +231,7 @@ public class BossAgent : Agent
     #endregion
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
-        if (collisionStats != null)
-        {
-            playerStats.Damage(collisionStats.DMG);
-            AddReward(-1f);
-
-            //Knockback player
-            // Calculate Angle Between the collision point and the player
-            ContactPoint2D contactPoint = collision.GetContact(0);
-            Vector2 playerPosition = transform.localPosition;
-            Vector2 dir = contactPoint.point - playerPosition;
-            // We then get the opposite (-Vector3) and normalize it
-            dir = -dir.normalized;
-            rigidBody2D.velocity = Vector2.zero;
-            rigidBody2D.inertia = 0;
-            rigidBody2D.AddForce(dir * collisionStats.knockBackStrength, ForceMode2D.Impulse);
-
-        }
+        
         if (collision.gameObject.layer == 7) //TO DO: CHECK IF IT WAS ON FEET
         {
             isGrounded = true;

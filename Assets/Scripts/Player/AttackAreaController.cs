@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackAreaController : MonoBehaviour
 {
     [SerializeField] private EntityStats playerStats;
-    [SerializeField] private BossAgent agent;
     private void OnCollisionEnter2D(Collision2D collision)
     {
       
@@ -13,22 +12,9 @@ public class AttackAreaController : MonoBehaviour
         if (collisionStats != null)
         {
             collisionStats.Damage(playerStats.DMG);
-            if (agent != null)
-                agent.SetReward(0.1f);
-            Debug.Log(collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
+            Debug.Log("Attacked " + collision.gameObject.name + " Current Hp: " + collisionStats.currentHP);
         }
-        if (collision.rigidbody != null) //If enemy has rigidbody, push it back
-        {
-            Debug.Log("Attack area found a rigidbody");// Calculate Angle Between the collision point and the player
-            ContactPoint2D contactPoint = collision.GetContact(0);
-            Vector2 playerPosition = transform.position;
-            Vector2 dir = contactPoint.point - playerPosition;
-            // We then get the opposite (-Vector3) and normalize it
-            dir = dir.normalized;
-            collision.rigidbody.velocity = Vector2.zero;
-            collision.rigidbody.inertia = 0;
-            collision.rigidbody.AddForce(dir *playerStats.knockBackStrength, ForceMode2D.Impulse);
-        }
+       
 
     }
 }
