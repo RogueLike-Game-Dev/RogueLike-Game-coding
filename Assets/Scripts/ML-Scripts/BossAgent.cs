@@ -123,7 +123,15 @@ public class BossAgent : Agent
     private IEnumerator Throw()
     {
         if (!attackCooldown)
-        {   AddReward(1.1f);
+        {   if (playerStats.currentHP < 10)
+            {
+                AddReward(-1f);
+            }
+            else
+            {
+                AddReward(1f);
+                
+            }
             Debug.Log("Throwing");
             var throwingObj = ObjectPooler.Instance.GetPooledObject("Throw");
             throwingObj.transform.localPosition = this.transform.localPosition;
@@ -140,7 +148,16 @@ public class BossAgent : Agent
     {
         
         if (!attackCooldown)
-        {   AddReward(1f);
+        {
+            if (playerStats.currentHP < 10)
+            {
+                AddReward(-1f);
+            }
+            else
+            {
+                AddReward(1f);
+                
+            }
             Debug.Log("Attacking");
             attackArea.SetActive(true);
 
@@ -254,7 +271,10 @@ public class BossAgent : Agent
             collision.gameObject.SetActive(false);
             playerStats.Heal(15); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
-            AddReward(0.5f);
+            if (playerStats.currentHP < 100)
+            {
+                AddReward(1);
+            }
         }
         Debug.Log(this.gameObject.name + " entered trigger from: " + collision.gameObject.name + "CurrentHP: " + playerStats.currentHP);
     }
