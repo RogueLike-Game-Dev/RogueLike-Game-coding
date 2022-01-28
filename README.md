@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/61518083/151599994-fd5be76b-6a78-47cf-9d24-d065663db73a.png)
 
-[## Documentatie](https://docs.google.com/document/d/1fTSAD2opOUbuOsiMe2lQh4P3cr1I8Pz5_eJTypctPNc/edit#)
+## [Documentatie ](https://docs.google.com/document/d/1fTSAD2opOUbuOsiMe2lQh4P3cr1I8Pz5_eJTypctPNc/edit#)
 
 ## Mod de lucuru
 - pull din boss_agent
