@@ -18,6 +18,7 @@ public class Catcher : Agent
     #endregion
     #region Training
     [SerializeField] private Transform enemyTransform;
+    [SerializeField] private TagEnvController tagEnvController;
     #endregion
     #region auxVariables
     private Rigidbody2D rigidBody2D;
@@ -175,10 +176,6 @@ public class Catcher : Agent
     {
         var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
 
-        if (collision.gameObject.transform == enemyTransform)
-        {
-            AddReward(+2f); // Catched the runner
-        }
         
         if (collisionStats != null)
         {

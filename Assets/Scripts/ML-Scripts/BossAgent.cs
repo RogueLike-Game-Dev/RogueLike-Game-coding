@@ -57,21 +57,17 @@ public class BossAgent : Agent
         AddReward(-0.0003f); //Incentivize agents to end episode as quickly as possible
         var discreteActions = actions.DiscreteActions;
         moveDirection = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
-        var jump = discreteActions[0]; // 0 = don't jump, 1 = jump
-        var dash = discreteActions[1];
-        var attack = discreteActions[2];
-        var stomp = discreteActions[3];
-        var secondaryAttack = discreteActions[4];
-        if (jump == 1)
-            Jump();
-        if (dash == 1)
-            StartCoroutine(Dash());
-        if (attack == 1)
-            StartCoroutine(Attack());
-        if (stomp == 1)
-            Stomp();
-        if (secondaryAttack == 1)
-            StartCoroutine(Throw());
+        var  action = discreteActions[0]; // 0 = do nothing, 1 jump, 2 dash, 3 attack, 4 stomp
+        Debug.Log("Move Direction: " + moveDirection + "Action: " + action);
+       switch (action) {
+            case 0: break;
+            case 1: Jump(); break;
+            case 2: StartCoroutine(Dash()); break;
+            case 3: StartCoroutine(Attack()); break;
+            case 4: Stomp(); break;
+           
+        }
+      
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -83,17 +79,17 @@ public class BossAgent : Agent
             Debug.Log("Wanting to jump");
             discreteActionsOut[0] = 1; }
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            discreteActionsOut[2] = 1;
+            discreteActionsOut[0] = 3;
         if (Input.GetKeyDown(KeyCode.Mouse1))
-            discreteActionsOut[4] = 1;
+            discreteActionsOut[0] = 5;
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-                discreteActionsOut[3] = 1;
+                discreteActionsOut[0] = 4;
             else
             {
                 if (!isDashing)
-                    discreteActionsOut[1] = 1;
+                    discreteActionsOut[0] = 2;
 
             }
         }
@@ -123,7 +119,7 @@ public class BossAgent : Agent
     private IEnumerator Throw()
     {
         if (!attackCooldown)
-        {   AddReward(1.1f);
+        {  
             Debug.Log("Throwing");
             var throwingObj = ObjectPooler.Instance.GetPooledObject("Throw");
             throwingObj.transform.localPosition = this.transform.localPosition;
@@ -140,7 +136,8 @@ public class BossAgent : Agent
     {
         
         if (!attackCooldown)
-        {   AddReward(1f);
+        {
+          
             Debug.Log("Attacking");
             attackArea.SetActive(true);
 
@@ -184,7 +181,7 @@ public class BossAgent : Agent
     }
     private IEnumerator Dash()
     {
-        AddReward(1f);
+      
         isDashing = true;
         rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, 0);
 
@@ -194,11 +191,11 @@ public class BossAgent : Agent
             rigidBody2D.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
 
         //Remember gravity scale so we can set it back later
-        float gravity = rigidBody2D.gravityScale;
+       
         rigidBody2D.gravityScale = 0; //Null gravity to dash on horizontal
         dashCount++;
         yield return new WaitForSeconds(0.4f);
-        rigidBody2D.gravityScale = gravity;
+        rigidBody2D.gravityScale = 1;
         if (dashCount < maxDashes)
         {
             isDashing = false;
@@ -214,24 +211,7 @@ public class BossAgent : Agent
     #endregion
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var collisionStats = collision.gameObject.GetComponent<EntityStats>(); //Daca e colision cu ceva care da DMG 
-        if (collisionStats != null)
-        {
-            playerStats.Damage(collisionStats.DMG);
-            AddReward(-1f);
-
-            //Knockback player
-            // Calculate Angle Between the collision point and the player
-            ContactPoint2D contactPoint = collision.GetContact(0);
-            Vector2 playerPosition = transform.localPosition;
-            Vector2 dir = contactPoint.point - playerPosition;
-            // We then get the opposite (-Vector3) and normalize it
-            dir = -dir.normalized;
-            rigidBody2D.velocity = Vector2.zero;
-            rigidBody2D.inertia = 0;
-            rigidBody2D.AddForce(dir * collisionStats.knockBackStrength, ForceMode2D.Impulse);
-
-        }
+        
         if (collision.gameObject.layer == 7) //TO DO: CHECK IF IT WAS ON FEET
         {
             isGrounded = true;
@@ -254,9 +234,13 @@ public class BossAgent : Agent
             collision.gameObject.SetActive(false);
             playerStats.Heal(15); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
-            AddReward(0.5f);
+            if (playerStats.currentHP < 100)
+            {
+                AddReward(1);
+            }
         }
         Debug.Log(this.gameObject.name + " entered trigger from: " + collision.gameObject.name + "CurrentHP: " + playerStats.currentHP);
     }
 
+   
 }

@@ -405,10 +405,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 44769547977889470, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 44769548395862119, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
       propertyPath: m_Name
       value: TagEnv
@@ -456,10 +452,6 @@ PrefabInstance:
     - target: {fileID: 44769548395862120, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2875989248789259123, guid: f599568aa3952ef4293e4c61680f112b, type: 3}
-      propertyPath: m_BehaviorType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f599568aa3952ef4293e4c61680f112b, type: 3}

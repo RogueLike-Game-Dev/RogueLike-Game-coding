@@ -1,0 +1,49 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1643364693",
+        "python_version": "3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\radu_\\AppData\\Local\\Programs\\Python\\Python37\\lib\\site-packages\\mlagents\\trainers\\learn.py config.yaml --run-id=TestNewLogic --force",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.19.5",
+        "end_time_seconds": "1643364718"
+    },
+    "total": 25.0645928,
+    "count": 1,
+    "self": 0.12848749999999853,
+    "children": {
+        "run_training.setup": {
+            "total": 0.32381290000000007,
+            "count": 1,
+            "self": 0.32381290000000007
+        },
+        "TrainerController.start_learning": {
+            "total": 24.6122924,
+            "count": 1,
+            "self": 0.00013550000000250861,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 21.5235566,
+                    "count": 1,
+                    "self": 21.5235566
+                },
+                "TrainerController._save_models": {
+                    "total": 3.0886002999999995,
+                    "count": 1,
+                    "self": 0.0036224999999987517,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 3.0849778000000008,
+                            "count": 1,
+                            "self": 3.0849778000000008
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

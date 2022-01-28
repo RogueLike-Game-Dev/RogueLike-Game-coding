@@ -593,7 +593,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44769548395862119}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -622,6 +622,7 @@ MonoBehaviour:
   catcherAgentObj: {fileID: 44769548932737871}
   runnerAgentObj: {fileID: 2875989248789259113}
   background: {fileID: 44769547282554295}
+  runnerThresholdReward: 1
 --- !u!1 &44769548434137448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1106,7 @@ MonoBehaviour:
   maxDashes: 2
   feetPosition: {fileID: 44769548134754224}
   enemyTransform: {fileID: 2875989248789259112}
+  tagEnvController: {fileID: 6823554184307505742}
   facingRight: 1
 --- !u!114 &6402582877305376619
 MonoBehaviour:
@@ -3432,7 +3434,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: a8e2afbc42edab04a8b7f4f33b123c5d, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: BossAgent
@@ -3504,6 +3506,7 @@ MonoBehaviour:
   maxDashes: 2
   feetPosition: {fileID: 2875989247852948355}
   enemyTransform: {fileID: 44769548932737906}
+  tagEnvController: {fileID: 6823554184307505742}
   facingRight: 0
 --- !u!1 &8384708417944494774
 GameObject:
