@@ -69,13 +69,14 @@ public class TrainingEnvController : MonoBehaviour
 
     public void ResetEnv(string whoWon)
     {
-        Debug.Log("Won:" + whoWon+ " Reset episode");
+        Debug.Log("Won: " + whoWon+ " Reset episode");
         if (whoWon == "agent1")
             background.color = Color.green;
         else
             background.color = Color.magenta;
         agent2Stats.Heal(100000);
         agent1Stats.Heal(100000);
+      
         var choice = Random.Range(0, 2);
         if (choice == 1)
         {
@@ -88,8 +89,7 @@ public class TrainingEnvController : MonoBehaviour
         {
             agentsGameObjects[1].transform.localPosition = new Vector3(-(Random.value * 8), -8f, 10);
             agentsGameObjects[0].transform.localPosition = new Vector3(Random.value * 8, -8f, 10);
-
-           
         }
+       
     }
 }

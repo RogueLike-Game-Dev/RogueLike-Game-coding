@@ -1,0 +1,82 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1643369121",
+        "python_version": "3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\radu_\\AppData\\Local\\Programs\\Python\\Python37\\lib\\site-packages\\mlagents\\trainers\\learn.py config.yaml --run-id=NewFightBrain --num-envs=4 --env=E:\\RogueLike-Game-coding\\TrainingBuilds\\NewNewMl.exe --no-graphics",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.19.5",
+        "end_time_seconds": "1643369147"
+    },
+    "total": 25.3949757,
+    "count": 1,
+    "self": 10.0190068,
+    "children": {
+        "run_training.setup": {
+            "total": 0.4754092999999999,
+            "count": 1,
+            "self": 0.4754092999999999
+        },
+        "TrainerController.start_learning": {
+            "total": 14.900559600000001,
+            "count": 1,
+            "self": 0.00016920000000197888,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 13.921669300000001,
+                    "count": 1,
+                    "self": 13.921669300000001
+                },
+                "TrainerController.advance": {
+                    "total": 0.9628513999999981,
+                    "count": 1,
+                    "self": 1.2299999998077737e-05,
+                    "children": {
+                        "env_step": {
+                            "total": 0.9628391000000001,
+                            "count": 1,
+                            "self": 0.006203100000000461,
+                            "children": {
+                                "SubprocessEnvManager._take_step": {
+                                    "total": 0.9566359999999996,
+                                    "count": 1,
+                                    "self": 6.610000000151217e-05,
+                                    "children": {
+                                        "TorchPolicy.evaluate": {
+                                            "total": 0.9565698999999981,
+                                            "count": 1,
+                                            "self": 0.0035806999999969946,
+                                            "children": {
+                                                "TorchPolicy.sample_actions": {
+                                                    "total": 0.9529892000000011,
+                                                    "count": 1,
+                                                    "self": 0.9529892000000011
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "TrainerController._save_models": {
+                    "total": 0.015869699999999654,
+                    "count": 1,
+                    "self": 0.00012540000000171858,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.015744299999997935,
+                            "count": 1,
+                            "self": 0.015744299999997935
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

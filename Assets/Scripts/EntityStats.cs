@@ -56,28 +56,9 @@ public class EntityStats : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>(); //Try to get component if forgot to set
         currentHP = maxHP;
-        OnHPChange += EntityStats_OnHPChange;
     }
 
-    private void EntityStats_OnHPChange()
-    {
-        if (currentHP <= 0) //If it's supposed to die
-        {
-            if (animator != null && AnimatorHasParameter(animator,deathTriggerKey)) //And has animations + death animation
-            {
 
-                animator.SetTrigger(deathTriggerKey); //Trigger the animation and supply function for the event
-            }
-            else //No animations set, just make it inactive
-            {
-                   if (this.gameObject.name == "Player")
-                GameManager.Instance.EndRun();
-
-                this.gameObject.SetActive(false);
-            }
-         
-        }
-    }
     private bool AnimatorHasParameter(Animator animator, string parameterName)
     {
         foreach (AnimatorControllerParameter param in animator.parameters)

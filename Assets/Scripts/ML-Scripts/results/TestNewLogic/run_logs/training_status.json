@@ -6,7 +6,7 @@
                 "steps": 0,
                 "file_path": "results\\TestNewLogic\\BossAgent\\BossAgent-0.onnx",
                 "reward": null,
-                "creation_time": 1643318787.342811,
+                "creation_time": 1643364718.2560117,
                 "auxillary_file_paths": [
                     "results\\TestNewLogic\\BossAgent\\BossAgent-0.pt"
                 ]
@@ -16,7 +16,7 @@
             "steps": 0,
             "file_path": "results\\TestNewLogic\\BossAgent.onnx",
             "reward": null,
-            "creation_time": 1643318787.342811,
+            "creation_time": 1643364718.2560117,
             "auxillary_file_paths": [
                 "results\\TestNewLogic\\BossAgent\\BossAgent-0.pt"
             ]

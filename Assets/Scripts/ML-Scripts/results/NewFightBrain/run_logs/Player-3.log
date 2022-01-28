@@ -1,0 +1,282 @@
+Mono path[0] = 'E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Managed'
+Mono config path = 'E:/RogueLike-Game-coding/TrainingBuilds/MonoBleedingEdge/etc'
+Initialize engine version: 2020.3.20f1 (41c4e627c95f)
+[Subsystems] Discovering subsystems at path E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/UnitySubsystems
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+- Completed reload, in  1.237 seconds
+ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+UnloadTime: 0.707000 ms
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libcoreclr.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libdl.so
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib.dll
+Fallback handler could not load library E:/RogueLike-Game-coding/TrainingBuilds/NewNewMl_Data/Mono/libSystem.dylib
+failed to get 100ns ticks
+DontDestroyOnLoad only works for root GameObjects or components on root GameObjects.
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Move Direction: 0Action: 0
+Crash!!!
+SymInit: Symbol-SearchPath: '.;E:\RogueLike-Game-coding\Assets\Scripts\ML-Scripts;E:\RogueLike-Game-coding\TrainingBuilds;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 534, UserName: 'radu_'
+OS-Version: 10.0.0
+E:\RogueLike-Game-coding\TrainingBuilds\NewNewMl.exe:NewNewMl.exe (00007FF66E4F0000), size: 675840 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.20.50406
+C:\WINDOWS\SYSTEM32\ntdll.dll:ntdll.dll (00007FFB06CB0000), size: 2052096 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\Program Files\AVAST Software\Avast\aswhook.dll:aswhook.dll (00007FFADB860000), size: 90112 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 21.11.6809.0
+C:\WINDOWS\System32\KERNEL32.DLL:KERNEL32.DLL (00007FFB063F0000), size: 778240 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\KERNELBASE.dll:KERNELBASE.dll (00007FFB04520000), size: 2916352 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+E:\RogueLike-Game-coding\TrainingBuilds\UnityPlayer.dll:UnityPlayer.dll (00007FF9B8E00000), size: 29089792 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 2020.3.20.50406
+C:\WINDOWS\System32\USER32.dll:USER32.dll (00007FFB05BB0000), size: 1708032 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1202
+C:\WINDOWS\System32\win32u.dll:win32u.dll (00007FFB04B10000), size: 139264 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\GDI32.dll:GDI32.dll (00007FFB06B00000), size: 176128 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1202
+C:\WINDOWS\System32\gdi32full.dll:gdi32full.dll (00007FFB04B40000), size: 1101824 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\msvcp_win.dll:msvcp_win.dll (00007FFB04C50000), size: 643072 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.789
+C:\WINDOWS\System32\ucrtbase.dll:ucrtbase.dll (00007FFB043C0000), size: 1048576 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.789
+C:\WINDOWS\System32\ole32.dll:ole32.dll (00007FFB06100000), size: 1220608 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1202
+C:\WINDOWS\System32\RPCRT4.dll:RPCRT4.dll (00007FFB064B0000), size: 1200128 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\combase.dll:combase.dll (00007FFB05850000), size: 3493888 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1348
+C:\WINDOWS\System32\SHLWAPI.dll:SHLWAPI.dll (00007FFB06230000), size: 348160 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1023
+C:\WINDOWS\System32\msvcrt.dll:msvcrt.dll (00007FFB06290000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 7.0.19041.546
+C:\WINDOWS\System32\SETUPAPI.dll:SETUPAPI.dll (00007FFB065E0000), size: 4661248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1237
+C:\WINDOWS\System32\cfgmgr32.dll:cfgmgr32.dll (00007FFB04880000), size: 319488 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1151
+C:\WINDOWS\SYSTEM32\VERSION.dll:VERSION.dll (00007FFAFD7B0000), size: 40960 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\bcrypt.dll:bcrypt.dll (00007FFB04980000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1023
+C:\WINDOWS\System32\ADVAPI32.dll:ADVAPI32.dll (00007FFB055E0000), size: 712704 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\sechost.dll:sechost.dll (00007FFB06A60000), size: 638976 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\SHELL32.dll:SHELL32.dll (00007FFB04CF0000), size: 7618560 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\OLEAUT32.dll:OLEAUT32.dll (00007FFB05E10000), size: 839680 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.985
+C:\WINDOWS\SYSTEM32\OPENGL32.dll:OPENGL32.dll (00007FFAED5B0000), size: 1200128 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1081
+C:\WINDOWS\System32\IMM32.dll:IMM32.dll (00007FFB05820000), size: 196608 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\CRYPT32.dll:CRYPT32.dll (00007FFB049B0000), size: 1400832 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\System32\WS2_32.dll:WS2_32.dll (00007FFB05EE0000), size: 438272 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WINMM.dll:WINMM.dll (00007FFAECD70000), size: 159744 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\WINHTTP.dll:WINHTTP.dll (00007FFAFB380000), size: 1097728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\SYSTEM32\HID.DLL:HID.DLL (00007FFB02BF0000), size: 53248 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\GLU32.dll:GLU32.dll (00007FFAFD6E0000), size: 180224 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1081
+C:\WINDOWS\SYSTEM32\kernel.appcore.dll:kernel.appcore.dll (00007FFB02250000), size: 73728 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\bcryptPrimitives.dll:bcryptPrimitives.dll (00007FFB047F0000), size: 532480 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1415
+C:\WINDOWS\system32\uxtheme.dll:uxtheme.dll (00007FFB01D20000), size: 647168 (result: 0), SymType: '-deferred-', PDB: '', fileVersion: 10.0.19041.1266
+C:\WINDOWS\System32\shcore.dll:shcore.dll (00007FFB05770000), size: 708608 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1387
+E:\RogueLike-Game-coding\TrainingBuilds\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll:mono-2.0-bdwgc.dll (00007FF9B8690000), size: 7790592 (result: 0), SymType: '-deferred-', PDB: ''
+C:\WINDOWS\System32\PSAPI.DLL:PSAPI.DLL (00007FFB05570000), size: 32768 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\windows.storage.dll:windows.storage.dll (00007FFB02450000), size: 7950336 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\SYSTEM32\Wldp.dll:Wldp.dll (00007FFB03D30000), size: 188416 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\SYSTEM32\profapi.dll:profapi.dll (00007FFB04300000), size: 126976 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.844
+C:\WINDOWS\SYSTEM32\iphlpapi.dll:iphlpapi.dll (00007FFB037D0000), size: 241664 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\MSCTF.dll:MSCTF.dll (00007FFB05450000), size: 1134592 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\System32\clbcatq.dll:clbcatq.dll (00007FFB05D60000), size: 692224 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 2001.12.10941.16384
+C:\WINDOWS\System32\MMDevApi.dll:MMDevApi.dll (00007FFAFAB60000), size: 544768 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1023
+C:\WINDOWS\System32\DEVOBJ.dll:DEVOBJ.dll (00007FFB04160000), size: 212992 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1151
+C:\WINDOWS\SYSTEM32\AUDIOSES.DLL:AUDIOSES.DLL (00007FFAFABF0000), size: 1576960 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1023
+C:\WINDOWS\SYSTEM32\powrprof.dll:powrprof.dll (00007FFB038F0000), size: 307200 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\UMPDC.dll:UMPDC.dll (00007FFB037B0000), size: 73728 (result: 8), SymType: '-unknown-', PDB: ''
+C:\WINDOWS\SYSTEM32\resourcepolicyclient.dll:resourcepolicyclient.dll (00007FFB01F70000), size: 81920 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+E:\RogueLike-Game-coding\TrainingBuilds\NewNewMl_Data\Plugins\x86_64\grpc_csharp_ext.x64.dll:grpc_csharp_ext.x64.dll (00007FF9B84D0000), size: 1830912 (result: 8), SymType: '-unknown-', PDB: ''
+C:\WINDOWS\SYSTEM32\WSOCK32.dll:WSOCK32.dll (00007FFAEBFC0000), size: 36864 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1
+C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL:CRYPTBASE.DLL (00007FFB03CA0000), size: 49152 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\mswsock.dll:mswsock.dll (00007FFB03B10000), size: 434176 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\SYSTEM32\DNSAPI.dll:DNSAPI.dll (00007FFB03820000), size: 831488 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1320
+C:\WINDOWS\System32\NSI.dll:NSI.dll (00007FFB06350000), size: 32768 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.610
+C:\Windows\System32\rasadhlp.dll:rasadhlp.dll (00007FFAFA040000), size: 40960 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\System32\fwpuclnt.dll:fwpuclnt.dll (00007FFAFB090000), size: 520192 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1466
+C:\WINDOWS\SYSTEM32\CRYPTSP.dll:CRYPTSP.dll (00007FFB04070000), size: 98304 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.546
+C:\WINDOWS\system32\rsaenh.dll:rsaenh.dll (00007FFB03440000), size: 212992 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1052
+C:\WINDOWS\SYSTEM32\dbghelp.dll:dbghelp.dll (00007FFAF9AD0000), size: 1982464 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.867
+C:\WINDOWS\SYSTEM32\SspiCli.dll:SspiCli.dll (00007FFB04280000), size: 200704 (result: 8), SymType: '-unknown-', PDB: '', fileVersion: 10.0.19041.1266
+
+========== OUTPUTTING STACK TRACE ==================
+
+  ERROR: SymGetSymFromAddr64, GetLastError: 'The specified module could not be found.' (Address: 00007FF9B9380476)
+0x00007FF9B9380476 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B937FEEE)
+0x00007FF9B937FEEE (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B93813DA)
+0x00007FF9B93813DA (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B937C725)
+0x00007FF9B937C725 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B937D237)
+0x00007FF9B937D237 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9616750)
+0x00007FF9B9616750 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B99BCC39)
+0x00007FF9B99BCC39 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B99C581E)
+0x00007FF9B99C581E (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B99C5FC7)
+0x00007FF9B99C5FC7 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B99CAA2D)
+0x00007FF9B99CAA2D (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9A07054)
+0x00007FF9B9A07054 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B99FB493)
+0x00007FF9B99FB493 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B956EA0A)
+0x00007FF9B956EA0A (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B956EAB0)
+0x00007FF9B956EAB0 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9572808)
+0x00007FF9B9572808 (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B933483A)
+0x00007FF9B933483A (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9332EAD)
+0x00007FF9B9332EAD (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9337DBF)
+0x00007FF9B9337DBF (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'Attempt to access invalid address.' (Address: 00007FF9B9338F3B)
+0x00007FF9B9338F3B (UnityPlayer) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'The specified module could not be found.' (Address: 00007FF66E4F11F2)
+0x00007FF66E4F11F2 (NewNewMl) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'The specified module could not be found.' (Address: 00007FFB06407034)
+0x00007FFB06407034 (KERNEL32) (function-name not available)
+  ERROR: SymGetSymFromAddr64, GetLastError: 'The specified module could not be found.' (Address: 00007FFB06D02651)
+0x00007FFB06D02651 (ntdll) (function-name not available)
+
+========== END OF STACKTRACE ===========
+
+A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
+ * C:/Users/radu_/AppData/Local/Temp/DefaultCompany/NewNewMl/Crashes
