@@ -1,4 +1,4 @@
-# Boss Fight for Rogoue World Game
+# Boss Fight for Rogue World Game
 
 ![image](https://user-images.githubusercontent.com/61518083/151599994-fd5be76b-6a78-47cf-9d24-d065663db73a.png)
 
