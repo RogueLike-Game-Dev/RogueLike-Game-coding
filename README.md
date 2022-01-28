@@ -4,7 +4,7 @@
 
 ## [Documentatie ](https://docs.google.com/document/d/1fTSAD2opOUbuOsiMe2lQh4P3cr1I8Pz5_eJTypctPNc/edit#)
 
-## Mod de lucuru
+## Mod de lucru
 - pull din boss_agent
 - se face un branch *boss_agent* pt fiecare tichet
 - se da push pe branch la fiecare modificare
