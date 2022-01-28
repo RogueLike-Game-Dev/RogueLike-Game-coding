@@ -417,13 +417,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: BossRayPerceptionSensor
   m_DetectableTags:
-  - Player
+  - Untagged
   - Apple
   - Ground
-  m_RaysPerDirection: 2
+  m_RaysPerDirection: 3
   m_MaxRayDegrees: 88.3
   m_SphereCastRadius: 0.7
-  m_RayLength: 7
+  m_RayLength: 30
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 457
@@ -1347,10 +1347,10 @@ MonoBehaviour:
   - Untagged
   - Apple
   - Ground
-  m_RaysPerDirection: 2
+  m_RaysPerDirection: 3
   m_MaxRayDegrees: 88.3
   m_SphereCastRadius: 0.7
-  m_RayLength: 7
+  m_RayLength: 30
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 457

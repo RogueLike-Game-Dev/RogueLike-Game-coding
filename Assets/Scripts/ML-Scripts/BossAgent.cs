@@ -54,7 +54,7 @@ public class BossAgent : Agent
     }
     public override void OnActionReceived(ActionBuffers actions)
     {
-        AddReward(-0.0003f); //Incentivize agents to end episode as quickly as possible
+        AddReward(-0.003f); //Incentivize agents to end episode as quickly as possible
         var discreteActions = actions.DiscreteActions;
         moveDirection = Mathf.Clamp(actions.ContinuousActions[0], -1f, 1f);
         var  action = discreteActions[0]; // 0 = do nothing, 1 jump, 2 dash, 3 attack, 4 stomp
