@@ -48,7 +48,7 @@ env_settings:
   env_path: E:\RogueLike-Game-coding\TrainingBuilds\NewNewMl.exe
   env_args: null
   base_port: 5005
-  num_envs: 4
+  num_envs: 3
   seed: -1
 engine_settings:
   width: 84
@@ -63,7 +63,7 @@ checkpoint_settings:
   run_id: NewFightBrain
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

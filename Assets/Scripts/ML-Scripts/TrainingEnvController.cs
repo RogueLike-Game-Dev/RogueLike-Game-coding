@@ -30,8 +30,8 @@ public class TrainingEnvController : MonoBehaviour
         Debug.Log("Agent2 HP Change");
         if(agent2Stats.currentHP<=0) //If agent died
         {
-            agent1.SetReward(1f); //Set positive rewards for the winning agent
-            agent2.SetReward(-1f); //Negative reward for the losing agent
+            agent1.AddReward(1f); //Set positive rewards for the winning agent
+            agent2.AddReward(-1f); //Negative reward for the losing agent
 
             //End Episodes and reset env
             agent2.EndEpisode();
@@ -40,9 +40,9 @@ public class TrainingEnvController : MonoBehaviour
         }
         else //The agent didn't die but received dmg, penalize
         {
-           // agent2.AddReward(-0.1f);
+           agent2.AddReward(-0.1f);
             //Reward the other agent
-           // agent1.AddReward(0.2f);
+           agent1.AddReward(0.2f);
         }
     }
 
@@ -51,8 +51,8 @@ public class TrainingEnvController : MonoBehaviour
         Debug.Log("Agent1 HP Change");
         if (agent1Stats.currentHP <= 0)
         {
-            agent2.SetReward(1f); //Set positive rewards for the winning agent
-            agent1.SetReward(-1f);  //Negative reward for the losing agent
+            agent2.AddReward(1f); //Set positive rewards for the winning agent
+            agent1.AddReward(-1f);  //Negative reward for the losing agent
 
             //End Episodes and reset env
             agent2.EndEpisode();
@@ -61,9 +61,9 @@ public class TrainingEnvController : MonoBehaviour
         }
         else //The agent didn't die but received dmg, penalize
         {
-            //agent2.AddReward(-0.1f);
+            agent2.AddReward(-0.1f);
             //Reward the other agent
-           // agent1.AddReward(0.2f);
+            agent1.AddReward(0.2f);
         }
     }
 

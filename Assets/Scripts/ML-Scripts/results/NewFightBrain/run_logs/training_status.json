@@ -1,6 +1,62 @@
 {
     "BossAgent": {
-        "elo": 1200.0
+        "checkpoints": [
+            {
+                "steps": 4999632,
+                "file_path": "results\\NewFightBrain\\BossAgent\\BossAgent-4999632.onnx",
+                "reward": -5.662142923900059,
+                "creation_time": 1643391742.685921,
+                "auxillary_file_paths": [
+                    "results\\NewFightBrain\\BossAgent\\BossAgent-4999632.pt"
+                ]
+            },
+            {
+                "steps": 5499826,
+                "file_path": "results\\NewFightBrain\\BossAgent\\BossAgent-5499826.onnx",
+                "reward": -1.089000145594279,
+                "creation_time": 1643392773.8678377,
+                "auxillary_file_paths": [
+                    "results\\NewFightBrain\\BossAgent\\BossAgent-5499826.pt"
+                ]
+            },
+            {
+                "steps": 5999969,
+                "file_path": "results\\NewFightBrain\\BossAgent\\BossAgent-5999969.onnx",
+                "reward": -5.392000317573547,
+                "creation_time": 1643393808.0123205,
+                "auxillary_file_paths": [
+                    "results\\NewFightBrain\\BossAgent\\BossAgent-5999969.pt"
+                ]
+            },
+            {
+                "steps": 6499888,
+                "file_path": "results\\NewFightBrain\\BossAgent\\BossAgent-6499888.onnx",
+                "reward": -0.9468575630869184,
+                "creation_time": 1643394842.4050734,
+                "auxillary_file_paths": [
+                    "results\\NewFightBrain\\BossAgent\\BossAgent-6499888.pt"
+                ]
+            },
+            {
+                "steps": 6606282,
+                "file_path": "results\\NewFightBrain\\BossAgent\\BossAgent-6606282.onnx",
+                "reward": -5.93500018119812,
+                "creation_time": 1643395044.9956896,
+                "auxillary_file_paths": [
+                    "results\\NewFightBrain\\BossAgent\\BossAgent-6606282.pt"
+                ]
+            }
+        ],
+        "elo": 1421.6971109938058,
+        "final_checkpoint": {
+            "steps": 6606282,
+            "file_path": "results\\NewFightBrain\\BossAgent.onnx",
+            "reward": -5.93500018119812,
+            "creation_time": 1643395044.9956896,
+            "auxillary_file_paths": [
+                "results\\NewFightBrain\\BossAgent\\BossAgent-6606282.pt"
+            ]
+        }
     },
     "metadata": {
         "stats_format_version": "0.3.0",
