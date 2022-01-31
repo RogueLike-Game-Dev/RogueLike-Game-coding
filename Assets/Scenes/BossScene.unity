@@ -3996,6 +3996,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1359075899, guid: 5aea57ce7598fbf4db0348ae0508c620, type: 3}
+      propertyPath: m_BehaviorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500412308, guid: 5aea57ce7598fbf4db0348ae0508c620, type: 3}
+      propertyPath: m_BehaviorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930726297309730604, guid: 5aea57ce7598fbf4db0348ae0508c620, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2843633187867886208, guid: 5aea57ce7598fbf4db0348ae0508c620, type: 3}
       propertyPath: m_Name
       value: TrainingEnv
