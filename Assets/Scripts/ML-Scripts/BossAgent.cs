@@ -239,6 +239,10 @@ public class BossAgent : Agent
                 AddReward(1);
             }
         }
+        else if (collision.gameObject.tag == "Wall") //Collided with a wall
+        {
+            AddReward(-1);
+        }
         Debug.Log(this.gameObject.name + " entered trigger from: " + collision.gameObject.name + "CurrentHP: " + playerStats.currentHP);
     }
 
