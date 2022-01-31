@@ -6,6 +6,7 @@ public class EntityStats : MonoBehaviour
 {
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
+    private int _previousHP = 100;
     [SerializeField] private int _gold;
     public int maxHP {
         get { return _maxHP; }
@@ -21,10 +22,17 @@ public class EntityStats : MonoBehaviour
         get { return _currentHP; }
         private set
         {
+            Debug.Log("Called with" + value + " current " + _currentHP + " previous " + _previousHP);
+            _previousHP = _currentHP;
             if (_currentHP == value) return;
             _currentHP = value;
             OnHPChange?.Invoke();
         }
+    }
+    [HideInInspector]
+    public int previousHP
+    {
+        get { return _previousHP; }
     }
     public int gold //For player: how much gold he has, for enemies, how much gold they drop
     {
@@ -41,6 +49,7 @@ public class EntityStats : MonoBehaviour
     [Tooltip("How fast does the entity move")] public float movementSpeed;
     [Tooltip("How much should the player get knocked back when colliding with this entity")] public float knockBackStrength; 
     [SerializeField] private Animator animator;
+    [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string jumpTriggerKey = "isJumping";
     [SerializeField] [Tooltip("Name of the Animator Trigger for Hurt animation")] private string hurtTriggerKey = "isHurt";
     [SerializeField] [Tooltip("Name of the Animator Trigger for Dying animation")] private string deathTriggerKey = "isDying";
     #region Events and Delegates
@@ -82,8 +91,11 @@ public class EntityStats : MonoBehaviour
             Debug.Log("NU ABUZA DE FUNCTIE");
             return;
         }
-        currentHP += amount;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        Debug.Log("Current HP in Heal is" + currentHP);
+        int nextHP = currentHP;
+        nextHP += amount;
+        currentHP = Mathf.Clamp(nextHP, 0, maxHP);
+        Debug.Log("Current HP after Heal is" + currentHP);
     }
     public void Damage(int amount)
     {

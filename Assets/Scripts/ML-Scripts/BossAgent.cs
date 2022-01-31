@@ -31,6 +31,11 @@ public class BossAgent : Agent
     private float moveDirection = 0f;
     private int jumpCount = 0;
     private int dashCount = 0;
+    private bool isJumping = false;
+    private bool dashValue = false;
+    private bool isAttacking = false;
+    private bool isStomping = false;
+    private bool isStompingOrDashing = false;
     private EntityStats playerStats;
     private SpriteRenderer spriteRenderer;
     #endregion
@@ -74,29 +79,35 @@ public class BossAgent : Agent
         var discreteActionsOut = actionsOut.DiscreteActions;
         var continuousActionsOut = actionsOut.ContinuousActions;
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (isJumping)
         {
-            Debug.Log("Wanting to jump");
             discreteActionsOut[0] = 1; }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (isAttacking)
             discreteActionsOut[0] = 3;
+        /** Branch 0 has a size of 5, which means we can assign to it values from 0 to 4. What is the meaning of 5 here?
         if (Input.GetKeyDown(KeyCode.Mouse1))
             discreteActionsOut[0] = 5;
-        if (Input.GetKeyDown(KeyCode.E))
+        **/
+        if (isStompingOrDashing)
         {
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            if (isStomping)
                 discreteActionsOut[0] = 4;
             else
             {
                 if (!isDashing)
                     discreteActionsOut[0] = 2;
-
             }
         }
+        Debug.Log("Heuristic - The discrete action is" + discreteActionsOut[0]);
     }
     private void Update()
     {//Input handling in Update, force handling in FixedUpdate 
-       
+
+        isJumping = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) ? true : false;
+        isAttacking = Input.GetKey(KeyCode.Mouse0) ? true : false;
+        isStomping = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? true : false;
+        isStompingOrDashing = Input.GetKey(KeyCode.E) ? true : false;
+
         if (moveDirection > 0 && !facingRight)
             Flip();
         else if (moveDirection < 0 && facingRight)
@@ -234,10 +245,6 @@ public class BossAgent : Agent
             collision.gameObject.SetActive(false);
             playerStats.Heal(15); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
-            if (playerStats.currentHP < 100)
-            {
-                AddReward(1);
-            }
         }
         Debug.Log(this.gameObject.name + " entered trigger from: " + collision.gameObject.name + "CurrentHP: " + playerStats.currentHP);
     }
