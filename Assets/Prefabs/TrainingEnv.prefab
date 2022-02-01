@@ -331,6 +331,7 @@ MonoBehaviour:
   movementSpeed: 5
   knockBackStrength: 5
   animator: {fileID: 0}
+  jumpTriggerKey: isJumping
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
 --- !u!114 &1500412308
@@ -1258,6 +1259,7 @@ MonoBehaviour:
   movementSpeed: 5
   knockBackStrength: 5
   animator: {fileID: 0}
+  jumpTriggerKey: isJumping
   hurtTriggerKey: isHurt
   deathTriggerKey: isDying
 --- !u!114 &1359075892
@@ -3461,6 +3463,7 @@ Transform:
   - {fileID: 2843633186037111120}
   - {fileID: 2843633186822113119}
   - {fileID: 1500412303}
+  - {fileID: 7682497368510652943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3754,3 +3757,63 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!1 &7100758440060090765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7682497368510652943}
+  - component: {fileID: 1764806432123697034}
+  m_Layer: 0
+  m_Name: WallTrigger
+  m_TagString: Wall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7682497368510652943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100758440060090765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.58, y: -8.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2843633187867886223}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1764806432123697034
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100758440060090765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.42627144, y: -0.11164808}
+  - {x: -0.61247444, y: -0.25187302}
+  - {x: -0.5964279, y: 18.880735}
+  - {x: -34.559116, y: 18.877056}
+  - {x: -34.56196, y: -0.13812542}
+  - {x: -35.596115, y: -0.2841196}
+  - {x: -35.57529, y: 20.873234}
+  - {x: 0.4134388, y: 20.935741}
+  - {x: 0.4339962, y: -0.11000633}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

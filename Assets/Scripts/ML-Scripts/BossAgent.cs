@@ -250,6 +250,11 @@ public class BossAgent : Agent
             playerStats.Heal(15); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
         }
+        else if (collision.gameObject.tag == "Wall")//collided with a wall
+        {
+            AddReward(-0.003f);
+            
+        }
         Debug.Log(this.gameObject.name + " entered trigger from: " + collision.gameObject.name + "CurrentHP: " + playerStats.currentHP);
     }
 
