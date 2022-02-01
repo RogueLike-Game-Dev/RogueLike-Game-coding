@@ -7,6 +7,7 @@ public class EntityStats : MonoBehaviour
     [SerializeField] private int _maxHP = 100;
     private int _currentHP;
     private int _previousHP = 100;
+    private bool _pickedApple = false;
     [SerializeField] private int _gold;
     public int maxHP {
         get { return _maxHP; }
@@ -33,6 +34,16 @@ public class EntityStats : MonoBehaviour
     public int previousHP
     {
         get { return _previousHP; }
+    }
+    [HideInInspector]
+    public bool pickedApple
+    {
+        get { return _pickedApple; }
+        set
+        {
+            if (_pickedApple == value) return;
+            _pickedApple = value;
+        }
     }
     public int gold //For player: how much gold he has, for enemies, how much gold they drop
     {

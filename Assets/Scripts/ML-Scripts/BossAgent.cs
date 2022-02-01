@@ -207,13 +207,16 @@ public class BossAgent : Agent
         dashCount++;
         yield return new WaitForSeconds(0.4f);
         rigidBody2D.gravityScale = 1;
+        Debug.Log("Current agent dashes: " + dashCount + " having maximum " + maxDashes);
         if (dashCount < maxDashes)
         {
+            Debug.Log("Current agent dashed!");
             isDashing = false;
             yield return null;
         }
         else
         {
+            Debug.Log("Current agent dashes max!");
             yield return new WaitForSeconds(dashCooldown); //Dash cooldown
             isDashing = false;
             dashCount = 0;
@@ -233,7 +236,7 @@ public class BossAgent : Agent
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Coin") //Picked up a coin
+        if (collision.gameObject.tag == "Coin") //Picked up a  coin
         {
             collision.gameObject.SetActive(false);
             RunStats.goldCollected++;
@@ -243,6 +246,7 @@ public class BossAgent : Agent
         else if (collision.gameObject.tag == "Apple") //Picked up an apple
         {
             collision.gameObject.SetActive(false);
+            playerStats.pickedApple = true;
             playerStats.Heal(15); //Oare e o idee buna sa fie hard coded aici?
             Debug.Log("Restored HP");
         }

@@ -51,17 +51,18 @@ public class TrainingEnvController : MonoBehaviour
             ResetEnv("agent1");
         }
         // The agent didn't die and it's HP increased (he picked an apple)
-        else if(agent2Stats.currentHP > agent2Stats.previousHP)
+        else if(agent2Stats.pickedApple)
         {
+            agent2Stats.pickedApple = false;
+            Debug.Log("Current agent 2 picked an apple!");
             // we have to check if he really needed it
             if (agent2Stats.previousHP <= 65)
             {
-                Debug.Log("Current agent 2 picked an apple!");
-                agent2.AddReward(0.20f);
+                agent2.AddReward(0.25f);
             }
         }
         // The agent didn't die but received dmg, penalize
-        else
+        else if(agent2Stats.currentHP < agent2Stats.previousHP)
         {
             Debug.Log("Current agent 2 was demaged!");
             agent2.AddReward(-0.1f);
@@ -85,21 +86,24 @@ public class TrainingEnvController : MonoBehaviour
             agent1.EndEpisode();
             ResetEnv("agent2");
         }
-        else if(agent1Stats.currentHP >= agent1Stats.previousHP)
+        else if(agent1Stats.pickedApple)
         {
+            agent1Stats.pickedApple = false;
+            Debug.Log("Current agent 1 picked an apple!");
             if (agent1Stats.previousHP <= 65)
             {
-                Debug.Log("Current agent 1 picked an apple!");
-                agent1.AddReward(0.15f);
+                agent1.AddReward(0.25f);
             }
         }
-        else// The agent didn't die but received dmg, penalize
+        else if (agent1Stats.currentHP < agent1Stats.previousHP)// The agent didn't die but received dmg, penalize
         {
             Debug.Log("Current agent 1 was damaged!");
             agent1.AddReward(-0.1f);
             // Reward the other agent
             agent2.AddReward(0.2f);
         }
+        /// there's one case left when agent1Stats.currentHP >= agent1Stats.previousHP - when we reset the env
+        /// we should do nothing in this case
     }
 
     public void ResetEnv(string whoWon)
@@ -114,7 +118,7 @@ public class TrainingEnvController : MonoBehaviour
 
         // We reactivate the apples and put them randomly in the possible chosen positions - so the agents don't memorize
         // their position, which could lead to overfitting
-        var firstChoice = Random.Range(0, platformsPositions.Count - 1);
+       /* var firstChoice = Random.Range(0, platformsPositions.Count - 1);
         var secondChoice = Random.Range(0, platformsPositions.Count - 1);
         while(secondChoice ==  firstChoice)
         {
@@ -122,6 +126,7 @@ public class TrainingEnvController : MonoBehaviour
         }
         apples[0].transform.localPosition = new Vector3(platformsPositions[firstChoice].Item1, platformsPositions[firstChoice].Item2, 10);
         apples[1].transform.localPosition = new Vector3(platformsPositions[secondChoice].Item1, platformsPositions[secondChoice].Item2, 10);
+       */
         apples[0].SetActive(true);
         apples[1].SetActive(true);
 
