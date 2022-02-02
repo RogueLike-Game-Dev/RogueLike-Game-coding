@@ -180,7 +180,10 @@ public class BossAgent : Agent
     {
       
         facingRight = !facingRight;
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        //spriteRenderer.flipX = !spriteRenderer.flipX;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
     private void Stomp()
     {
