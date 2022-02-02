@@ -396,9 +396,9 @@ MonoBehaviour:
   MaxStep: 5000
   jumpForce: 7
   dashForce: 1
-  dashCooldown: 0.5
+  dashCooldown: 0.8
   maxJumps: 2
-  maxDashes: 2
+  maxDashes: 1
   attackArea: {fileID: 290291665}
   feetPosition: {fileID: 245199204}
   envController: {fileID: 903141733}
@@ -1280,9 +1280,9 @@ MonoBehaviour:
   MaxStep: 5000
   jumpForce: 7
   dashForce: 1
-  dashCooldown: 0.5
+  dashCooldown: 0.8
   maxJumps: 2
-  maxDashes: 2
+  maxDashes: 1
   attackArea: {fileID: 2843633186443447388}
   feetPosition: {fileID: 2843633186012986711}
   envController: {fileID: 903141733}
