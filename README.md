@@ -9,7 +9,7 @@
 - se face un branch *boss_agent* pt fiecare tichet
 - se da push pe branch la fiecare modificare
 - cand e gata rezolvat tichetul se face un merge request
-- 
+
 ## Pentru antrenat agentul cu Unity Ml-Agents
 - activate environment: `cd <proj_location>` 
                          `venv\Scripts\activate`
